@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACT- SISTEMA RESTAURANTE</title>
+
+<body>
+    <p>
+    <h1 style="text-align: center">SISTEMA DEL RESTAURANTE CAYDA</h1>
+    </p>
+
+
+    <!-- index.html — DOM puro, igual que el Sprint 0 -->
+    <div id="carta"></div>
+    <button id="btnAgregar">Agregar plato</button>
+    <script>
+        let platos = [
+            { id: 1, nombre: "Lomo saltado", categoria: "segundos", precio: 18, stock: 3, disponible: true },
+            { id: 2, nombre: "Arroz con pollo", categoria: "segundos", precio: 12, stock: 5, disponible: true },
+            { id: 3, nombre: "Sopa de verduras", categoria: "entradas", precio: 8, stock: 0, disponible: false },
+        ];
+
+        function renderCarta(platos) {
+            const carta = document.getElementById("carta");
+
+            carta.innerHTML = platos.map(plato => `
+                <div>
+                    <h3>${plato.nombre}</h3>
+                    <p>${plato.precio}</p>
+                    <p>${plato.stock}</p>
+                    <p>${plato.disponible}</p>
+                </div>
+            `).join("");
+
+            renderCarta(platos);
+        }
+
+
+
+        // Al hacer clic en el botón
+
+        document.getElementById("btnAgregar").addEventListener("click", () => {
+            platos.push(
+                {
+                    id: 4,
+                    nombre: "Ceviche",
+                    categoria: "entradas",
+                    precio: 25,
+                    stock: 10,
+                    disponible: true
+                }
+            );
+            renderCarta(platos);
+        });
+
+    </script>
+
+
+</body>
+
+</html>

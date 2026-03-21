@@ -1,0 +1,17 @@
+En el Sprint 0 tenías renderMenu() con innerHTML. Hoy construiste PlatoCard. ¿Qué diferencia concreta hay en cómo cada uno actualiza la pantalla cuando cambia un solo plato? Menciona el Virtual DOM en tu respuesta.
+
+Respuesta:
+
+Cuando realicé el sprint 0 primero cree el rendermenu con innerhtml lo que hacia era renderizar todo el menú entraba a todos los nodos, en cambio con platocard en react es distinto ahí use el virtual dom que compara los cambios y solo actualiza el elemento que cambio.
+
+¿Qué es JSX exactamente? ¿Es HTML? ¿Es JavaScript? ¿Qué hace Vite con él antes de que llegue al navegador?
+
+Es una extensión de JavaScript, no es HTML realmente, es una extensión de JavaScript, vite lo que hace es compilar jsx antes de ejecutarse.
+
+PlatoCard recibe los mismos campos que va a devolver GET /api/platos del equipo de Node. ¿Por qué eso importa? ¿Qué van a tener que cambiar en PlatoCard cuando el endpoint esté listo?
+
+Importa porque si colocamos distintos datos react no podría reconocerlos y devolvernos null, no tendría que cambiar nada del PlatoCard ya que tienen los mismos datos, lo que si podría ser los datos locales con un fetch que es básicamente pedir los datos de una api para poder trabajarlos en nuestra aplicación.
+
+Mañana instalan Vite y crean el proyecto real. ¿Qué problema resuelve Vite que hoy resolvieron con el CDN de React?
+
+Vite compila el jsx antes de ejecutarse, organiza en modulos y tiene un mejor rendimiento.
