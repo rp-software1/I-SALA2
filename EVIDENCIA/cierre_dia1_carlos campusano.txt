@@ -1,0 +1,27 @@
+1. En el Sprint 0 tenías renderMenu() con innerHTML. Hoy construiste PlatoCard. ¿Qué diferencia concreta hay en cómo cada uno actualiza la pantalla cuando cambia un solo plato? Menciona el Virtual DOM en tu respuesta.
+
+Respuesta:
+En el Sprint 0, con renderMenu() usando innerHTML, cada vez que cambiaba un solo plato se volvía a renderizar todo el contenido del menú completo, es decir, se reemplazaban todos los nodos del DOM aunque solo uno hubiera cambiado. Esto es menos eficiente.
+
+En cambio, con PlatoCard en React, se utiliza el Virtual DOM, que es una representación en memoria del DOM real. React compara los cambios entre el estado anterior y el nuevo (proceso llamado diffing) y solo actualiza en el DOM real el elemento específico que cambió. Esto hace que la actualización sea más rápida y eficiente.
+
+2. ¿Qué es JSX exactamente? ¿Es HTML? ¿Es JavaScript? ¿Qué hace Vite con él antes de que llegue al navegador?
+
+Respuesta:
+JSX es una sintaxis que parece HTML pero en realidad es una extensión de JavaScript. Permite escribir estructuras de interfaz de forma más sencilla y legible dentro del código JavaScript.
+
+No es HTML puro, ya que el navegador no lo entiende directamente. Antes de ejecutarse, herramientas como Vite transforman el JSX en llamadas de JavaScript (por ejemplo, React.createElement). Es decir, Vite compila o transpila el JSX a JavaScript estándar para que el navegador pueda interpretarlo correctamente.
+
+3. PlatoCard recibe los mismos campos que va a devolver GET /api/platos del equipo de Node. ¿Por qué eso importa? ¿Qué van a tener que cambiar en PlatoCard cuando el endpoint esté listo?
+
+Respuesta:
+Esto importa porque asegura que el componente PlatoCard ya está preparado para trabajar con los datos reales del backend. Al tener la misma estructura de datos (por ejemplo: nombre, precio, stock), la integración será mucho más sencilla.
+
+Cuando el endpoint esté listo, no será necesario cambiar la lógica interna de PlatoCard. Lo único que cambiará es la fuente de datos: en lugar de usar datos locales, se hará una petición con fetch o similar al endpoint /api/platos y se pasarán esos datos al componente.
+
+4. Mañana instalan Vite y crean el proyecto real. ¿Qué problema resuelve Vite que hoy resolvieron con el CDN de React?
+
+Respuesta:
+El uso del CDN permite trabajar rápidamente sin configuración, pero tiene limitaciones como no poder usar módulos fácilmente ni optimizar el proyecto.
+
+Vite resuelve estos problemas proporcionando un entorno de desarrollo moderno: permite usar módulos, compila JSX automáticamente, ofrece recarga rápida (HMR - Hot Module Replacement) y mejora el rendimiento. Además, organiza mejor el proyecto y lo prepara para producción de forma eficiente.
