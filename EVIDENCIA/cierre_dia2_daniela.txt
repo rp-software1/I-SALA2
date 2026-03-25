@@ -1,0 +1,14 @@
+¿Qué hace main.jsx exactamente? ¿Qué pasaría si lo borraras del proyecto?
+Basicamente es el punto de entrada de la aplicación de react, la aplicación no se ejecutara.
+
+¿Por qué PlatoCard vive en components/ y Home vive en pages/? ¿Cuál es la diferencia concreta entre los dos?
+Porque PlatoCard contiene piezas reutilizables y pages tiene pantallas completas. La diferencia es que components es pequeño y pages es grande.
+
+En el Día 1 usabas import { platosMock } from "./data/platos.mock.js". ¿Por qué ese import funciona ahora con Vite y no funcionaba con el CDN del Día 1?
+Porque vite soporta modulos es de javascript, lo cual nos permitia usar import entre los archivos. En el dia 1
+usabamos React con cdn y no teniamos el sistema de modulos que tenemos ahora.
+
+
+hooks/, services/ y context/ están vacías hoy. ¿Qué va a vivir en cada una y desde qué día del proyecto se van a usar?
+en hooks estara la logica reutilizable, en services la logica de negocio y en context el estado global. Se usaran desde el dia 3.
+
