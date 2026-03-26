@@ -1,0 +1,19 @@
+Ronda 2 — Estudiante B evalúa a Estudiante A  (12 min)
+Mismo proceso con un escenario diferente al que ya se usó.
+
+Tarjeta de evaluación
+
+EVALUADOR: Daniela del Carmen Mendoza Jaimes
+ 
+EVALUADO: Carlos Jesús Campusano Rodriguez
+ 
+ESCENARIO ELEGIDO: evaluación 2
+ 
+RESUMEN DE LA RESPUESTA: No passaria nada porque solo imprime texto, el texto puesto y modificando el estado en prptypes.
+ 
+QUÉ ENTENDIÓ BIEN: (una frase) Entendio la parte de los padres e hijos.
+ 
+QUÉ NECESITA REPASAR: (una frase) Necesita practicar mas sobre el tema de componentes y props.
+ 
+
+
