@@ -2,6 +2,7 @@ import NavBar from "./components/NavBar.jsx";
 import Home from "./pages/home.jsx";
 import MesasPage from "./pages/MesasPage.jsx";
 import OrderForm from "./components/OrderForm.jsx";
+import ComandasPage from "./pages/ComandasPage.jsx";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <NavBar restauranteCayda="Restaurante Cayda" />
       <Home />
       <MesasPage />
-      <OrderForm mesaNumero={3} />
+      <OrderForm />
+      <ComandasPage />
     </div>
   );
 }
