@@ -1,0 +1,15 @@
+Tarjeta de evaluación
+EVALUADOR:CARLOS CAMPUSANO
+ 
+EVALUADO:DANIELA MENDOZA
+ 
+ESCENARIO ELEGIDO:ESCENARIO 3
+ 
+RESUMEN DE LA RESPUESTA:no requiere navbar el mock de mesa ni platos , porque no muestra datos de restaurante
+es un componente  que presenta mientras mesacard es un componente basado en datos del mock de mesas.
+ 
+QUÉ ENTENDIÓ BIEN: ENTIENDE TODO LO PREGUENTADO.
+ 
+QUÉ NECESITA REPASAR: POR AHORA SIGUE REPASANDO NAVBAR
+ 
+

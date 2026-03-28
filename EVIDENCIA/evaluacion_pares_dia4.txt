@@ -1,0 +1,15 @@
+EVALUADOR: Daniela del Carmen Mendoza Jaimes
+ 
+EVALUADO: Carlos Jesús Campusano Rodriguez
+ 
+ESCENARIO ELEGIDO: escenario 2
+ 
+RESUMEN DE LA RESPUESTA: en el OrderForm.clase usa .bin(this) para que funcione la función correcta, fallaria el codigo 
+porque no se estaria dirigiendo con la funcion this, fallaria cuando se ejecute la funcion.
+ 
+QUÉ ENTENDIÓ BIEN: (una frase) OrderForm.clase y OrderForm.funcional son iguales.
+ 
+QUÉ NECESITA REPASAR: (una frase) Necesita repasar sobre el tema de hoy.
+
+ 
+
