@@ -1,25 +1,43 @@
 import { useState } from "react";
 import { platosMock } from "../data/platos.mock.js";
+import { useEffect } from "react";
 
 export default function CarritoPage() {
 
+    const [platos, setPlatos] = useState([]);
     const [carrito, setCarrito] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    function quitarPlato(id) {
-        setCarrito(prev => prev.filter(item => item._id !== id));
+    useEffect(() => {
+        // Hoy: mock. Día 6: Axios a /api/platos
+        setPlatos(platosMock);
+        setTimeout(() => {
+            setPlatos(platosMock);
+            setLoading(false);
+        }, 10000);
+    }, []);
+
+    if (loading) return <p>Cargando menú...</p>;
+
+
+
+    function quitarPlato(indexAlQuitar) {
+        setCarrito(prev => prev.filter((_, index) => index !== indexAlQuitar));
     }
 
     function agregarPlato(plato) {
         setCarrito(prev => [...prev, plato]);
     }
 
+
+
     return (
         <div>
 
             <h2>::::::Armar Comanda::::::</h2>
 
-            {platosMock.map(plato => (
-                <div key={plato._id}>
+            {platos.map(plato => (
+                <div key={plato.id}>
                     <span>{plato.nombre} — S/ {plato.precio}</span>
                     <button onClick={() => agregarPlato(plato)}>Agregar</button>
                 </div>
@@ -30,7 +48,7 @@ export default function CarritoPage() {
             {carrito.map((item, index) => (
                 <div key={index}>
                     <span>{item.nombre}</span>
-                    <button onClick={() => quitarPlato(item._id)}>Quitar</button>
+                    <button onClick={() => quitarPlato(index)}>Quitar</button>
                 </div>
             ))}
 

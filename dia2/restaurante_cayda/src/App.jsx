@@ -5,6 +5,7 @@ import MesasPage from "./pages/MesasPage.jsx";
 import ComandasPage from "./pages/ComandasPage.jsx";
 import CarritoPage from "./pages/CarritoPage.jsx";
 
+
 function App() {
   return (
     <div>
