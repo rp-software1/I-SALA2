@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { platosMock } from "../data/platos.mock.js";
-import { useEffect } from "react";
 
 export default function CarritoPage() {
 
@@ -9,25 +8,61 @@ export default function CarritoPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Hoy: mock. Día 6: Axios a /api/platos
-        setPlatos(platosMock);
-        setTimeout(() => {
-            setPlatos(platosMock);
-            setLoading(false);
-        }, 10000);
+        const cargarMenu = async () => {
+            try {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                setPlatos(platosMock);
+            } catch (error) {
+                console.error("Error al cargar el menú:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        cargarMenu();
     }, []);
 
     if (loading) return <p>Cargando menú...</p>;
 
 
 
-    function quitarPlato(indexAlQuitar) {
-        setCarrito(prev => prev.filter((_, index) => index !== indexAlQuitar));
+    function agregarPlato(plato) {
+        setCarrito(prev => {
+
+            const existe = prev.find(item => item.id === plato.id);
+
+            if (existe) {
+                return prev.map(item =>
+                    item.id === plato.id
+                        ? { ...item, cantidad: item.cantidad + 1 }
+                        : item
+                );
+            }
+
+            return [...prev, { ...plato, cantidad: 1 }];
+        });
     }
 
-    function agregarPlato(plato) {
-        setCarrito(prev => [...prev, plato]);
+
+
+    function quitarPlato(id) {
+        setCarrito(prev =>
+            prev
+                .map(item =>
+                    item.id === id
+                        ? { ...item, cantidad: item.cantidad - 1 }
+                        : item
+                )
+                .filter(item => item.cantidad > 0)
+        );
     }
+
+
+
+    const total = carrito.reduce(
+        (sum, item) => sum + item.precio * item.cantidad,
+        0
+    );
 
 
 
@@ -39,24 +74,33 @@ export default function CarritoPage() {
             {platos.map(plato => (
                 <div key={plato.id}>
                     <span>{plato.nombre} — S/ {plato.precio}</span>
-                    <button onClick={() => agregarPlato(plato)}>Agregar</button>
+                    <button onClick={() => agregarPlato(plato)}>
+                        Agregar
+                    </button>
                 </div>
             ))}
+
+
 
             <h3>Comanda ({carrito.length} ítems)</h3>
 
-            {carrito.map((item, index) => (
-                <div key={index}>
-                    <span>{item.nombre}</span>
-                    <button onClick={() => quitarPlato(index)}>Quitar</button>
+            {carrito.map(item => (
+                <div key={item.id}>
+                    <span>{item.nombre} (x{item.cantidad})</span>
+                    <button onClick={() => quitarPlato(item.id)}>
+                        Quitar
+                    </button>
                 </div>
             ))}
+
+
+
+            <p>Total: S/ {total}</p>
+
+            <button onClick={() => setCarrito([])}>
+                Limpiar comanda
+            </button>
 
         </div>
     );
 }
-
-
-
-
-
