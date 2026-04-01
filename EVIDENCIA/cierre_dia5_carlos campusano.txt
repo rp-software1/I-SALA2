@@ -1,0 +1,56 @@
+1
+¿Por qué React obliga a usar setCarrito en lugar de mutar el array directamente con push? ¿Qué mecanismo interno de React hace que esto sea necesario?
+Porque React no detecta cambios si mutas directamente el array.
+Cuando haces esto:
+carrito.push(nuevoProducto)
+estás modificando el mismo array en memoria. Para React eso es “el mismo estado”, entonces no vuelve a renderizar.
+En cambio, cuando haces:
+setCarrito([...carrito, nuevoProducto])
+creas un array nuevo, y React sí detecta: “ok, cambió la referencia → vuelvo a renderizar”.
+
+2
+Hoy usaron useEffect con [] para cargar el menú. Mañana van a usar Axios para hacer un GET real a /api/platos. ¿Qué parte del código de hoy va a cambiar y qué parte va a quedarse igual?
+Hoy probablemente tienes algo así:
+useEffect(() => {
+  setPlatos(dataLocal)
+}, [])
+Mañana cambiaría solo la parte de dónde vienen los datos:
+useEffect(() => {
+  axios.get('/api/platos')
+    .then(res => setPlatos(res.data))
+}, [])
+
+3
+En el Sprint 0 calculaban el total del carrito con un for loop. Hoy usaron reduce. ¿Son equivalentes? ¿En qué situación usarías uno sobre el otro?
+Sí, son equivalentes. Ambos pueden hacer lo mismo.
+Ejemplo:
+for:
+let total = 0
+for (let i = 0; i < carrito.length; i++) {
+  total += carrito[i].precio
+}
+reduce:
+const total = carrito.reduce((acc, item) => acc + item.precio, 0)
+
+4
+Si mañana necesitaran compartir el carrito entre dos componentes distintos — por ejemplo, CarritoPage y una barra de navegación que muestra cuántos ítems hay — ¿dónde tendría que vivir el estado del carrito? ¿Por qué?
+El carrito debería vivir en un componente padre común.
+
+Por ejemplo:
+
+App
+ ├── NavBar (muestra cantidad)
+ └── CarritoPage (muestra productos)
+
+Entonces el estado va en App:
+
+const [carrito, setCarrito] = useState([])
+
+Y se pasa como props:
+
+<NavBar carrito={carrito} />
+<CarritoPage carrito={carrito} />
+
+ ¿Por qué?
+Porque React usa flujo de datos de arriba hacia abajo.
+Si dos componentes necesitan lo mismo → el estado sube.
