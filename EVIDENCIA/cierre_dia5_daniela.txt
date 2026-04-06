@@ -1,0 +1,35 @@
+#
+Pregunta
+1
+¿Por qué React obliga a usar setCarrito en lugar de 
+mutar el array directamente con push? 
+¿Qué mecanismo interno de React hace que esto sea necesario?
+Lo obliga porque si mutamos el array directamente,
+ React no se da cuenta de que el estado cambió y no vuelve a renderizar el componente.El mecanismo 
+ interno es que React compara el estado anterior con el nuevo y 
+ si son iguales no vuelve a renderizar.
+
+2
+Hoy usaron useEffect con [] para cargar el menú. 
+Mañana van a usar Axios para hacer un GET real a /api/platos.
+¿Qué parte del código de hoy va a cambiar y qué parte va a quedarse igual?
+El código que va a cambiar es el que carga el menú, es decir, la función cargarMenu.
+El código que se va a quedar igual es el que agrega y quita platos del carrito,
+ el total del carrito y el botón de limpiar carrito.
+
+3
+En el Sprint 0 calculaban el total del carrito con un for loop. 
+Hoy usaron reduce. ¿Son equivalentes? 
+¿En qué situación usarías uno sobre el otro?
+Los dos son equivalentes, pero reduce es más conciso. 
+Usaría reduce en la mayoría de los casos, pero si necesito hacer algo más complejo,
+ usaría un for loop.
+
+4. Si mañana necesitaran compartir el carrito entre dos componentes distintos — por ejemplo,
+ CarritoPage y una barra de navegación que muestra cuántos ítems hay —
+¿dónde tendría que vivir el estado del carrito? ¿Por qué?
+El estado del carrito tendría que vivir en el componente padre de ambos componentes.Porque si no,
+ no se podrían comunicar entre sí.
+
+
+
