@@ -1,0 +1,20 @@
+EVALUADOR:
+CARLOS CAMPUSANO
+
+
+EVALUADO:
+DANIELA MENDOZA
+
+ESCENARIO ELEGIDO:
+ESCENARIO1.
+
+RESUMEN DE LA RESPUESTA:
+
+ME BRINDO BIEN SUS RESPUESTAS ME DIJO LO SIGUIENTE:CarritoPage renderiza → obtiene datos del carrito → muestra productos → calcula total → el usuario interactúa → se actualiza el estado y se vuelve a renderizar.
+
+QUÉ ENTENDIÓ BIEN:
+POR AHORA ENTIENDE TODO AL PAR.
+
+QUÉ NECESITA REPASAR:
+DESEA REPASAR TODO DE IGUAL MANERA.
+
