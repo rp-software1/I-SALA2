@@ -27,7 +27,7 @@ export default function CarritoPage() {
     if (!mesaSeleccionada) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-                <h2 className="text-xl font-semibold text-gray-700">
+                <h2 className="text-xl font-semibold text-blue-700">
                     Selecciona una mesa
                 </h2>
 
@@ -36,7 +36,7 @@ export default function CarritoPage() {
                         <button
                             key={mesa.id}
                             onClick={() => setMesaSeleccionada(mesa.id)}
-                            className="px-4 py-2 rounded-lg border bg-white hover:bg-blue-50 transition"
+                            className="px-4 py-2 rounded-lg border bg-white hover:bg-blue-100 transition"
                         >
                             Mesa {mesa.id}
                         </button>
@@ -114,7 +114,7 @@ export default function CarritoPage() {
                 {/* Selector de mesas arriba */}
                 <div className="mb-6">
                     <h2 className="text-lg font-semibold text-gray-700 mb-2">
-                        🪑 Mesas
+                        Mesas
                     </h2>
 
                     <div className="flex gap-2 flex-wrap">
