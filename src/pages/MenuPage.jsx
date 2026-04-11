@@ -17,7 +17,7 @@ export default function MenuPage() {
 
                 const data = platosMock;
 
-                // 🔴 ESTO TE FALTABA
+                //  ESTO TE FALTABA
                 setPlatos(data);
 
             } catch (err) {
@@ -58,7 +58,7 @@ export default function MenuPage() {
         <div className='min-h-screen bg-gray-50 p-8'>
             <div className='max-w-5xl mx-auto'>
                 <h1 className='text-3xl font-bold text-gray-800 mb-1'>
-                    🍽️ Restaurante RPSoft
+                    Restaurante RPSoft
                 </h1>
                 <p className='text-gray-500 mb-8'>
                     Menú del día — selecciona tus platos

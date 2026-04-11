@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { platosMock } from "../data/platos.mock.js";
+import { mesasMock } from "../data/mesas.mock.js";
 
 export default function CarritoPage() {
 
-    const { mesaId } = useParams();
+    // ✅ NUEVO: estado para mesa seleccionada
+    const [mesaSeleccionada, setMesaSeleccionada] = useState(null);
 
     const [platos, setPlatos] = useState([]);
     const [comandas, setComandas] = useState({});
@@ -22,9 +23,33 @@ export default function CarritoPage() {
 
     if (loading) return <p className="p-4 animate-pulse">Cargando menú...</p>;
 
+    // bloquear si no hay mesa seleccionada
+    if (!mesaSeleccionada) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+                <h2 className="text-xl font-semibold text-gray-700">
+                    Selecciona una mesa
+                </h2>
+
+                <div className="flex gap-3 flex-wrap justify-center">
+                    {mesasMock.map(mesa => (
+                        <button
+                            key={mesa.id}
+                            onClick={() => setMesaSeleccionada(mesa.id)}
+                            className="px-4 py-2 rounded-lg border bg-white hover:bg-blue-50 transition"
+                        >
+                            Mesa {mesa.id}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    const mesaId = mesaSeleccionada;
     const carrito = comandas[mesaId] || [];
 
-    // ✅ Agregar plato
+    // Agregar plato
     function agregarPlato(plato) {
         setComandas(prev => {
             const actual = prev[mesaId] || [];
@@ -49,7 +74,7 @@ export default function CarritoPage() {
         });
     }
 
-    // ✅ Quitar plato
+    //  Quitar plato
     function quitarPlato(id) {
         setComandas(prev => {
             const actual = prev[mesaId] || [];
@@ -69,7 +94,7 @@ export default function CarritoPage() {
         });
     }
 
-    // ✅ Limpiar comanda
+    //  Limpiar comanda
     function limpiarComanda() {
         setComandas(prev => ({
             ...prev,
@@ -86,14 +111,37 @@ export default function CarritoPage() {
         <div className="min-h-screen bg-gray-50 p-8">
             <div className="max-w-5xl mx-auto">
 
-                <h1 className="text-3xl font-bold text-gray-800 mb-6 animate-fade-in">
-                    🧾 Comanda - Mesa {mesaId}
+                {/* Selector de mesas arriba */}
+                <div className="mb-6">
+                    <h2 className="text-lg font-semibold text-gray-700 mb-2">
+                        🪑 Mesas
+                    </h2>
+
+                    <div className="flex gap-2 flex-wrap">
+                        {mesasMock.map(mesa => (
+                            <button
+                                key={mesa.id}
+                                onClick={() => setMesaSeleccionada(mesa.id)}
+                                className={`px-3 py-1 rounded-lg border transition
+                                ${mesaSeleccionada === mesa.id
+                                        ? 'bg-blue-600 text-white'
+                                        : 'bg-white hover:bg-gray-100'
+                                    }`}
+                            >
+                                Mesa {mesa.id}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <h1 className="text-3xl font-bold text-gray-800 mb-6">
+                    Comanda - Mesa {mesaId}
                 </h1>
 
                 <div className="grid grid-cols-2 gap-6">
 
                     {/* MENÚ */}
-                    <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3 animate-fade-in">
+                    <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3">
                         <h2 className="font-semibold text-gray-700 text-lg border-b pb-2">
                             Platos
                         </h2>
@@ -101,8 +149,7 @@ export default function CarritoPage() {
                         {platos.map(plato => (
                             <div
                                 key={plato.id}
-                                className="flex justify-between py-2 border-b last:border-0 
-                transition-all duration-300 hover:bg-gray-50 hover:scale-[1.02]"
+                                className="flex justify-between py-2 border-b last:border-0 hover:bg-gray-50 transition"
                             >
                                 <div>
                                     <p className="font-medium text-gray-800">
@@ -115,9 +162,7 @@ export default function CarritoPage() {
 
                                 <button
                                     onClick={() => agregarPlato(plato)}
-                                    className="bg-blue-600 text-white px-3 py-1 rounded 
-                  transition-all duration-300 
-                  hover:bg-blue-700 hover:scale-105 active:scale-95"
+                                    className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
                                 >
                                     + Agregar
                                 </button>
@@ -126,13 +171,13 @@ export default function CarritoPage() {
                     </div>
 
                     {/* CARRITO */}
-                    <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3 animate-fade-in">
+                    <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3">
                         <h2 className="font-semibold text-gray-700 text-lg border-b pb-2">
                             Pedido
                         </h2>
 
                         {carrito.length === 0 && (
-                            <p className="text-gray-400 text-center py-8 animate-pulse">
+                            <p className="text-gray-400 text-center py-8">
                                 Sin platos
                             </p>
                         )}
@@ -140,8 +185,7 @@ export default function CarritoPage() {
                         {carrito.map(item => (
                             <div
                                 key={item.id}
-                                className="flex justify-between py-2 border-b last:border-0 
-                transition-all duration-300 hover:bg-gray-50 hover:scale-[1.02]"
+                                className="flex justify-between py-2 border-b last:border-0"
                             >
                                 <div>
                                     <p className="font-medium text-gray-800">
@@ -154,9 +198,7 @@ export default function CarritoPage() {
 
                                 <button
                                     onClick={() => quitarPlato(item.id)}
-                                    className="text-red-500 text-sm 
-                  transition-all duration-300 
-                  hover:text-red-700 hover:scale-110"
+                                    className="text-red-500 text-sm hover:text-red-700"
                                 >
                                     Quitar
                                 </button>
@@ -170,12 +212,9 @@ export default function CarritoPage() {
 
                             <button
                                 onClick={limpiarComanda}
-                                className="w-full mt-3 bg-red-50 text-red-500 border border-red-200 
-                rounded-lg py-2 
-                transition-all duration-300 
-                hover:bg-red-100 hover:scale-105 active:scale-95"
+                                className="w-full mt-3 bg-red-50 text-red-500 border border-red-200 rounded-lg py-2 hover:bg-red-100"
                             >
-                                🗑️ Limpiar comanda
+                                Limpiar comanda
                             </button>
                         </div>
                     </div>

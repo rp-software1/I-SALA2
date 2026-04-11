@@ -9,7 +9,7 @@ export default function LoginPage() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        // 🔥 Simulación de login
+        //  Simulación de login
         if (email === "mesero@restaurante.com" && password === "123456") {
 
             // Guardar token
