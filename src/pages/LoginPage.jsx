@@ -1,12 +1,26 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log('Login:', email, password);
+
+        // 🔥 Simulación de login
+        if (email === "mesero@restaurante.com" && password === "123456") {
+
+            // Guardar token
+            localStorage.setItem('token', 'abc123');
+
+            // Redirigir al menú
+            navigate('/menu');
+
+        } else {
+            alert('Credenciales incorrectas');
+        }
     }
 
     return (
@@ -34,7 +48,7 @@ export default function LoginPage() {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             placeholder='mesero@restaurante.com'
-                            className='w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+                            className='w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg'
                         />
                     </div>
 
@@ -46,14 +60,14 @@ export default function LoginPage() {
                             type='password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            placeholder='••••••••'
-                            className='w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+                            placeholder='123456'
+                            className='w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg'
                         />
                     </div>
 
                     <button
                         type='submit'
-                        className='w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors mt-2'
+                        className='w-full bg-blue-600 text-white py-2 rounded-lg'
                     >
                         Ingresar al sistema
                     </button>

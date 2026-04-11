@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function NavBar({ restauranteCayda = "Restaurante" }) {
+export default function NavBar({ restauranteCayda = "Restaurante" }) {
     return (
         <nav style={{ borderBottom: "2px solid gray", padding: "10px" }}>
             <h1>{restauranteCayda}</h1>
@@ -13,4 +13,6 @@ function NavBar({ restauranteCayda = "Restaurante" }) {
     );
 }
 
-export default NavBar;
+NavBar.propTypes = {
+    nombreRestaurante: PropTypes.string
+};
