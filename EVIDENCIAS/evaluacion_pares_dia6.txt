@@ -1,0 +1,19 @@
+EVALUADOR:
+Daniela del Carmen Mendoza Jaimes 
+
+EVALUADO:
+Carlos Campusano Rodriguez 
+
+ESCENARIO ELEGIDO:
+Escenario 2: En PlatoCard usamos className con template literals para el color del badge. 
+¿Qué hace esa expresión? ¿Cuándo es bg-green-100 y cuándo es bg-red-100? 
+
+RESUMEN DE LA RESPUESTA:
+cambian si el plato esta disponible la clase es verde y sino es rojo. 
+
+QUÉ ENTENDIÓ BIEN:
+(una frase) entendio para que se usa el bg y el className
+
+QUÉ NECESITA REPASAR: 
+(una frase) Repasara todo de igual manera para reforzar su conocimiento.
+
