@@ -4,24 +4,49 @@ import { mesasMock } from "../data/mesas.mock.js";
 
 export default function CarritoPage() {
 
-    // ✅ NUEVO: estado para mesa seleccionada
     const [mesaSeleccionada, setMesaSeleccionada] = useState(null);
 
     const [platos, setPlatos] = useState([]);
     const [comandas, setComandas] = useState({});
     const [loading, setLoading] = useState(true);
 
+    // ✅ NUEVO: estado error
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         const cargarMenu = async () => {
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            setPlatos(platosMock);
-            setLoading(false);
+            try {
+                setLoading(true);
+
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+
+                //throw new Error("Error simulado del servidor");
+
+                const data = platosMock;
+                setPlatos(data);
+
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
         };
 
         cargarMenu();
     }, []);
 
+    // ✅ LOADING
     if (loading) return <p className="p-4 animate-pulse">Cargando menú...</p>;
+
+    // ✅ ERROR
+    if (error) {
+        return (
+            <p className="p-4 text-red-500 font-semibold">
+                Error: {error}
+            </p>
+        );
+    }
 
     // bloquear si no hay mesa seleccionada
     if (!mesaSeleccionada) {
@@ -49,7 +74,6 @@ export default function CarritoPage() {
     const mesaId = mesaSeleccionada;
     const carrito = comandas[mesaId] || [];
 
-    // Agregar plato
     function agregarPlato(plato) {
         setComandas(prev => {
             const actual = prev[mesaId] || [];
@@ -74,7 +98,6 @@ export default function CarritoPage() {
         });
     }
 
-    //  Quitar plato
     function quitarPlato(id) {
         setComandas(prev => {
             const actual = prev[mesaId] || [];
@@ -94,7 +117,6 @@ export default function CarritoPage() {
         });
     }
 
-    //  Limpiar comanda
     function limpiarComanda() {
         setComandas(prev => ({
             ...prev,
@@ -111,7 +133,6 @@ export default function CarritoPage() {
         <div className="min-h-screen bg-gray-50 p-8">
             <div className="max-w-5xl mx-auto">
 
-                {/* Selector de mesas arriba */}
                 <div className="mb-6">
                     <h2 className="text-lg font-semibold text-gray-700 mb-2">
                         Mesas
@@ -140,7 +161,6 @@ export default function CarritoPage() {
 
                 <div className="grid grid-cols-2 gap-6">
 
-                    {/* MENÚ */}
                     <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3">
                         <h2 className="font-semibold text-gray-700 text-lg border-b pb-2">
                             Platos
@@ -170,7 +190,6 @@ export default function CarritoPage() {
                         ))}
                     </div>
 
-                    {/* CARRITO */}
                     <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3">
                         <h2 className="font-semibold text-gray-700 text-lg border-b pb-2">
                             Pedido
