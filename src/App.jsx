@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './pages/loginpage';
+import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
 import CarritoPage from './pages/CarritoPage';
 import ProtectedRoute from './components/ProtectedRoute';
