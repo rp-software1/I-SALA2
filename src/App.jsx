@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
+import MesasPage from './pages/MesasPage';
 import CarritoPage from './pages/CarritoPage';
-import ProtectedRoute from './components/ProtectedRoute';
 import NavBar from './components/NavBars';
 
 export default function App() {
@@ -10,16 +10,14 @@ export default function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/menu' element={
-          <MenuPage />
-        } />
-        <Route path='/carrito' element={
-          <CarritoPage />
-        } />
-        <Route path='/' element={<Navigate to='/menu' replace />} />
+        {/* Ruta pública */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Rutas principales */}
+        <Route path="/" element={<MenuPage />} />
+        <Route path="/mesas" element={<MesasPage />} />
+        <Route path="/carrito" element={<CarritoPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
