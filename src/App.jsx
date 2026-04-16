@@ -3,7 +3,9 @@ import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
 import MesasPage from './pages/MesasPage';
 import CarritoPage from './pages/CarritoPage';
+import DetalleMesa from './pages/DetalleMesa';
 import NavBar from './components/NavBars';
+
 
 export default function App() {
   return (
@@ -16,6 +18,7 @@ export default function App() {
         {/* Rutas principales */}
         <Route path="/" element={<MenuPage />} />
         <Route path="/mesas" element={<MesasPage />} />
+        <Route path="/mesas/:id" element={<DetalleMesa />} />
         <Route path="/carrito" element={<CarritoPage />} />
       </Routes>
     </BrowserRouter>
