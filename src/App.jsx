@@ -1,25 +1,30 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
+import MesasPage from './pages/MesasPage';
 import CarritoPage from './pages/CarritoPage';
-import ProtectedRoute from './components/ProtectedRoute';
+import DetalleMesa from './pages/DetalleMesa';
 import NavBar from './components/NavBars';
+import NotFound from './pages/NotFound';
+
+
 
 export default function App() {
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar restauranteCayda="Restaurante Cayda" />
       <Routes>
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/menu' element={
-          <MenuPage />
-        } />
-        <Route path='/carrito' element={
-          <CarritoPage />
-        } />
-        <Route path='/' element={<Navigate to='/menu' replace />} />
+        {/* Ruta pública */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Rutas principales */}
+        <Route path="/" element={<MenuPage />} />
+        <Route path="/mesas" element={<MesasPage />} />
+        <Route path="/mesas/:id" element={<DetalleMesa />} />
+        <Route path="/carrito" element={<CarritoPage />} />
+        <Route path='*' element={<NotFound />} />
+
       </Routes>
     </BrowserRouter>
   );
 }
-

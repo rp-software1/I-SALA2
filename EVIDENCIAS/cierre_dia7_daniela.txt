@@ -1,0 +1,23 @@
+¿Qué hace BrowserRouter exactamente? 
+¿Qué pasa si envuelves solo una parte de la app en lugar de toda?
+- lo que hace browser router es navegar sin recargar la pagina, lo que pasaria si envuelvo solo una parte 
+habria errores porque no navegaria en toda la app. 
+
+NavLink recibe className como función. ¿Por qué es función y no string? 
+¿Qué tiene que devolver esa función?
+- Usa className como funcion porque necesita que sea dinamico si es que la ruta esta habilitada y
+ lo que debe de envolver seria un string con las clases css correspondientes.
+
+El usuario está en /mesas/5 y hace clic en Atrás del navegador. 
+¿Qué pasa? ¿A dónde va?
+Vuelve a ver a todas las mesas.
+
+¿Por qué path='*' tiene que ir al final de Routes? 
+¿Qué pasaría si va al principio?
+- Va al ultimo porque es como un identificador de rutas, si iria al principio no dejaria renderizar las demas 
+rutas.
+
+useParams devuelve string. Si el ID en el mock es número,
+ ¿qué problema aparece al comparar? ¿Cómo lo resuelven?
+- el problema al comparar es que no son del mismo tipo, 
+entonces lo convierte uno de los dos en string.
