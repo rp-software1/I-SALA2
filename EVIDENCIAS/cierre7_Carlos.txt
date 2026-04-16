@@ -1,0 +1,31 @@
+¿Qué hace BrowserRouter exactamente? ¿Qué pasa si envuelves solo una parte de la app en lugar de toda? 
+Maneja la navegación sin recargar la página.
+Si envuelves solo una parte → solo esa parte puede usar rutas, lo demás no.
+
+NavLink recibe className como función. ¿Por qué es función y no string? ¿Qué tiene que devolver esa función? 
+NavLink (className como función)
+Es función porque recibe info (isActive).
+Debe devolver un string de clases.
+ Así cambia estilo cuando está activo.
+
+El usuario está en /mesas/5 y hace clic en Atrás del navegador. 
+¿Qué pasa? ¿A dónde va? 
+⬅️ Botón “Atrás” (/mesas/5)
+Vuelve a la ruta anterior en el historial
+👉 ej: /mesas
+
+¿Por qué path='*' tiene que ir al final de Routes? ¿Qué pasaría si va al principio?
+path="*"
+Va al final porque es el comodín (captura todo)
+Si va primero → rompe todo, siempre se renderiza ese.
+
+useParams devuelve string. Si el ID en el mock es número, ¿qué problema aparece al comparar? ¿Cómo lo resuelven? resumelo algo breve porfa
+useParams (string vs number)
+useParams() devuelve string
+Problema: "5" !== 5
+Solución:
+Number(id)
+
+parseInt(id)
+
+Si puedes decir esto así de claro, ya estás listo para responder en clase sin trabarte.
