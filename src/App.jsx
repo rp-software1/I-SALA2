@@ -5,6 +5,8 @@ import MesasPage from './pages/MesasPage';
 import CarritoPage from './pages/CarritoPage';
 import DetalleMesa from './pages/DetalleMesa';
 import NavBar from './components/NavBars';
+import NotFound from './pages/NotFound';
+
 
 
 export default function App() {
@@ -20,6 +22,8 @@ export default function App() {
         <Route path="/mesas" element={<MesasPage />} />
         <Route path="/mesas/:id" element={<DetalleMesa />} />
         <Route path="/carrito" element={<CarritoPage />} />
+        <Route path='*' element={<NotFound />} />
+
       </Routes>
     </BrowserRouter>
   );
