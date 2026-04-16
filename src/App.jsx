@@ -8,7 +8,7 @@ import NavBar from './components/NavBars';
 export default function App() {
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar restauranteCayda="Restaurante Cayda" />
       <Routes>
         {/* Ruta pública */}
         <Route path="/login" element={<LoginPage />} />
