@@ -1,29 +1,105 @@
 import { createContext, useContext, useState } from 'react';
 
-// 1. Crear el contexto
 const PedidoContext = createContext(null);
 
-// 2. Estado inicial — misma forma que el modelo Pedido en NestJS
 const estadoInicial = {
-    mesaId: null,                  // null = pedido para llevar
-    tipo: 'mesa',                  // 'mesa' | 'para_llevar'
-    estado: 'pendiente',           // estado actual del pedido
-    items: [],                     // [{ platoId, nombre, cantidad, precioUnitario }]
-    total: 0,                      // calculado automáticamente
+    mesaId: null,
+    tipo: 'mesa',
+    estado: 'pendiente',
+    items: [],
+    total: 0,
 };
 
-// 3. Provider — tiene el estado y lo comparte a toda la app
 export function PedidoProvider({ children }) {
     const [pedido, setPedido] = useState(estadoInicial);
 
+    // ✅ total automático
+    const calcularTotal = (items) =>
+        items.reduce((acc, item) => acc + item.precioUnitario * item.cantidad, 0);
+
+    // ✅ agregar plato
+    const agregarPlato = (plato) => {
+        setPedido(prev => {
+            const existe = prev.items.find(i => i.platoId === plato.id);
+
+            const nuevosItems = existe
+                ? prev.items.map(i =>
+                    i.platoId === plato.id
+                        ? { ...i, cantidad: i.cantidad + 1 }
+                        : i
+                )
+                : [
+                    ...prev.items,
+                    {
+                        platoId: plato.id,
+                        nombre: plato.nombre,
+                        cantidad: 1,
+                        precioUnitario: plato.precio,
+                    }
+                ];
+
+            return {
+                ...prev,
+                items: nuevosItems,
+                total: calcularTotal(nuevosItems)
+            };
+        });
+    };
+
+    // ✅ quitar plato
+    const quitarPlato = (platoId) => {
+        setPedido(prev => {
+            const nuevosItems = prev.items
+                .map(i =>
+                    i.platoId === platoId
+                        ? { ...i, cantidad: i.cantidad - 1 }
+                        : i
+                )
+                .filter(i => i.cantidad > 0);
+
+            return {
+                ...prev,
+                items: nuevosItems,
+                total: calcularTotal(nuevosItems)
+            };
+        });
+    };
+
+    // ✅ cambiar tipo
+    const cambiarTipo = (tipo) => {
+        setPedido(prev => ({
+            ...prev,
+            tipo,
+            mesaId: tipo === 'para_llevar' ? null : prev.mesaId,
+        }));
+    };
+
+    // ✅ asignar mesa
+    const asignarMesa = (mesaId) => {
+        setPedido(prev => ({
+            ...prev,
+            mesaId,
+            tipo: 'mesa'
+        }));
+    };
+
+    // ✅ limpiar pedido
+    const limpiarPedido = () => setPedido(estadoInicial);
+
     return (
-        <PedidoContext.Provider value={{ pedido, setPedido }}>
+        <PedidoContext.Provider value={{
+            pedido,
+            agregarPlato,
+            quitarPlato,
+            cambiarTipo,
+            asignarMesa,
+            limpiarPedido,
+        }}>
             {children}
         </PedidoContext.Provider>
     );
 }
 
-// 4. Custom hook — para no importar useContext + PedidoContext en cada archivo
 export function usePedido() {
     const context = useContext(PedidoContext);
     if (!context) throw new Error('usePedido debe usarse dentro de PedidoProvider');
