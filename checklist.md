@@ -1,5 +1,5 @@
 ---
-alumno: [daniela]
+alumno: [daniela,carlos]
 sala: I-SALA2
 curso: REACT
 dia: 8

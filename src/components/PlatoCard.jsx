@@ -28,8 +28,8 @@ export default function PlatoCard({ plato }) {
 
                 <span
                     className={`text-xs font-medium px-2 py-1 rounded-full ${plato.disponible
-                            ? 'bg-green-100 text-green-700'
-                            : 'bg-red-100 text-red-500'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-red-100 text-red-500'
                         }`}
                 >
                     {plato.disponible ? '✅ Disponible' : '❌ Agotado'}

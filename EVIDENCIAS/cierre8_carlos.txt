@@ -1,0 +1,37 @@
+El PedidoContext tiene la misma forma que el modelo Pedido en NestJS. ¿Por qué crees que se diseñó así? ¿Qué ventaja da cuando llegue el momento de conectar el frontend con la API real?
+¿Por qué el PedidoContext tiene la misma forma que el modelo en NestJS?
+
+No es casualidad. Se hace así a propósito para que cuando conectes el frontend con el backend (tu API en NestJS), todo encaje sin dolor.
+
+Si ambos usan la misma estructura:
+
+No tienes que estar transformando datos
+Evitas errores porque ya sabes cómo viene la info
+La integración es mucho más rápida
+
+En pocas palabras: hablan el mismo idioma desde el inicio. Eso te ahorra tiempo y bugs después.
+
+Describe en tus palabras la diferencia entre createContext, Provider y useContext. ¿Cuándo se usa cada uno? ¿Quién crea el estado, quién lo comparte y quién lo lee?
+
+Diferencia entre createContext, Provider y useContext
+
+Piensa en esto como un sistema para compartir datos en toda la app:
+
+createContext
+
+Es como crear la “caja” o el espacio donde va a vivir la información.
+
+Solo define el contexto, no guarda nada todavía.
+
+Provider
+
+Este es el importante.
+
+Aquí se crea el estado (por ejemplo con useState) Y se comparte a toda la app
+
+Es como decir: “todos los componentes dentro de mí pueden usar estos datos”.
+
+ useContext
+
+Este se usa en los componentes que necesitan la info.
+Sirve para leer y usar lo que el Provider está compartiendo
