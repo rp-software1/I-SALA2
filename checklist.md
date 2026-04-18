@@ -1,5 +1,5 @@
 ---
-alumno: [daniela]
+alumno: [daniela,carlos]
 sala: I-SALA2
 curso: REACT
 dia: 8
@@ -13,4 +13,4 @@ loom: (agregar link al terminar)
 - [X] C — Acciones del pedido: agregar, quitar, cambiar tipo
 - [X] D — Exploración con Claude
 - [X] E — Evaluación entre pares
-- [ ] F — Cierre del día
+- [X] F — Cierre del día

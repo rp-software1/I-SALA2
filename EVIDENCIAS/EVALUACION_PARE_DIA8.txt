@@ -1,0 +1,20 @@
+EVALUADOR:CARLOS CAMPUSANO 
+
+
+EVALUADO:DANIELA MENDOZA
+
+
+ESCENARIO ELEGIDO:Escenario 3
+
+
+RESUMEN DE LA RESPUESTA:
+La diferencia es simple:
+
+useState guarda datos en un solo componente. Si otros componentes necesitan esa info, tienes que pasarla manualmente (props), lo cual se vuelve desordenado.
+Context permite compartir esos datos directamente entre muchos componentes sin estar pasándolos uno por uno.
+
+QUÉ ENTENDIÓ BIEN:
+ENTENDIO BIEN TODO LO PREGUNTADO.
+QUÉ NECESITA REPASAR:
+POR AHORA SIGUE REPASANDO TODO 
+
