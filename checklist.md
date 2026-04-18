@@ -12,5 +12,5 @@ loom: (agregar link al terminar)
 - [X] B — useContext en MenuPage y CarritoPage
 - [X] C — Acciones del pedido: agregar, quitar, cambiar tipo
 - [X] D — Exploración con Claude
-- [ ] E — Evaluación entre pares
+- [X] E — Evaluación entre pares
 - [ ] F — Cierre del día

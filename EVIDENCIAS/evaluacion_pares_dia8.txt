@@ -1,0 +1,18 @@
+EVALUADOR:
+Daniela Mendoza Jaimes 
+
+EVALUADO:
+Carlos Jesús Campusano Rodriguez
+
+ESCENARIO ELEGIDO:
+Escenario 1
+
+RESUMEN DE LA RESPUESTA:
+Explicó que al hacer clic en “Agregar” se ejecuta una función que actualiza el estado del carrito
+React detecta el cambio, re-renderiza los componentes y el badge se actualiza automáticamente.
+
+QUÉ ENTENDIÓ BIEN:
+Comprendió el flujo desde el evento hasta la actualización del estado y la interfaz.
+
+QUÉ NECESITA REPASAR:
+Profundizar en cómo se propaga el estado entre componentes (Context o props).
