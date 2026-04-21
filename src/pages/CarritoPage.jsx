@@ -1,243 +1,153 @@
-import { useState, useEffect } from "react";
-import { platosMock } from "../data/platos.mock.js";
-import { mesasMock } from "../data/mesas.mock.js";
+import { usePedido } from "../context/PedidoContext";
 
 export default function CarritoPage() {
+    const {
+        pedido,
+        cambiarTipo,
+        asignarMesa,
+        agregarPlato,
+        quitarPlato,
+        limpiarPedido,
+    } = usePedido();
 
-    const [mesaSeleccionada, setMesaSeleccionada] = useState(null);
-
-    const [platos, setPlatos] = useState([]);
-    const [comandas, setComandas] = useState({});
-    const [loading, setLoading] = useState(true);
-
-    // ✅ NUEVO: estado error
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const cargarMenu = async () => {
-            try {
-                setLoading(true);
-
-                await new Promise(resolve => setTimeout(resolve, 1000));
-
-
-                //throw new Error("Error simulado del servidor");
-
-                const data = platosMock;
-                setPlatos(data);
-
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        cargarMenu();
-    }, []);
-
-    // ✅ LOADING
-    if (loading) return <p className="p-4 animate-pulse">Cargando menú...</p>;
-
-    // ✅ ERROR
-    if (error) {
-        return (
-            <p className="p-4 text-red-500 font-semibold">
-                Error: {error}
-            </p>
-        );
-    }
-
-    // bloquear si no hay mesa seleccionada
-    if (!mesaSeleccionada) {
-        return (
-            <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-                <h2 className="text-xl font-semibold text-blue-700">
-                    Selecciona una mesa
-                </h2>
-
-                <div className="flex gap-3 flex-wrap justify-center">
-                    {mesasMock.map(mesa => (
-                        <button
-                            key={mesa.id}
-                            onClick={() => setMesaSeleccionada(mesa.id)}
-                            className="px-4 py-2 rounded-lg border bg-white hover:bg-blue-100 transition"
-                        >
-                            Mesa {mesa.id}
-                        </button>
-                    ))}
-                </div>
-            </div>
-        );
-    }
-
-    const mesaId = mesaSeleccionada;
-    const carrito = comandas[mesaId] || [];
-
-    function agregarPlato(plato) {
-        setComandas(prev => {
-            const actual = prev[mesaId] || [];
-            const existe = actual.find(item => item.id === plato.id);
-
-            let nueva;
-
-            if (existe) {
-                nueva = actual.map(item =>
-                    item.id === plato.id
-                        ? { ...item, cantidad: item.cantidad + 1 }
-                        : item
-                );
-            } else {
-                nueva = [...actual, { ...plato, cantidad: 1 }];
-            }
-
-            return {
-                ...prev,
-                [mesaId]: nueva
-            };
-        });
-    }
-
-    function quitarPlato(id) {
-        setComandas(prev => {
-            const actual = prev[mesaId] || [];
-
-            const nueva = actual
-                .map(item =>
-                    item.id === id
-                        ? { ...item, cantidad: item.cantidad - 1 }
-                        : item
-                )
-                .filter(item => item.cantidad > 0);
-
-            return {
-                ...prev,
-                [mesaId]: nueva
-            };
-        });
-    }
-
-    function limpiarComanda() {
-        setComandas(prev => ({
-            ...prev,
-            [mesaId]: []
-        }));
-    }
-
-    const total = carrito.reduce(
-        (sum, item) => sum + item.precio * item.cantidad,
-        0
-    );
+    const platos = [
+        { id: 1, nombre: "estofado", precio: 10 },
+        { id: 2, nombre: "Aji de gallina", precio: 12 },
+        { id: 3, nombre: "lomo saltado", precio: 15 },
+        { id: 4, nombre: "Arroz con pollo", precio: 20 },
+        { id: 5, nombre: "inka-kola", precio: 3 },
+    ];
 
     return (
-        <div className="min-h-screen bg-gray-50 p-8">
-            <div className="max-w-5xl mx-auto">
+        <div className="p-6">
 
+            {/* 🔥 TIPO DE PEDIDO */}
+            <div className="flex gap-3 mb-4">
+                <button
+                    onClick={() => cambiarTipo("mesa")}
+                    className={`px-4 py-2 rounded text-white ${pedido.tipo === "mesa" ? "bg-blue-500" : "bg-gray-400"
+                        }`}
+                >
+                    🪑 Mesa
+                </button>
+
+                <button
+                    onClick={() => cambiarTipo("para_llevar")}
+                    className={`px-4 py-2 rounded text-white ${pedido.tipo === "para_llevar" ? "bg-green-500" : "bg-gray-400"
+                        }`}
+                >
+                    🥡 Para llevar
+                </button>
+            </div>
+
+            {/* 🔥 DEBUG VISUAL (CLAVE PARA DEMO) */}
+            <p className="text-sm text-gray-600 mb-4">
+                Tipo: {pedido.tipo} | Mesa: {pedido.mesaId || "null"}
+            </p>
+
+            {/* 🔥 MESAS SOLO SI ES MESA */}
+            {pedido.tipo === "mesa" && (
                 <div className="mb-6">
-                    <h2 className="text-lg font-semibold text-gray-700 mb-2">
-                        Mesas
-                    </h2>
+                    <h3 className="font-bold mb-2">Mesas</h3>
 
                     <div className="flex gap-2 flex-wrap">
-                        {mesasMock.map(mesa => (
+                        {[1, 2, 3, 4, 5, 6].map((mesa) => (
                             <button
-                                key={mesa.id}
-                                onClick={() => setMesaSeleccionada(mesa.id)}
-                                className={`px-3 py-1 rounded-lg border transition
-                                ${mesaSeleccionada === mesa.id
-                                        ? 'bg-blue-600 text-white'
-                                        : 'bg-white hover:bg-gray-100'
+                                key={mesa}
+                                onClick={() => asignarMesa(mesa)}
+                                className={`px-3 py-1 rounded border ${pedido.mesaId === mesa
+                                        ? "bg-blue-500 text-white"
+                                        : "bg-white"
                                     }`}
                             >
-                                Mesa {mesa.id}
+                                Mesa {mesa}
                             </button>
                         ))}
                     </div>
                 </div>
+            )}
 
-                <h1 className="text-3xl font-bold text-gray-800 mb-6">
-                    Comanda - Mesa {mesaId}
-                </h1>
+            {/* 🔥 TÍTULO */}
+            <h2 className="text-xl font-bold mb-4">
+                Comanda -{" "}
+                {pedido.tipo === "mesa"
+                    ? `Mesa ${pedido.mesaId || ""}`
+                    : "Para llevar"}
+            </h2>
 
-                <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6">
 
-                    <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3">
-                        <h2 className="font-semibold text-gray-700 text-lg border-b pb-2">
-                            Platos
-                        </h2>
+                {/* 🔹 PLATOS */}
+                <div className="bg-white p-4 rounded shadow">
+                    <h3 className="font-semibold mb-3">Platos</h3>
 
-                        {platos.map(plato => (
-                            <div
-                                key={plato.id}
-                                className="flex justify-between py-2 border-b last:border-0 hover:bg-gray-50 transition"
-                            >
-                                <div>
-                                    <p className="font-medium text-gray-800">
-                                        {plato.nombre}
-                                    </p>
-                                    <p className="text-green-600 text-sm">
-                                        S/ {plato.precio}
-                                    </p>
-                                </div>
-
-                                <button
-                                    onClick={() => agregarPlato(plato)}
-                                    className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
-                                >
-                                    + Agregar
-                                </button>
+                    {platos.map((plato) => (
+                        <div
+                            key={plato.id}
+                            className="flex justify-between items-center mb-2 border-b pb-2"
+                        >
+                            <div>
+                                <p className="font-medium">{plato.nombre}</p>
+                                <p className="text-green-600">S/ {plato.precio}</p>
                             </div>
-                        ))}
-                    </div>
-
-                    <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-3">
-                        <h2 className="font-semibold text-gray-700 text-lg border-b pb-2">
-                            Pedido
-                        </h2>
-
-                        {carrito.length === 0 && (
-                            <p className="text-gray-400 text-center py-8">
-                                Sin platos
-                            </p>
-                        )}
-
-                        {carrito.map(item => (
-                            <div
-                                key={item.id}
-                                className="flex justify-between py-2 border-b last:border-0"
-                            >
-                                <div>
-                                    <p className="font-medium text-gray-800">
-                                        {item.nombre}
-                                    </p>
-                                    <p className="text-sm text-gray-400">
-                                        x{item.cantidad} — S/ {item.precio * item.cantidad}
-                                    </p>
-                                </div>
-
-                                <button
-                                    onClick={() => quitarPlato(item.id)}
-                                    className="text-red-500 text-sm hover:text-red-700"
-                                >
-                                    Quitar
-                                </button>
-                            </div>
-                        ))}
-
-                        <div className="mt-auto pt-4 border-t">
-                            <p className="text-xl font-bold text-gray-800">
-                                Total: S/ {total}
-                            </p>
 
                             <button
-                                onClick={limpiarComanda}
-                                className="w-full mt-3 bg-red-50 text-red-500 border border-red-200 rounded-lg py-2 hover:bg-red-100"
+                                onClick={() => agregarPlato(plato)}
+                                className="bg-blue-500 text-white px-3 py-1 rounded"
                             >
-                                Limpiar comanda
+                                +
                             </button>
                         </div>
-                    </div>
+                    ))}
+                </div>
 
+                {/* 🔹 PEDIDO */}
+                <div className="bg-white p-4 rounded shadow">
+                    <h3 className="font-semibold mb-3">Pedido</h3>
+
+                    {pedido.items.length === 0 ? (
+                        <p className="text-gray-500">No hay items</p>
+                    ) : (
+                        pedido.items.map((item) => (
+                            <div
+                                key={item.platoId}
+                                className="flex justify-between items-center mb-2"
+                            >
+                                <span>
+                                    {item.nombre} x{item.cantidad}
+                                </span>
+
+                                <div className="flex items-center gap-2">
+                                    <span className="font-medium">
+                                        S/ {item.precioUnitario * item.cantidad}
+                                    </span>
+
+                                    <button
+                                        onClick={() => quitarPlato(item.platoId)}
+                                        className="text-red-500 font-bold"
+                                    >
+                                        ✕
+                                    </button>
+                                </div>
+                            </div>
+                        ))
+                    )}
+
+                    <hr className="my-3" />
+
+                    <p className="font-bold text-right">
+                        Total: S/ {pedido.total}
+                    </p>
+
+                    {/* 🔥 LIMPIAR */}
+                    {pedido.items.length > 0 && (
+                        <button
+                            onClick={limpiarPedido}
+                            className="mt-3 w-full bg-red-200 text-red-700 py-2 rounded"
+                        >
+                            Limpiar pedido
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

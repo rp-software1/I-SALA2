@@ -1,4 +1,9 @@
+import { usePedido } from '../context/PedidoContext';
+
 export default function PlatoCard({ plato }) {
+
+    const { agregarPlato } = usePedido();
+
     return (
         <div className='bg-white rounded-xl shadow-md p-4 flex flex-col gap-3 border border-gray-100 hover:shadow-lg transition'>
 
@@ -30,8 +35,19 @@ export default function PlatoCard({ plato }) {
                     {plato.disponible ? '✅ Disponible' : '❌ Agotado'}
                 </span>
             </div>
+
+            {/* 🔥 BOTÓN AGREGAR */}
+            <button
+                onClick={() => {
+                    if (!plato.disponible) return;
+                    agregarPlato(plato);
+                }}
+                className='mt-3 w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600 transition disabled:bg-gray-300'
+                disabled={!plato.disponible}
+            >
+                + Agregar a comanda
+            </button>
+
         </div>
     );
 }
-
-
