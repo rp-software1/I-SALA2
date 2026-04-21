@@ -1,17 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePedido } from "../context/PedidoContext";
+import { crearPedido } from "../services/api";
 
 export default function CarritoPage() {
     const {
         pedido,
         cambiarTipo,
-        asignarMesa,
         agregarPlato,
         quitarPlato,
         limpiarPedido,
     } = usePedido();
 
-    // 🔥 PRUEBA FINAL (OBLIGATORIA)
+    const [enviando, setEnviando] = useState(false);
+    const [error, setError] = useState(null);
+    const [pedidoCreado, setPedidoCreado] = useState(null);
+
     useEffect(() => {
         console.log("PEDIDO ACTUAL:", pedido);
     }, [pedido]);
@@ -24,17 +27,57 @@ export default function CarritoPage() {
         { id: 5, nombre: "inka-kola", precio: 3 },
     ];
 
+    // 🔥 ENVIAR COMANDA
+    const handleEnviarComanda = async () => {
+        if (pedido.items.length === 0) return;
+
+        setEnviando(true);
+        setError(null);
+
+        try {
+            const nuevoPedido = await crearPedido({
+                mesaId: pedido.mesaId,
+                tipo: pedido.tipo,
+                items: pedido.items,
+            });
+
+            setPedidoCreado(nuevoPedido);
+            limpiarPedido();
+
+        } catch (err) {
+            setError("Error al enviar pedido");
+        } finally {
+            setEnviando(false);
+        }
+    };
+
+    // 🔥 CONFIRMACIÓN
+    if (pedidoCreado) {
+        return (
+            <div className="p-6 text-center">
+                <div className="text-6xl mb-4">✅</div>
+                <h2 className="text-2xl font-bold text-green-600">
+                    Comanda enviada
+                </h2>
+                <p className="mt-2">
+                    Pedido #{pedidoCreado._id}
+                </p>
+                <p>Estado: {pedidoCreado.estado}</p>
+            </div>
+        );
+    }
+
     return (
         <div className="p-6">
 
-            {/* 🔥 TIPO DE PEDIDO */}
+            {/* TIPO DE PEDIDO */}
             <div className="flex gap-3 mb-4">
                 <button
                     onClick={() => cambiarTipo("mesa")}
                     className={`px-4 py-2 rounded text-white ${pedido.tipo === "mesa" ? "bg-blue-500" : "bg-gray-400"
                         }`}
                 >
-                    🪑 Mesa
+                    Mesa
                 </button>
 
                 <button
@@ -42,36 +85,14 @@ export default function CarritoPage() {
                     className={`px-4 py-2 rounded text-white ${pedido.tipo === "para_llevar" ? "bg-green-500" : "bg-gray-400"
                         }`}
                 >
-                    🥡 Para llevar
+                    Para llevar
                 </button>
             </div>
 
-            {/* 🔥 DEBUG VISUAL */}
+            {/* INFO */}
             <p className="text-sm text-gray-600 mb-4">
                 Tipo: {pedido.tipo} | Mesa: {pedido.mesaId || "null"}
             </p>
-
-            {/* 🔥 MESAS SOLO SI ES MESA */}
-            {pedido.tipo === "mesa" && (
-                <div className="mb-6">
-                    <h3 className="font-bold mb-2">Mesas</h3>
-
-                    <div className="flex gap-2 flex-wrap">
-                        {[1, 2, 3, 4, 5, 6].map((mesa) => (
-                            <button
-                                key={mesa}
-                                onClick={() => asignarMesa(mesa)}
-                                className={`px-3 py-1 rounded border ${pedido.mesaId === mesa
-                                        ? "bg-blue-500 text-white"
-                                        : "bg-white"
-                                    }`}
-                            >
-                                Mesa {mesa}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )}
 
             <h2 className="text-xl font-bold mb-4">
                 Comanda -{" "}
@@ -143,6 +164,16 @@ export default function CarritoPage() {
                     <p className="font-bold text-right">
                         Total: S/ {pedido.total}
                     </p>
+
+                    {error && <p className="text-red-500 mt-2">{error}</p>}
+
+                    <button
+                        onClick={handleEnviarComanda}
+                        disabled={enviando || pedido.items.length === 0}
+                        className="mt-4 w-full bg-yellow-500 text-white py-2 rounded"
+                    >
+                        {enviando ? "Enviando..." : "Enviar comanda"}
+                    </button>
 
                     {pedido.items.length > 0 && (
                         <button
