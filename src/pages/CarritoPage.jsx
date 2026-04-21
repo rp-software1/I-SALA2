@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { usePedido } from "../context/PedidoContext";
 
 export default function CarritoPage() {
@@ -9,6 +10,11 @@ export default function CarritoPage() {
         quitarPlato,
         limpiarPedido,
     } = usePedido();
+
+    // 🔥 PRUEBA FINAL (OBLIGATORIA)
+    useEffect(() => {
+        console.log("PEDIDO ACTUAL:", pedido);
+    }, [pedido]);
 
     const platos = [
         { id: 1, nombre: "estofado", precio: 10 },
@@ -40,7 +46,7 @@ export default function CarritoPage() {
                 </button>
             </div>
 
-            {/* 🔥 DEBUG VISUAL (CLAVE PARA DEMO) */}
+            {/* 🔥 DEBUG VISUAL */}
             <p className="text-sm text-gray-600 mb-4">
                 Tipo: {pedido.tipo} | Mesa: {pedido.mesaId || "null"}
             </p>
@@ -67,7 +73,6 @@ export default function CarritoPage() {
                 </div>
             )}
 
-            {/* 🔥 TÍTULO */}
             <h2 className="text-xl font-bold mb-4">
                 Comanda -{" "}
                 {pedido.tipo === "mesa"
@@ -77,7 +82,7 @@ export default function CarritoPage() {
 
             <div className="grid grid-cols-2 gap-6">
 
-                {/* 🔹 PLATOS */}
+                {/* PLATOS */}
                 <div className="bg-white p-4 rounded shadow">
                     <h3 className="font-semibold mb-3">Platos</h3>
 
@@ -101,7 +106,7 @@ export default function CarritoPage() {
                     ))}
                 </div>
 
-                {/* 🔹 PEDIDO */}
+                {/* PEDIDO */}
                 <div className="bg-white p-4 rounded shadow">
                     <h3 className="font-semibold mb-3">Pedido</h3>
 
@@ -139,7 +144,6 @@ export default function CarritoPage() {
                         Total: S/ {pedido.total}
                     </p>
 
-                    {/* 🔥 LIMPIAR */}
                     {pedido.items.length > 0 && (
                         <button
                             onClick={limpiarPedido}

@@ -13,11 +13,9 @@ const estadoInicial = {
 export function PedidoProvider({ children }) {
     const [pedido, setPedido] = useState(estadoInicial);
 
-    // ✅ total automático
     const calcularTotal = (items) =>
         items.reduce((acc, item) => acc + item.precioUnitario * item.cantidad, 0);
 
-    // ✅ agregar plato
     const agregarPlato = (plato) => {
         setPedido(prev => {
             const existe = prev.items.find(i => i.platoId === plato.id);
@@ -46,7 +44,6 @@ export function PedidoProvider({ children }) {
         });
     };
 
-    // ✅ quitar plato
     const quitarPlato = (platoId) => {
         setPedido(prev => {
             const nuevosItems = prev.items
@@ -65,7 +62,6 @@ export function PedidoProvider({ children }) {
         });
     };
 
-    // ✅ cambiar tipo
     const cambiarTipo = (tipo) => {
         setPedido(prev => ({
             ...prev,
@@ -74,7 +70,7 @@ export function PedidoProvider({ children }) {
         }));
     };
 
-    // ✅ asignar mesa
+    // 🔥 ESTE ES EL CLAVE PARA TU CRITERIO
     const asignarMesa = (mesaId) => {
         setPedido(prev => ({
             ...prev,
@@ -83,7 +79,6 @@ export function PedidoProvider({ children }) {
         }));
     };
 
-    // ✅ limpiar pedido
     const limpiarPedido = () => setPedido(estadoInicial);
 
     return (
