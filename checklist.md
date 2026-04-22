@@ -3,7 +3,7 @@ alumno: [DANIELA, carlos]
 sala: I-SALA2
 curso: REACT
 dia: 9
-estado: terminando
+estado: terminado
 loom: (agregar link al terminar)
 ---
 
@@ -13,4 +13,4 @@ loom: (agregar link al terminar)
 - [x] C — Acciones del pedido: agregar, quitar, cambiar tipo
 - [x] D — Exploración con Claude
 - [x] E — Evaluación entre pares
-- [ ] F — Cierre del día
+- [x] F — Cierre del día
