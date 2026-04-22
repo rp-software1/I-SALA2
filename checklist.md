@@ -3,7 +3,7 @@ alumno: [DANIELA, carlos]
 sala: I-SALA2
 curso: REACT
 dia: 9
-estado: en_proceso
+estado: terminando
 loom: (agregar link al terminar)
 ---
 
@@ -12,5 +12,5 @@ loom: (agregar link al terminar)
 - [x] B — useContext en MenuPage y CarritoPage
 - [x] C — Acciones del pedido: agregar, quitar, cambiar tipo
 - [x] D — Exploración con Claude
-- [ ] E — Evaluación entre pares
+- [x] E — Evaluación entre pares
 - [ ] F — Cierre del día
