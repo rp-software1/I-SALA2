@@ -1,5 +1,5 @@
 ---
-alumno: [DANIELA, carlos]
+alumno: [DANIELA,CARLOS]
 sala: I-SALA2
 curso: REACT
 dia: 9
