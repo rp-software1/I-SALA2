@@ -1,0 +1,19 @@
+
+EVALUADOR: daniela del carmen mendoza jaimes
+EVALUADO:carlos campusano
+
+ESCENARIO ELEGIDO:
+Token expirado al enviar comanda
+
+RESUMEN:
+Si el token expira, el interceptor detecta el error 
+(401) antes del componente y evita que la petición 
+continúe; el mesero vería un error o sería redirigido.
+
+QUÉ ENTENDIÓ BIEN:
+Que el interceptor maneja errores globales antes del 
+try/catch.
+
+QUÉ NECESITA REPASAR:
+Cómo funciona esto en una API real con autenticación y 
+respuestas del backend.
