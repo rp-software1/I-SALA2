@@ -1,8 +1,20 @@
-import { usePedido } from '../context/PedidoContext';
+interface Plato {
+    id: number;
+    nombre: string;
+    precio: number;
+    categoria: string;
+    disponible: boolean;
+    stock?: number;
+}
 
-export default function PlatoCard({ plato }) {
+//  2. Props
+interface PlatoCardProps {
+    plato: Plato;
+    onAgregar: (plato: Plato) => void;
+}
 
-    const { agregarPlato } = usePedido();
+// 3. Componente tipado
+function PlatoCard({ plato, onAgregar }: PlatoCardProps) {
 
     return (
         <div className='bg-white rounded-xl shadow-md p-4 flex flex-col gap-3 border border-gray-100 hover:shadow-lg transition'>
@@ -23,7 +35,7 @@ export default function PlatoCard({ plato }) {
 
             <div className='flex justify-between items-center mt-2'>
                 <span className='text-gray-400 text-sm'>
-                    Stock: {plato.stock}
+                    Stock: {plato.stock ?? 0}
                 </span>
 
                 <span
@@ -32,15 +44,14 @@ export default function PlatoCard({ plato }) {
                         : 'bg-red-100 text-red-500'
                         }`}
                 >
-                    {plato.disponible ? '✅ Disponible' : '❌ Agotado'}
+                    {plato.disponible ? ' Disponible' : ' Agotado'}
                 </span>
             </div>
 
-            {/* 🔥 BOTÓN AGREGAR */}
             <button
                 onClick={() => {
                     if (!plato.disponible) return;
-                    agregarPlato(plato);
+                    onAgregar(plato);
                 }}
                 className='mt-3 w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600 transition disabled:bg-gray-300'
                 disabled={!plato.disponible}
@@ -51,3 +62,5 @@ export default function PlatoCard({ plato }) {
         </div>
     );
 }
+
+export default PlatoCard;
