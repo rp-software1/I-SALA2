@@ -1,0 +1,19 @@
+EVALUADOR:CARLOS CAMPUSANO
+
+
+EVALUADO:DANIELA MENDOZA
+
+
+ESCENARIO ELEGIDO:Escenario 3
+
+
+
+RESUMEN:
+El frontend no puede garantizar eso; el backend valida y evita que dos usuarios tomen la misma mesa al mismo tiempo.
+
+QUÉ ENTENDIÓ BIEN:
+ENTIENDE TODO LO PREGUNTADO Y BIEN EXPLICADO.
+
+QUÉ NECESITA REPASAR:
+SEGUIMOS REPASANDO LOS DOS JUNTOS TODO.
+
