@@ -4,7 +4,7 @@ sala: I-SALA2
 curso: REACT
 dia: 9
 estado: terminado
-loom: (agregar link al terminar)
+loom: (https://drive.google.com/file/d/1EOUVMSZhWn3_QvWixo8goHR3DM-fCxyJ/view?usp=sharing)
 ---
 
 ## Secciones
