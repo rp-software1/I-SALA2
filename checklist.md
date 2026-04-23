@@ -1,16 +1,16 @@
 ---
-alumno: [daniela,carlos]
+alumno: [DANIELA,CARLOS]
 sala: I-SALA2
 curso: REACT
-dia: 8
+dia: 9
 estado: terminado
-loom: (https://drive.google.com/file/d/1O864CszAhoNMiHsZuZGiozgNMRo949Ix/view?usp=sharing)
+loom: (https://drive.google.com/file/d/1EOUVMSZhWn3_QvWixo8goHR3DM-fCxyJ/view?usp=sharing)
 ---
 
 ## Secciones
-- [X] A — createContext y PedidoProvider
-- [X] B — useContext en MenuPage y CarritoPage
-- [X] C — Acciones del pedido: agregar, quitar, cambiar tipo
-- [X] D — Exploración con Claude
-- [X] E — Evaluación entre pares
-- [X] F — Cierre del día
+- [x] A — createContext y PedidoProvider
+- [x] B — useContext en MenuPage y CarritoPage
+- [x] C — Acciones del pedido: agregar, quitar, cambiar tipo
+- [x] D — Exploración con Claude
+- [x] E — Evaluación entre pares
+- [x] F — Cierre del día

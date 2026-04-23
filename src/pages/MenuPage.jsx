@@ -28,7 +28,7 @@ export default function MenuPage() {
 
                 {!pedido.mesaId && (
                     <p className='text-red-500 mb-4'>
-                        ⚠️ Selecciona una mesa en Comandas
+                        Selecciona una mesa
                     </p>
                 )}
 

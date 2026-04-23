@@ -1,0 +1,13 @@
+Al empezar el Día 1 de React construyeron un componente estático con props. Hoy conectaron un sistema completo con APIs reales. Describe en una sola oración qué aprendiste en cada fase — componentes, estado, efectos, consumo de API, navegación, estado global, conexión real.
+Componentes: aprendí a crear componentes reutilizables y pasar datos mediante props.
+Estado: aprendí a manejar datos dinámicos dentro de la aplicación usando estado.
+Efectos: aprendí a usar efectos para ejecutar lógica cuando cambia el estado o se carga la app.
+Consumo de API: aprendí a obtener datos desde un servidor usando herramientas como Axios.
+Navegación: aprendí a moverme entre páginas usando rutas en la aplicación.
+Estado global: aprendí a compartir datos entre varios componentes sin necesidad de pasarlos manualmente.
+Conexión real: aprendí a trabajar con datos reales desde un backend en lugar de usar datos simulados.
+
+El Grupo Node construyó el backend que tú consumiste hoy. ¿Qué parte del sistema del restaurante te sorprendió más al ver cómo funciona de punta a punta? ¿Qué cambiarías si pudieras volver a diseñarlo?
+
+Lo que más me sorprendió fue que, aun sin usar una API real, al hacer un import ya teníamos un array de platos que simulaba venir de un backend, imitando el comportamiento de una aplicación real.
+Si lo rediseñara, integraría una API real desde el inicio para trabajar con datos persistentes y aplicar validaciones más cercanas a un entorno real.
