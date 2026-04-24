@@ -18,3 +18,12 @@ onClick: (mesa: Mesa) => void
 TypeScript y JSX
 TypeScript infiere automáticamente el retorno (JSX.Element)
 No es obligatorio escribir : JSX.Element
+
+
+BLOQUE E:
+Si getMesas() retorna Promise<Mesa[]>, 
+¿qué tipo tiene 'mesas' en este código?
+const mesas = await getMesas();
+
+Mesas es de tipo Mesa[]
+
