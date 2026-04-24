@@ -1,3 +1,8 @@
+BLOQUE A:
+• ¿Qué parte de la instalación fue confusa?
+• ¿Qué opción del tsconfig no tienes claro para qué sirve?
+Me confundió la configuración inicial y no tenía claro para qué sirve jsx en el tsconfig.json.
+
 bloque c
 • ¿El tipado de 'onAgregar' fue lo que esperabas?  ¿Qué significa '(plato: Plato) => void'?
  

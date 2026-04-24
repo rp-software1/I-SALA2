@@ -1,3 +1,11 @@
+BLOQUE A:
+
+¿Qué archivo generará el comando de instalación además de actualizar package.json?
+¿Qué opciones del tsconfig.json son específicas para React con JSX?
+Se genera package-lock.json, y en tsconfig.json la opción clave para React es jsx: react-jsx.
+
+
+BLOQUE C:
 El componente PlatoCard recibe un plato como prop. ¿Qué propiedades tiene un plato según el modelo de datos del sistema?
 LAS PROPIEDADES QUE TIENE SON ID, NOMBRE, PRECIO, CATEGORIA Y DISPONIBLE.
 
