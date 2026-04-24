@@ -8,7 +8,7 @@ Sala: I-SALA2              Rol inicio: (driver) / Navigator
 - [x] Bloque C — Tipar props de PlatoCard
 - [X] Bloque D — Tipar props de MesaCard y NavBar
 - [X] Bloque E — Tipar funciones de api.js
-- [ ] Bloque F — Cero errores y verificación final
+- [X] Bloque F — Cero errores y verificación final
 
 ## Verificación
 - [x] npx tsc --noEmit ejecuta sin errores
