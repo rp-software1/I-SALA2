@@ -1,3 +1,7 @@
+BLOQUE A:
+• ¿Qué parte de la instalación fue confusa?
+• ¿Qué opción del tsconfig no tienes claro para qué sirve?
+Me confundió la configuración inicial y no tenía claro para qué sirve jsx en el tsconfig.json.
 bloque B:
  ¿Cuántos errores aparecieron? ¿Más o menos de lo que predijiste?
  Aparecieron 63 errores en 6 archivos.
@@ -14,7 +18,6 @@ Porque:
 No era obvio al inicio
 El problema real venía de useState([]) sin tipo
 Terminó rompiendo .map, .reduce y varias props
-
 bloque c
 • ¿El tipado de 'onAgregar' fue lo que esperabas?  ¿Qué significa '(plato: Plato) => void'?
  
