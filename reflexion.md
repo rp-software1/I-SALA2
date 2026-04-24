@@ -6,3 +6,12 @@ bloque c
  bloque E
  ¿Tiene sentido tipar el retorno de las funciones API? ¿Qué beneficio concreto ves?
  Si, ya que nos brinda seguridad , claridad y a identificar errores antes de la ejecucion de la aplicacion.
+
+ bloque F:
+ Qué concepto te costó más?
+
+El tipado de estados con useState, especialmente cuando TypeScript los convierte en never[] si no defines el tipo. También entender cómo tipar correctamente props y context.
+
+¿Qué ventaja viste de TypeScript?
+
+Que detecta errores antes de ejecutar la app (por ejemplo, funciones no definidas o props mal usadas) y te da autocompletado más preciso, lo que hace el código más seguro y fácil de mantener.
