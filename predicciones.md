@@ -8,6 +8,35 @@ precio:       number
 categoria:    string
 disponible:   boolean
 
+bloque B:
+¿Cuántos archivos vas a renombrar en total? Lista sus nombres.
+11 archivos
+NavBar.jsx    components/NavBar.tsx
+PlatoCard.jsx components/PlatoCard.tsx
+MesaCard.jsx  components/MesaCard.tsx
+
+# Pages
+MenuPage.jsx       pages/MenuPage.tsx
+MesasPage.jsx      pages/MesasPage.tsx
+CarritoPage.jsx    pages/CarritoPage.tsx
+DetalleMesa.jsx    pages/DetalleMesa.tsx
+NotFound.jsx       pages/NotFound.tsx
+
+# Context
+PedidoContext.jsx context/PedidoContext.tsx
+
+# Raíz
+ App.jsx  App.tsx
+ main.jsx main.tsx
+
+¿En qué tipo de líneas crees que aparecerá el primer error TS?
+Primeros errores salen en:
+
+props
+useState([])
+children
+funciones sin tipo
+
 BLOQUE D:
 ¿Qué props recibe MesaCard? (mira tu implementación de días anteriores)
 Props de MesaCard

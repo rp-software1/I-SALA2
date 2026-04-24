@@ -1,3 +1,20 @@
+bloque B:
+ ¿Cuántos errores aparecieron? ¿Más o menos de lo que predijiste?
+ Aparecieron 63 errores en 6 archivos.
+
+Fueron más de lo esperado, porque al inicio parecía que eran pocos, pero el problema de never[] hizo que se multiplicaran en cadena.
+
+• ¿Qué error fue el más inesperado?
+El más inesperado fue:
+
+Property 'estado' does not exist on type 'never'
+
+Porque:
+
+No era obvio al inicio
+El problema real venía de useState([]) sin tipo
+Terminó rompiendo .map, .reduce y varias props
+
 bloque c
 • ¿El tipado de 'onAgregar' fue lo que esperabas?  ¿Qué significa '(plato: Plato) => void'?
  
