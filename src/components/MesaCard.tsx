@@ -1,27 +1,46 @@
-import propTypes from "prop-types"
-function MesaCard({ numero, capacidad, estado, comensales }) {
+// types pueden ir en otro archivo si quieres
+type EstadoMesa = 'disponible' | 'ocupada' | 'reservada' | 'fuera_servicio';
+
+interface Mesa {
+    id: string;
+    numero: number;
+    capacidad: number;
+    estado: EstadoMesa;
+    pedidoActivoId: string | null;
+}
+
+interface MesaCardProps {
+    mesa: Mesa;
+    onClick: (mesa: Mesa) => void;
+}
+
+function MesaCard({ mesa, onClick }: MesaCardProps) {
+
     const color =
-        estado === "libre"
+        mesa.estado === "disponible"
             ? "green"
-            : estado === "ocupada"
+            : mesa.estado === "ocupada"
                 ? "red"
-                : "orange";
+                : mesa.estado === "reservada"
+                    ? "orange"
+                    : "gray";
 
     return (
-        <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px", backgroundColor: color }}>
-            <h3>Mesa {numero}</h3>
-            <p>Capacidad: {capacidad}</p>
-            <p>Comensales: {comensales}</p>
-            <p>Estado: {estado}</p>
+        <div
+            onClick={() => onClick(mesa)}
+            style={{
+                border: "1px solid #ccc",
+                padding: "10px",
+                margin: "10px",
+                backgroundColor: color,
+                cursor: "pointer"
+            }}
+        >
+            <h3>Mesa {mesa.numero}</h3>
+            <p>Capacidad: {mesa.capacidad}</p>
+            <p>Estado: {mesa.estado}</p>
         </div>
     );
 }
-
-MesaCard.propTypes = {
-    numero: propTypes.number.isRequired,
-    capacidad: propTypes.number.isRequired,
-    estado: propTypes.string.isRequired,
-    comensales: propTypes.number.isRequired
-};
 
 export default MesaCard;
