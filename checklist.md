@@ -1,16 +1,14 @@
----
-alumno: [DANIELA,CARLOS]
-sala: I-SALA2
-curso: REACT
-dia: 9
-estado: terminado
-loom: (https://drive.google.com/file/d/1EOUVMSZhWn3_QvWixo8goHR3DM-fCxyJ/view?usp=sharing)
----
+# TS-REACT-D1-E — Checklist
+Nombre: __daniela____   Fecha: ___24/04/2026___
+Sala: I-SALA2              Rol inicio: (driver) / Navigator
 
-## Secciones
-- [x] A — createContext y PedidoProvider
-- [x] B — useContext en MenuPage y CarritoPage
-- [x] C — Acciones del pedido: agregar, quitar, cambiar tipo
-- [x] D — Exploración con Claude
-- [x] E — Evaluación entre pares
-- [x] F — Cierre del día
+## Bloques
+- [x] Bloque A — Instalación y configuración de TypeScript
+- [X] Bloque B — Renombrar archivos y primer error TS
+- [x] Bloque C — Tipar props de PlatoCard
+- [X] Bloque D — Tipar props de MesaCard y NavBar
+- [X] Bloque E — Tipar funciones de api.js
+- [X] Bloque F — Cero errores y verificación final
+
+## Verificación
+- [x] npx tsc --noEmit ejecuta sin errores

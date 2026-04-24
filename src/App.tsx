@@ -4,7 +4,7 @@ import MenuPage from './pages/MenuPage';
 import MesasPage from './pages/MesasPage';
 import CarritoPage from './pages/CarritoPage';
 import DetalleMesa from './pages/DetalleMesa';
-import NavBar from './components/NavBars';
+import NavBar from './components/NavBar';
 import NotFound from './pages/NotFound';
 
 
