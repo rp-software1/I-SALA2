@@ -1,13 +1,4 @@
-// types pueden ir en otro archivo si quieres
-type EstadoMesa = 'disponible' | 'ocupada' | 'reservada' | 'fuera_servicio';
-
-interface Mesa {
-    id: string;
-    numero: number;
-    capacidad: number;
-    estado: EstadoMesa;
-    pedidoActivoId: string | null;
-}
+import type { Mesa } from '../types';
 
 interface MesaCardProps {
     mesa: Mesa;
