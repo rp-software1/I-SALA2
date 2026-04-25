@@ -12,3 +12,8 @@ BLOQUE B:
 
 ¿Qué pasa con el autocompletado en el IDE ahora que los tipos están en un solo lugar?
 MEJORA EL RENDIMIENTO Y REDUCE DUPLICADOS, PORQUE AHORA TODO VIENE DE UNA SOLO FUENTE CENTRAL QUE SERIA EN ESTE CASO TYPES/index.ts.
+BLOQUE C:
+ ¿Qué error de runtime podría haberse producido sin el guard if (!context) throw? Piensa en un escenario concreto.
+ Sin el guard, si un componente usa usePedido fuera de PedidoProvider, el contexto sería undefined y al intentar acceder a sus propiedades se produciría un error de runtime como:
+"Cannot read properties of undefined"
+Esto dificulta el debugging, mientras que el guard permite lanzar un error claro y controlado indicando el problema.
