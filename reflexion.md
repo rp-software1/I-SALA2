@@ -52,3 +52,4 @@ le estás diciendo a TypeScript:
 “confía en mí, esto tiene todos los datos”… aunque en realidad es un objeto vacío.
 Riesgo real en una app de restaurante:
 Podrías usar el contexto sin haber envuelto el componente en el Provider, y no fallará en compilación… pero en runtime tendrás undefined en funciones o datos (por ejemplo, agregarPedido() no existe), causando errores difíciles de detectar.
+
