@@ -8,7 +8,7 @@ Sala: I-SALA1              Rol inicio: Driver / Navigator(CARLOS)
 - [X] Bloque C — Tipar PedidoContext.tsx completo
 - [X] Bloque D — Exploración con Claude
 - [X] Bloque E — Evaluación entre pares
-- [ ] Bloque F — Cierre del día y verificación final
+- [X] Bloque F — Cierre del día y verificación final
 
 ## Verificación
 - [X] npx tsc --noEmit no muestra errores en types/, services/, context/
