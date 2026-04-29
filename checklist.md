@@ -7,7 +7,7 @@ Sala: I-SALA1              Rol inicio: Driver / Navigator(CARLOS)
 - [X] Bloque B — Importar tipos en api.ts y eliminar duplicados
 - [X] Bloque C — Tipar PedidoContext.tsx completo
 - [X] Bloque D — Exploración con Claude
-- [ ] Bloque E — Evaluación entre pares
+- [X] Bloque E — Evaluación entre pares
 - [ ] Bloque F — Cierre del día y verificación final
 
 ## Verificación
