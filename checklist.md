@@ -7,7 +7,7 @@ Sala: I-SALA1              Rol inicio: Driver(daniela) / Navigator
 - [X] Bloque C — Tipar DetalleMesa.tsx (useParams y useNavigate)
 - [X] Bloque D — Verificación final: npx tsc --noEmit → 0 errores
 - [X] Bloque E — Exploración con Claude
-- [ ] Bloque F — Cierre de los 3 días de TypeScript
+- [F] Bloque F — Cierre de los 3 días de TypeScript
 
 ## Verificación final
 - [X] npx tsc --noEmit retorna 0 errores en todo el proyecto
