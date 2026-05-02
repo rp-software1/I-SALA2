@@ -124,3 +124,4 @@ Centraliza errores (ej: “usar fuera del Provider”)
 Hace el código más limpio y consistente
 Si cambias algo del contexto, lo haces en un solo lugar
 
+ERRORES TOTALES QUE QUEDAN PENDIENTES SON: 22
