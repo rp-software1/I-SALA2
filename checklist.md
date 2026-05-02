@@ -1,5 +1,5 @@
 # TS-REACT-D2 — Checklist
-Nombre: DANIELA    Fecha: 25/04/2026  
+Nombre: DANIELA    Fecha: 02/05/2026  
 Sala: I-SALA1              Rol inicio: Driver / Navigator(CARLOS)
 
 ## Bloques
@@ -13,5 +13,5 @@ Sala: I-SALA1              Rol inicio: Driver / Navigator(CARLOS)
 ## Verificación
 - [X] npx tsc --noEmit no muestra errores en types/, services/, context/
 - [X] npx tsc --noEmit no muestra errores en api/, MesaCard/, PlatoCard/
-- [X] La app corre sin crash con npm run dev
+- [ ] La app corre sin crash con npm run dev
 
