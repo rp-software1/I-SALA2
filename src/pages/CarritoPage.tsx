@@ -177,6 +177,15 @@ export default function CarritoPage() {
                         >
                             {enviando ? "Enviando..." : "Enviar comanda"}
                         </button>
+
+                        {/* BOTÓN LIMPIAR */}
+                        <button
+                            onClick={limpiarPedido}
+                            disabled={pedido.items.length === 0}
+                            className="w-full mt-2 py-2 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 disabled:bg-gray-300"
+                        >
+                            Limpiar comanda
+                        </button>
                     </div>
                 </div>
             </div>

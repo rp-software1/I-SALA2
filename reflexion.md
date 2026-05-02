@@ -14,3 +14,7 @@ BLOQUE C:
  ¿El comportamiento de useParams te sorprendió? ¿Por qué el genérico no garantiza el tipo?
 
  Si me sorprendio, no garantiza el tipo porque solo sirve para describir la forma esperada, no para validar datos reales.
+
+BLOQUE D:
+ ¿Cuántos errores había al inicio del Día 1? ¿Y ahora? AL INICIO TENIA COMO 77 ERRORES
+¿Qué error fue el más difícil de resolver en los 3 días? ¿Por qué?  El error más difícil fue el de PlatoCard porque requería entender el tipado de props en TypeScript, no solo corregir código.
