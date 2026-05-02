@@ -13,5 +13,5 @@ Sala: I-SALA1              Rol inicio: Driver / Navigator(CARLOS)
 ## Verificación
 - [X] npx tsc --noEmit no muestra errores en types/, services/, context/
 - [X] npx tsc --noEmit no muestra errores en api/, MesaCard/, PlatoCard/
-- [ ] La app corre sin crash con npm run dev
+- [X] La app corre sin crash con npm run dev
 
