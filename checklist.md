@@ -1,14 +1,17 @@
-# TS-REACT-D1-E — Checklist
-Nombre: __daniela____   Fecha: ___24/04/2026___
-Sala: I-SALA2              Rol inicio: (driver) / Navigator
-
+# TS-REACT-D2 — Checklist
+Nombre: DANIELA    Fecha: 02/05/2026  
+Sala: I-SALA1              Rol inicio: Driver / Navigator(CARLOS)
+terminado 
 ## Bloques
-- [x] Bloque A — Instalación y configuración de TypeScript
-- [X] Bloque B — Renombrar archivos y primer error TS
-- [x] Bloque C — Tipar props de PlatoCard
-- [X] Bloque D — Tipar props de MesaCard y NavBar
-- [X] Bloque E — Tipar funciones de api.js
-- [X] Bloque F — Cero errores y verificación final
+- [X] Bloque A — Crear src/types/index.ts con todos los modelos
+- [X] Bloque B — Importar tipos en api.ts y eliminar duplicados
+- [X] Bloque C — Tipar PedidoContext.tsx completo
+- [X] Bloque D — Exploración con Claude
+- [X] Bloque E — Evaluación entre pares
+- [X] Bloque F — Cierre del día y verificación final
 
 ## Verificación
-- [x] npx tsc --noEmit ejecuta sin errores
+- [X] npx tsc --noEmit no muestra errores en types/, services/, context/
+- [X] npx tsc --noEmit no muestra errores en api/, MesaCard/, PlatoCard/
+- [x] La app corre sin crash con npm run dev
+

@@ -1,11 +1,4 @@
-interface Plato {
-    id: number;
-    nombre: string;
-    precio: number;
-    categoria: string;
-    disponible: boolean;
-    stock?: number;
-}
+import type { Plato } from '../types';
 
 //  2. Props
 interface PlatoCardProps {

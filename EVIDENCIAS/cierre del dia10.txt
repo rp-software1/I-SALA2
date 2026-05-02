@@ -1,0 +1,22 @@
+¿Qué concepto de TypeScript te costó más entender hoy?
+Algo típico aquí suele ser:
+
+El uso de createContext con undefined y cómo TypeScript obliga a validar antes de usarlo.
+
+También podría ser:
+
+La diferencia entre type e interface, porque parecen similares pero tienen usos distintos.
+
+¿Qué ventaja concreta viste de centralizar los tipos en types/index.ts?
+La idea clave:
+
+Tener todos los tipos en un solo lugar evita inconsistencias y facilita cambios globales.
+
+Ejemplo más concreto:
+
+Si cambia el modelo Mesa o Pedido, solo modifico un archivo y TypeScript me muestra automáticamente dónde debo ajustar el código.
+
+Total de errores TypeScript al cierre del Día 2:
+Aquí sí debes poner tu número real, pero el punto importante es entender esto:
+
+Los errores no son “malos”, son una guía exacta de lo que falta corregir.

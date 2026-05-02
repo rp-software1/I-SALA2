@@ -2,35 +2,9 @@
 
 import { mesasMock } from "../data/mesas.mock";
 import { v4 as uuid } from "uuid";
+import type { Mesa, Pedido, EstadoPedido } from '../types';
 
-// ── Tipos ────────────────────────────────────────
-type EstadoMesa = 'disponible' | 'ocupada' | 'reservada' | 'fuera_servicio';
-type EstadoPedido = 'pendiente' | 'en_preparacion' | 'lista' | 'entregada' | 'cancelada' | 'cerrada';
-type TipoPedido = 'mesa' | 'para_llevar';
 
-export interface Mesa {
-    id: string;
-    numero: number;
-    capacidad: number;
-    estado: EstadoMesa;
-    pedidoActivoId: string | null;
-}
-
-export interface ItemPedido {
-    platoId: string;
-    nombre: string;
-    cantidad: number;
-    precioUnitario: number;
-}
-
-export interface Pedido {
-    id: string;
-    mesaId: string | null;
-    tipo: TipoPedido;
-    estado: EstadoPedido;
-    items: ItemPedido[];
-    total: number;
-}
 
 // ── DB simulada ─────────────────────────────────
 let pedidosDB: Pedido[] = [];

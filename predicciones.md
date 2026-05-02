@@ -1,66 +1,32 @@
 BLOQUE A:
+¿Qué archivos del proyecto actual ya tienen declaradas interfaces que van a quedar duplicadas cuando crees types/index.ts? Listarlos antes de continuar.
+Archivos con tipos duplicados: 
+context/PedidoContext.tsx
+components/OrderForm.jsx / OrderForm.clase.jsx
+components/PlatoCard.tsx
+components/MesaCard.tsx
+pages/CarritoPage.tsx
+data/mesas.mock.ts
+Tipos que se repiten: Pedido
+ItemPedido / OrderItem
+Plato
+Mesa
+Props tipo ...Props (ej: PlatoCardProps, OrderFormProps)
 
-¿Qué archivo generará el comando de instalación además de actualizar package.json?
-¿Qué opciones del tsconfig.json son específicas para React con JSX?
-Se genera package-lock.json, y en tsconfig.json la opción clave para React es jsx: react-jsx.
-bloque B:
-¿Cuántos archivos vas a renombrar en total? Lista sus nombres.
-11 archivos
-NavBar.jsx    components/NavBar.tsx
-PlatoCard.jsx components/PlatoCard.tsx
-MesaCard.jsx  components/MesaCard.tsx
+BLOQUE B 
+¿Cuántas interfaces/types duplicados hay en total en api.ts, 
+PlatoCard.tsx y MesaCard.tsx que vas a eliminar en este bloque?
 
-# Pages
-MenuPage.jsx       pages/MenuPage.tsx
-MesasPage.jsx      pages/MesasPage.tsx
-CarritoPage.jsx    pages/CarritoPage.tsx
-DetalleMesa.jsx    pages/DetalleMesa.tsx
-NotFound.jsx       pages/NotFound.tsx
+Cantidad de declaraciones duplicadas que vas a eliminar: 5
+Tipos que se van a eliminar de api.ts: HAY 3 PARA ELIMINAR MESA, PEDIDO, TIPOPEDIDO.
 
-# Context
-PedidoContext.jsx context/PedidoContext.tsx
-
-# Raíz
- App.jsx  App.tsx
- main.jsx main.tsx
-
-¿En qué tipo de líneas crees que aparecerá el primer error TS?
-Primeros errores salen en:
-
-props
-useState([])
-children
-funciones sin tipo
+BLOQUE C
+PedidoContext actualmente tiene 5 funciones: agregarPlato, quitarPlato, cambiarTipo, asignarMesa y limpiarPedido. ¿Cuál es el tipo exacto de cada parámetro según los modelos en types/index.ts?
+agregarPlato recibe: __plato: Plato_________
+quitarPlato recibe: __platoId: number (o a veces id: number)_________
+cambiarTipo recibe: __tipo: TipoPedido (por ejemplo: 'local' | 'delivery')
+asignarMesa recibe: mesa: Mesa (o en algunos casos mesaId: number)
+limpiarPedido recibe:() => void (no recibe parámetros)
 
 
-BLOQUE C:
-El componente PlatoCard recibe un plato como prop. ¿Qué propiedades tiene un plato según el modelo de datos del sistema?
-LAS PROPIEDADES QUE TIENE SON ID, NOMBRE, PRECIO, CATEGORIA Y DISPONIBLE.
-
-¿Qué tipo TypeScript corresponde a cada una? Escríbelo aquí antes de ver el código:
-_id:          string
-nombre:       string
-precio:       number
-categoria:    string
-disponible:   boolean
-
-
-BLOQUE D:
-¿Qué props recibe MesaCard? (mira tu implementación de días anteriores)
-Props de MesaCard
-mesa: Mesa
-onClick: (mesa: Mesa) => void
-
-¿TypeScript puede inferir el tipo de retorno de una función que retorna JSX sin que lo declares?
-TypeScript y JSX
-TypeScript infiere automáticamente el retorno (JSX.Element)
-No es obligatorio escribir : JSX.Element
-
-
-BLOQUE E:
-Si getMesas() retorna Promise<Mesa[]>, 
-¿qué tipo tiene 'mesas' en este código?
-const mesas = await getMesas();
-
-Mesas es de tipo Mesa[]
 

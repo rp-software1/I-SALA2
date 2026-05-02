@@ -1,8 +1,13 @@
 import { createContext, useContext, useState } from 'react';
+import type {
+    Plato,
+    TipoPedido,
+    EstadoPedidoContext,
+    PedidoContextType,
+} from '../types';
 
-const PedidoContext = createContext(null);
-
-const estadoInicial = {
+// Estado inicial tipado
+const estadoInicial: EstadoPedidoContext = {
     mesaId: null,
     tipo: 'mesa',
     estado: 'pendiente',
@@ -10,13 +15,21 @@ const estadoInicial = {
     total: 0,
 };
 
-export function PedidoProvider({ children }) {
-    const [pedido, setPedido] = useState(estadoInicial);
+// Context tipado
+const PedidoContext = createContext<PedidoContextType | undefined>(undefined);
 
-    const calcularTotal = (items) =>
+// Props del provider
+interface PedidoProviderProps {
+    children: React.ReactNode;
+}
+
+export function PedidoProvider({ children }: PedidoProviderProps) {
+    const [pedido, setPedido] = useState<EstadoPedidoContext>(estadoInicial);
+
+    const calcularTotal = (items: EstadoPedidoContext['items']): number =>
         items.reduce((acc, item) => acc + item.precioUnitario * item.cantidad, 0);
 
-    const agregarPlato = (plato) => {
+    function agregarPlato(plato: Plato): void {
         setPedido(prev => {
             const existe = prev.items.find(i => i.platoId === plato.id);
 
@@ -33,18 +46,18 @@ export function PedidoProvider({ children }) {
                         nombre: plato.nombre,
                         cantidad: 1,
                         precioUnitario: plato.precio,
-                    }
+                    },
                 ];
 
             return {
                 ...prev,
                 items: nuevosItems,
-                total: calcularTotal(nuevosItems)
+                total: calcularTotal(nuevosItems),
             };
         });
-    };
+    }
 
-    const quitarPlato = (platoId) => {
+    function quitarPlato(platoId: string): void {
         setPedido(prev => {
             const nuevosItems = prev.items
                 .map(i =>
@@ -57,46 +70,54 @@ export function PedidoProvider({ children }) {
             return {
                 ...prev,
                 items: nuevosItems,
-                total: calcularTotal(nuevosItems)
+                total: calcularTotal(nuevosItems),
             };
         });
-    };
+    }
 
-    const cambiarTipo = (tipo) => {
+    function cambiarTipo(tipo: TipoPedido): void {
         setPedido(prev => ({
             ...prev,
             tipo,
             mesaId: tipo === 'para_llevar' ? null : prev.mesaId,
         }));
-    };
+    }
 
-    // 🔥 ESTE ES EL CLAVE PARA TU CRITERIO
-    const asignarMesa = (mesaId) => {
+    function asignarMesa(mesaId: string): void {
         setPedido(prev => ({
             ...prev,
             mesaId,
-            tipo: 'mesa'
+            tipo: 'mesa',
         }));
+    }
+
+    function limpiarPedido(): void {
+        setPedido(estadoInicial);
+    }
+
+    const value: PedidoContextType = {
+        pedido,
+        agregarPlato,
+        quitarPlato,
+        cambiarTipo,
+        asignarMesa,
+        limpiarPedido,
     };
 
-    const limpiarPedido = () => setPedido(estadoInicial);
-
     return (
-        <PedidoContext.Provider value={{
-            pedido,
-            agregarPlato,
-            quitarPlato,
-            cambiarTipo,
-            asignarMesa,
-            limpiarPedido,
-        }}>
+        <PedidoContext.Provider value={value}>
             {children}
         </PedidoContext.Provider>
     );
 }
 
-export function usePedido() {
+// Hook seguro
+export function usePedido(): PedidoContextType {
     const context = useContext(PedidoContext);
-    if (!context) throw new Error('usePedido debe usarse dentro de PedidoProvider');
+    if (!context) {
+        throw new Error('usePedido debe usarse dentro de PedidoProvider');
+    }
     return context;
 }
+
+export default PedidoContext;
