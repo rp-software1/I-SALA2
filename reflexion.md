@@ -9,3 +9,8 @@ Crear datos (sin ID)
 Actualizar (sin campos protegidos)
 Mostrar vistas simplificadas
 En resumen: sirve para adaptar un tipo según el contexto sin duplicarlo.
+
+BLOQUE C:
+ ¿El comportamiento de useParams te sorprendió? ¿Por qué el genérico no garantiza el tipo?
+
+ Si me sorprendio, no garantiza el tipo porque solo sirve para describir la forma esperada, no para validar datos reales.
