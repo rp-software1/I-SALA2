@@ -124,4 +124,11 @@ Centraliza errores (ej: “usar fuera del Provider”)
 Hace el código más limpio y consistente
 Si cambias algo del contexto, lo haces en un solo lugar
 
-ERRORES TOTALES QUE QUEDAN PENDIENTES SON: 22
+
+Bloque F: 
+• ¿Qué concepto de TypeScript te costó más entender hoy?
+Practicamente al momento de la union de los tipos como se pueden hacer independientes y declarar para que una sola variable tenga varios valores. 
+• ¿Qué ventaja concreta viste de centralizar los tipos en types/index.ts?
+la ventaja es que es mas seguro y ordenado.
+• Total de errores TypeScript al cierre del Día 2: 22
+
