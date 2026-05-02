@@ -35,5 +35,21 @@ BLOQUE E:
    ¿Qué otros utility types de TypeScript existen que podrían servirme en
    este mismo proyecto? Por ejemplo: ¿para qué sirven Pick, Partial y Required?
    Muéstrame con un ejemplo concreto de Mesa o Plato."
-   
+
    Pick selecciona campos como Pick<Mesa, "numero" | "estado">, Partial hace todo opcional como Partial<Mesa> y Required obliga todos los campos como Required<Mesa>.
+
+
+   BLOQUE F:
+
+• ¿Qué concepto de TypeScript te resultó más difícil en los 3 días?
+El type narrowing, porque tuve que entender cómo TypeScript cambia el tipo según condiciones.
+
+• ¿Qué error de los 3 días fue el más útil para aprender? ¿Por qué?
+El de PlatoCard, porque me obligó a entender cómo tipar props y funciones correctamente en React.
+
+• ¿En qué parte del proyecto React del Día 9 detectarías bugs ahora que antes no veías?
+En props de componentes, en datos de la API y en uso de estados, donde antes no validaba tipos.
+
+• Total de errores al inicio del Día 1: 77  →  Total de errores hoy: 0
+
+• Una cosa que cambiaría de la forma en que escribí JavaScript antes de TypeScript: Tipar datos desde el inicio y no asumir que siempre son correctos.
