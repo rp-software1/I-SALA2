@@ -30,6 +30,8 @@ export function PedidoProvider({ children }: PedidoProviderProps) {
         items.reduce((acc, item) => acc + item.precioUnitario * item.cantidad, 0);
 
     function agregarPlato(plato: Plato): void {
+        if (!plato.disponible || plato.stock === 0) return; // 🔥
+
         setPedido(prev => {
             const existe = prev.items.find(i => i.platoId === plato.id);
 

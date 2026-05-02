@@ -1,22 +1,46 @@
 import { useEffect, useState } from 'react';
-import PlatoCard from '../components/PlatoCard.jsx';
-import { platosMock } from '../data/platos.mock.js';
+import type { Plato } from '../types';
 import { usePedido } from '../context/PedidoContext';
+import PlatoCard from '../components/PlatoCard';
+import { getPlatos } from '../services/api';
 
 export default function MenuPage() {
+    const { pedido, agregarPlato } = usePedido();
 
-    const { pedido } = usePedido();
-
-    const [platos, setPlatos] = useState([]);
+    // ✅ estados tipados
+    const [platos, setPlatos] = useState<Plato[]>([]);
+    const [cargando, setCargando] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        setPlatos(platosMock);
+        const cargarPlatos = async (): Promise<void> => {
+            setCargando(true);
+            try {
+                const data: Plato[] = await getPlatos();
+                setPlatos(data);
+            } catch (err: unknown) {
+                const mensaje =
+                    err instanceof Error
+                        ? err.message
+                        : 'Error al cargar el menú';
+
+                setError(mensaje);
+            } finally {
+                setCargando(false);
+            }
+        };
+
+        cargarPlatos();
     }, []);
 
+    // ✅ cálculo tipado
     const totalItems = pedido.items.reduce(
         (acc, item) => acc + item.cantidad,
         0
     );
+
+    if (cargando) return <p className='p-8'>Cargando menú...</p>;
+    if (error) return <p className='p-8 text-red-500'>Error: {error}</p>;
 
     return (
         <div className='min-h-screen bg-gray-50 p-8'>
@@ -33,7 +57,7 @@ export default function MenuPage() {
                 )}
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                    {platos.map(plato => (
+                    {platos.map((plato) => (
                         <PlatoCard
                             key={plato.id}
                             plato={plato}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePedido } from "../context/PedidoContext";
-import { crearPedido } from "../services/api";
+import { crearPedido, getPlatos } from "../services/api";
+import type { Pedido, Plato } from "../types";
 
 export default function CarritoPage() {
     const {
@@ -11,70 +12,72 @@ export default function CarritoPage() {
         limpiarPedido,
     } = usePedido();
 
+    const [platos, setPlatos] = useState<Plato[]>([]);
     const [enviando, setEnviando] = useState(false);
-    const [error, setError] = useState(null);
-    const [pedidoCreado, setPedidoCreado] = useState(null);
+    const [errorEnvio, setErrorEnvio] = useState<string | null>(null);
+    const [confirmacion, setConfirmacion] = useState<string | null>(null);
 
     useEffect(() => {
-        console.log("PEDIDO ACTUAL:", pedido);
-    }, [pedido]);
+        getPlatos().then(setPlatos);
+    }, []);
 
-    const platos = [
-        { id: 1, nombre: "estofado", precio: 10 },
-        { id: 2, nombre: "Aji de gallina", precio: 12 },
-        { id: 3, nombre: "lomo saltado", precio: 15 },
-        { id: 4, nombre: "Arroz con pollo", precio: 20 },
-        { id: 5, nombre: "inka-kola", precio: 3 },
-    ];
-
-    // 🔥 ENVIAR COMANDA
     const handleEnviarComanda = async () => {
-        if (pedido.items.length === 0) return;
+        if (pedido.tipo === "mesa" && !pedido.mesaId) {
+            setErrorEnvio("Selecciona una mesa");
+            return;
+        }
+
+        if (pedido.items.length === 0) {
+            setErrorEnvio("Agrega al menos un plato");
+            return;
+        }
 
         setEnviando(true);
-        setError(null);
+        setErrorEnvio(null);
 
         try {
-            const nuevoPedido = await crearPedido({
+            const body: Omit<Pedido, "id" | "estado"> = {
                 mesaId: pedido.mesaId,
                 tipo: pedido.tipo,
                 items: pedido.items,
-            });
+                total: pedido.total,
+            };
 
-            setPedidoCreado(nuevoPedido);
+            const nuevoPedido = await crearPedido(body);
+            setConfirmacion(nuevoPedido.id);
             limpiarPedido();
-
-        } catch (err) {
-            setError("Error al enviar pedido");
+        } catch (err: any) {
+            setErrorEnvio(err.message || "Error");
         } finally {
             setEnviando(false);
         }
     };
 
-    // 🔥 CONFIRMACIÓN
-    if (pedidoCreado) {
+    if (confirmacion) {
         return (
-            <div className="p-6 text-center">
-                <div className="text-6xl mb-4">✅</div>
-                <h2 className="text-2xl font-bold text-green-600">
+            <div className="flex flex-col items-center justify-center h-[70vh]">
+                <div className="text-7xl">✅</div>
+                <h2 className="text-3xl font-bold text-green-600 mt-4">
                     Comanda enviada
                 </h2>
-                <p className="mt-2">
-                    Pedido #{pedidoCreado._id}
-                </p>
-                <p>Estado: {pedidoCreado.estado}</p>
+                <p className="text-gray-500 mt-2">Pedido #{confirmacion}</p>
             </div>
         );
     }
 
     return (
-        <div className="p-6">
+        <div className="p-6 max-w-5xl mx-auto">
 
-            {/* TIPO DE PEDIDO */}
-            <div className="flex gap-3 mb-4">
+            {/* HEADER */}
+            <h1 className="text-3xl font-bold mb-6">🍽️ Nueva Comanda</h1>
+
+            {/* TIPO */}
+            <div className="flex gap-3 mb-6">
                 <button
                     onClick={() => cambiarTipo("mesa")}
-                    className={`px-4 py-2 rounded text-white ${pedido.tipo === "mesa" ? "bg-blue-500" : "bg-gray-400"
+                    className={`px-5 py-2 rounded-xl font-semibold transition ${pedido.tipo === "mesa"
+                            ? "bg-blue-600 text-white shadow"
+                            : "bg-gray-200 hover:bg-gray-300"
                         }`}
                 >
                     Mesa
@@ -82,44 +85,43 @@ export default function CarritoPage() {
 
                 <button
                     onClick={() => cambiarTipo("para_llevar")}
-                    className={`px-4 py-2 rounded text-white ${pedido.tipo === "para_llevar" ? "bg-green-500" : "bg-gray-400"
+                    className={`px-5 py-2 rounded-xl font-semibold transition ${pedido.tipo === "para_llevar"
+                            ? "bg-green-600 text-white shadow"
+                            : "bg-gray-200 hover:bg-gray-300"
                         }`}
                 >
                     Para llevar
                 </button>
             </div>
 
-            {/* INFO */}
-            <p className="text-sm text-gray-600 mb-4">
-                Tipo: {pedido.tipo} | Mesa: {pedido.mesaId || "null"}
+            <p className="text-sm text-gray-500 mb-4">
+                Tipo: <b>{pedido.tipo}</b> | Mesa:{" "}
+                <b>{pedido.mesaId || "—"}</b>
             </p>
 
-            <h2 className="text-xl font-bold mb-4">
-                Comanda -{" "}
-                {pedido.tipo === "mesa"
-                    ? `Mesa ${pedido.mesaId || ""}`
-                    : "Para llevar"}
-            </h2>
-
-            <div className="grid grid-cols-2 gap-6">
+            {/* GRID */}
+            <div className="grid md:grid-cols-2 gap-6">
 
                 {/* PLATOS */}
-                <div className="bg-white p-4 rounded shadow">
-                    <h3 className="font-semibold mb-3">Platos</h3>
+                <div className="bg-white rounded-2xl shadow p-5">
+                    <h3 className="font-bold text-lg mb-4">Platos</h3>
 
                     {platos.map((plato) => (
                         <div
                             key={plato.id}
-                            className="flex justify-between items-center mb-2 border-b pb-2"
+                            className="flex justify-between items-center mb-3 border-b pb-2"
                         >
                             <div>
                                 <p className="font-medium">{plato.nombre}</p>
-                                <p className="text-green-600">S/ {plato.precio}</p>
+                                <p className="text-sm text-gray-500">
+                                    S/ {plato.precio}
+                                </p>
                             </div>
 
                             <button
                                 onClick={() => agregarPlato(plato)}
-                                className="bg-blue-500 text-white px-3 py-1 rounded"
+                                disabled={!plato.disponible}
+                                className="px-3 py-1 rounded-lg bg-blue-500 text-white hover:bg-blue-600 disabled:bg-gray-300"
                             >
                                 +
                             </button>
@@ -128,13 +130,17 @@ export default function CarritoPage() {
                 </div>
 
                 {/* PEDIDO */}
-                <div className="bg-white p-4 rounded shadow">
-                    <h3 className="font-semibold mb-3">Pedido</h3>
+                <div className="bg-white rounded-2xl shadow p-5 flex flex-col">
+                    <h3 className="font-bold text-lg mb-4">Pedido</h3>
 
-                    {pedido.items.length === 0 ? (
-                        <p className="text-gray-500">No hay items</p>
-                    ) : (
-                        pedido.items.map((item) => (
+                    <div className="flex-1">
+                        {pedido.items.length === 0 && (
+                            <p className="text-gray-400 text-sm">
+                                No hay platos aún
+                            </p>
+                        )}
+
+                        {pedido.items.map(item => (
                             <div
                                 key={item.platoId}
                                 className="flex justify-between items-center mb-2"
@@ -143,46 +149,35 @@ export default function CarritoPage() {
                                     {item.nombre} x{item.cantidad}
                                 </span>
 
-                                <div className="flex items-center gap-2">
-                                    <span className="font-medium">
-                                        S/ {item.precioUnitario * item.cantidad}
-                                    </span>
-
-                                    <button
-                                        onClick={() => quitarPlato(item.platoId)}
-                                        className="text-red-500 font-bold"
-                                    >
-                                        ✕
-                                    </button>
-                                </div>
+                                <button
+                                    onClick={() => quitarPlato(item.platoId)}
+                                    className="text-red-500 hover:text-red-700"
+                                >
+                                    ✕
+                                </button>
                             </div>
-                        ))
-                    )}
+                        ))}
+                    </div>
 
-                    <hr className="my-3" />
+                    <div className="mt-4 border-t pt-3">
+                        <p className="text-lg font-bold">
+                            Total: S/ {pedido.total}
+                        </p>
 
-                    <p className="font-bold text-right">
-                        Total: S/ {pedido.total}
-                    </p>
+                        {errorEnvio && (
+                            <p className="text-red-500 text-sm mt-2">
+                                {errorEnvio}
+                            </p>
+                        )}
 
-                    {error && <p className="text-red-500 mt-2">{error}</p>}
-
-                    <button
-                        onClick={handleEnviarComanda}
-                        disabled={enviando || pedido.items.length === 0}
-                        className="mt-4 w-full bg-yellow-500 text-white py-2 rounded"
-                    >
-                        {enviando ? "Enviando..." : "Enviar comanda"}
-                    </button>
-
-                    {pedido.items.length > 0 && (
                         <button
-                            onClick={limpiarPedido}
-                            className="mt-3 w-full bg-red-200 text-red-700 py-2 rounded"
+                            onClick={handleEnviarComanda}
+                            disabled={enviando}
+                            className="w-full mt-3 py-2 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 disabled:bg-gray-400"
                         >
-                            Limpiar pedido
+                            {enviando ? "Enviando..." : "Enviar comanda"}
                         </button>
-                    )}
+                    </div>
                 </div>
             </div>
         </div>
