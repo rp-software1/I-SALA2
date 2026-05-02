@@ -1,4 +1,4 @@
-Nombre: ____CARLOS_________    Fecha: ______30/04/2026_________
+Nombre: ____CARLOS_________    Fecha: ____30/04/2026_________
 Sala: I-SALA1              Rol inicio: Driver(CARLOS) / Navigator
 
 ## Bloques
