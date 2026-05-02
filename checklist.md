@@ -1,10 +1,10 @@
-Nombre: ____CARLOS_________    Fecha: ____30/04/2026_________
-Sala: I-SALA1              Rol inicio: Driver(CARLOS) / Navigator
+Nombre: daniela    Fecha: 02/05/2026_________
+Sala: I-SALA1              Rol inicio: Driver(daniela) / Navigator
 
 ## Bloques
 - [X] Bloque A — Tipar MesasPage.tsx (useEffect, loading/error/data, handler)
 - [X] Bloque B — Tipar MenuPage.tsx y CarritoPage.tsx
-- [ ] Bloque C — Tipar DetalleMesa.tsx (useParams y useNavigate)
+- [X] Bloque C — Tipar DetalleMesa.tsx (useParams y useNavigate)
 - [ ] Bloque D — Verificación final: npx tsc --noEmit → 0 errores
 - [ ] Bloque E — Exploración con Claude
 - [ ] Bloque F — Cierre de los 3 días de TypeScript
