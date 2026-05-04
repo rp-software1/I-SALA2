@@ -1,18 +1,21 @@
-// src/services/api.ts
-
+import { platosMock } from "../data/platos.mock";
 import { mesasMock } from "../data/mesas.mock";
 import { v4 as uuid } from "uuid";
-import type { Mesa, Pedido, EstadoPedido } from '../types';
-
-
+import type { Mesa, Pedido, EstadoPedido, Plato } from '../types';
 
 // ── DB simulada ─────────────────────────────────
 let pedidosDB: Pedido[] = [];
 
-// ── Funciones tipadas ───────────────────────────
+// ── Funciones ───────────────────────────────────
 export async function getMesas(): Promise<Mesa[]> {
     return new Promise(resolve => {
         setTimeout(() => resolve(mesasMock), 300);
+    });
+}
+
+export async function getPlatos(): Promise<Plato[]> {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(platosMock), 300);
     });
 }
 

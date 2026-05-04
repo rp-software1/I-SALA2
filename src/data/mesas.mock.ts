@@ -1,4 +1,4 @@
-import type { Mesa } from "../services/api";
+import type { Mesa } from "../types";
 
 export const mesasMock: Mesa[] = [
     { id: "1", numero: 1, capacidad: 4, estado: "disponible", pedidoActivoId: null },

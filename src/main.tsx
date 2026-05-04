@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { PedidoProvider } from './context/PedidoContext';
 
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <PedidoProvider>
       <App />

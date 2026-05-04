@@ -40,8 +40,9 @@ export interface Pedido {
     estado: EstadoPedido;
     items: ItemPedido[];
     total: number;
-    creadoEn: string;
-    actualizadoEn: string;
+
+    creadoEn?: string;
+    actualizadoEn?: string;
 }
 
 // ─── Tipos del Context ─────────────────────────────────────────────────

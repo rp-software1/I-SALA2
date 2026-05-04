@@ -1,17 +1,16 @@
-# TS-REACT-D2 — Checklist
-Nombre: DANIELA    Fecha: 02/05/2026  
-Sala: I-SALA1              Rol inicio: Driver / Navigator(CARLOS)
-terminado 
-## Bloques
-- [X] Bloque A — Crear src/types/index.ts con todos los modelos
-- [X] Bloque B — Importar tipos en api.ts y eliminar duplicados
-- [X] Bloque C — Tipar PedidoContext.tsx completo
-- [X] Bloque D — Exploración con Claude
-- [X] Bloque E — Evaluación entre pares
-- [X] Bloque F — Cierre del día y verificación final
+Nombre: daniela    Fecha: 02/05/2026_________
+Sala: I-SALA1              Rol inicio: Driver(daniela) / Navigator
 
-## Verificación
-- [X] npx tsc --noEmit no muestra errores en types/, services/, context/
-- [X] npx tsc --noEmit no muestra errores en api/, MesaCard/, PlatoCard/
-- [x] La app corre sin crash con npm run dev
+## Bloques
+- [X] Bloque A — Tipar MesasPage.tsx (useEffect, loading/error/data, handler)
+- [X] Bloque B — Tipar MenuPage.tsx y CarritoPage.tsx
+- [X] Bloque C — Tipar DetalleMesa.tsx (useParams y useNavigate)
+- [X] Bloque D — Verificación final: npx tsc --noEmit → 0 errores
+- [X] Bloque E — Exploración con Claude
+- [F] Bloque F — Cierre de los 3 días de TypeScript
+
+## Verificación final
+- [X] npx tsc --noEmit retorna 0 errores en todo el proyecto
+- [X] npm run dev corre sin crash y todas las páginas cargan
+
 

@@ -1,134 +1,55 @@
 BLOQUE A:
+¿Por qué err es unknown y no Error directamente? ¿Qué ventaja real da eso?
+Se usa unknown porque JavaScript permite lanzar cualquier valor, y TypeScript obliga a validar antes de usarlo para evitar errores en runtime
+BLOQUE B: 
+• ¿Omit<Pedido, ...> fue lo que esperabas? ¿Cuándo usarías Omit en otros contextos del proyecto?
+Sí, Omit<Pedido, ...> era lo esperado porque estás quitando campos que el backend genera (id, estado, fechas).
+Se usa cuando necesitas una versión parcial de un tipo, por ejemplo:
+Crear datos (sin ID)
+Actualizar (sin campos protegidos)
+Mostrar vistas simplificadas
+En resumen: sirve para adaptar un tipo según el contexto sin duplicarlo.
 
-¿Tiene sentido tener un único archivo de tipos? ¿Qué ventaja concreta ves frente a declarar los tipos en cada componente?
-Tener un único archivo de tipos (types/index.ts) ayuda a centralizar la definición de las estructuras de datos del proyecto. La principal ventaja es evitar la duplicación de interfaces y mantener consistencia en toda la aplicación. Si un tipo cambia (por ejemplo, Mesa o Pedido), solo se actualiza en un lugar y todos los componentes lo reflejan automáticamente.
-
-Además, mejora la mantenibilidad y la escalabilidad del proyecto, ya que facilita reutilizar tipos entre contextos, páginas y componentes sin redefinirlos.
-
-En cambio, declarar tipos en cada componente puede ser útil en casos muy específicos o pequeños, pero a medida que el proyecto crece, genera duplicación, inconsistencias y mayor probabilidad de errores.
-
-
-BLOQUE B:
-
-¿Qué pasa con el autocompletado en el IDE ahora que los tipos están en un solo lugar?
-MEJORA EL RENDIMIENTO Y REDUCE DUPLICADOS, PORQUE AHORA TODO VIENE DE UNA SOLO FUENTE CENTRAL QUE SERIA EN ESTE CASO TYPES/index.ts.
 BLOQUE C:
- ¿Qué error de runtime podría haberse producido sin el guard if (!context) throw? Piensa en un escenario concreto.
- Sin el guard, si un componente usa usePedido fuera de PedidoProvider, el contexto sería undefined y al intentar acceder a sus propiedades se produciría un error de runtime como:
-"Cannot read properties of undefined"
-Esto dificulta el debugging, mientras que el guard permite lanzar un error claro y controlado indicando el problema.
+ ¿El comportamiento de useParams te sorprendió? ¿Por qué el genérico no garantiza el tipo?
 
- BLOQUE D : Exploración con Claude
-  "¿Qué es un Intersection Type en TypeScript? Muéstrame cómo usarlo para combinar Mesa con un campo extra { estaSeleccionada: boolean } sin modificar la interface Mesa original."
-  Un Intersection Type en TypeScript permite combinar varios tipos en uno solo usando el operador &. El resultado es un tipo que tiene todas las propiedades de los tipos combinados.
+ Si me sorprendio, no garantiza el tipo porque solo sirve para describir la forma esperada, no para validar datos reales.
 
-"Tengo este código en TypeScript:
-      const estado: EstadoMesa = "disponible";
-   ¿Qué pasa si escribo estado = "cerrado"? ¿Por qué TypeScript lo rechaza?
-   Explícalo como si fuera la primera vez que veo union types."
-
-Sobre estado = "cerrado"
-Si EstadoMesa es algo como:
-type EstadoMesa = "disponible" | "ocupado";
-Entonces estás usando un union type, que significa:
-“esta variable solo puede ser uno de estos valores exactos”.
-Por eso:
-const estado: EstadoMesa = "disponible";
-estado = "cerrado"; //  error
-TypeScript lo rechaza porque "cerrado" no está dentro de las opciones permitidas.
-Es como una lista cerrada de valores válidos.
-
-"En nuestro PedidoContext.tsx usamos:
-      createContext<2PedidoContextType | undefined>(undefined)
-   ¿Por qué no simplemente createContext<2PedidoContextType>({} as PedidoContextType)?
-   ¿Qué riesgo real tiene la segunda versión en una app de restaurante?"
-
-Esta forma:
-createContext<2PedidoContextType | undefined>(undefined)
-te obliga a verificar que el contexto existe antes de usarlo.
-En cambio:
-createContext<2PedidoContextType>({} as PedidoContextType)
-le estás diciendo a TypeScript:
-“confía en mí, esto tiene todos los datos”… aunque en realidad es un objeto vacío.
-Riesgo real en una app de restaurante:
-Podrías usar el contexto sin haber envuelto el componente en el Provider, y no fallará en compilación… pero en runtime tendrás undefined en funciones o datos (por ejemplo, agregarPedido() no existe), causando errores difíciles de detectar.
+BLOQUE D:
+ ¿Cuántos errores había al inicio del Día 1? ¿Y ahora? AL INICIO TENIA COMO 77 ERRORES
+¿Qué error fue el más difícil de resolver en los 3 días? ¿Por qué?  El error más difícil fue el de PlatoCard porque requería entender el tipado de props en TypeScript, no solo corregir código.
 
 BLOQUE E:
+1. "Después de tipar 3 días el proyecto restaurante-frontend,
+   ¿qué tipo de errores de runtime previene TypeScript y cuáles NO?
+   Dame un ejemplo concreto de cada uno usando nuestro código."
+   TypeScript previene errores de tipos (ej: usar string en un number), pero no errores de runtime como fallos de API.
 
-Estudinte A
-
-Estudiante B
-
-1. ¿Qué archivo creamos hoy que no existía antes? ¿Para qué sirve?
-Probablemente crearon algo como:
-PedidoContext.tsx o
-context/PedidoContext.tsx o
-un archivo en types/
-¿Para qué sirve?
-Sirve para centralizar estado o definiciones:
-Si es PedidoContext: permite compartir datos del pedido entre componentes sin pasar props manualmente.
-
-Si es types/index.ts: centraliza los tipos de TypeScript para todo el proyecto.
-2. Sobre types/index.ts
-Sin ver tu archivo exacto no puedo contar el número real, pero la idea es que recuerdes algo como:
-X type
-Y interface
-
-Diferencia clave:
-
-interface → se usa principalmente para estructuras de objetos y es extensible (puedes hacer extends o merging).
-type → es más flexible, puede representar uniones, primitivas, tuplas, etc.
-
-Ejemplo mental:
-
-interface = “forma de un objeto”
-type = “cualquier tipo posible”
-
-3. ¿Por qué usar createContext<PedidoContextType | undefined>?
-
-Porque al inicio no hay un valor garantizado.
-
-React crea el contexto antes de que el Provider lo envuelva, entonces:
-
-Puede existir un momento donde el contexto sea undefined
-TypeScript te obliga a manejar ese caso
-
-Esto evita errores silenciosos y te fuerza a usar el contexto correctamente dentro de su Provider.
-
-4. Si el backend agrega activo: boolean a Mesa
-
-Solo deberías cambiar:
-
-1 archivo: donde defines el tipo (types/index.ts)
-
-Después, TypeScript hace el trabajo pesado:
-
-Te marcará errores en todos los lugares donde:
-falte ese campo
-estés creando objetos Mesa incompletos
-
-Es decir, no tienes que buscar manualmente, el IDE te guía.
-
-5. ¿Qué hace usePedido() y por qué es mejor?
-
-usePedido() es un custom hook que:
-
-Encapsula useContext(PedidoContext)
-Maneja validaciones (como evitar undefined)
-Devuelve directamente lo que necesitas
-
-Ventajas sobre usar useContext directo:
-
-Evita repetir lógica en cada componente
-Centraliza errores (ej: “usar fuera del Provider”)
-Hace el código más limpio y consistente
-Si cambias algo del contexto, lo haces en un solo lugar
+2. "En DetalleMesa.tsx usamos useParams<{ mesaId: string }>() pero
+   mesaId sigue siendo string | undefined. ¿Por qué el genérico no
+   garantiza que es string? ¿Es un bug de TypeScript o una decisión intencional?"
+   No es bug, es intencional. useParams puede ser undefined porque la URL puede no tener el parámetro.
 
 
-Bloque F: 
-• ¿Qué concepto de TypeScript te costó más entender hoy?
-Practicamente al momento de la union de los tipos como se pueden hacer independientes y declarar para que una sola variable tenga varios valores. 
-• ¿Qué ventaja concreta viste de centralizar los tipos en types/index.ts?
-la ventaja es que es mas seguro y ordenado.
-• Total de errores TypeScript al cierre del Día 2: 22
+3. "Tengo Omit<Pedido, "_id" | "creadoEn" | "actualizadoEn"> en CarritoPage.
+   ¿Qué otros utility types de TypeScript existen que podrían servirme en
+   este mismo proyecto? Por ejemplo: ¿para qué sirven Pick, Partial y Required?
+   Muéstrame con un ejemplo concreto de Mesa o Plato."
 
+   Pick selecciona campos como Pick<Mesa, "numero" | "estado">, Partial hace todo opcional como Partial<Mesa> y Required obliga todos los campos como Required<Mesa>.
+
+
+   BLOQUE F:
+
+• ¿Qué concepto de TypeScript te resultó más difícil en los 3 días?
+El type narrowing, porque tuve que entender cómo TypeScript cambia el tipo según condiciones.
+
+• ¿Qué error de los 3 días fue el más útil para aprender? ¿Por qué?
+El de PlatoCard, porque me obligó a entender cómo tipar props y funciones correctamente en React.
+
+• ¿En qué parte del proyecto React del Día 9 detectarías bugs ahora que antes no veías?
+En props de componentes, en datos de la API y en uso de estados, donde antes no validaba tipos.
+
+• Total de errores al inicio del Día 1: 77  →  Total de errores hoy: 0
+
+• Una cosa que cambiaría de la forma en que escribí JavaScript antes de TypeScript: Tipar datos desde el inicio y no asumir que siempre son correctos.
