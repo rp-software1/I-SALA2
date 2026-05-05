@@ -20,5 +20,16 @@ Envuelve todas las páginas Y ADRANTO TIENE EL HTML Y EL NAVBAR
 
   next.config.ts  ← ¿Para qué sirve? : PRACTICAMENTE LA CONFIGURACION DEL NEXT.JS, QUE INCLUYE AJUSTES DEL FRAMEWORK, CONFIGURACION DE IMAGENES Y MAS.
 
+BLOQUE B: 
+1.El NavBar de React Día 1 usaba NavLink con activeClassName o className con función. ¿Eso va a funcionar en Next.js sin cambios, o necesita adaptación?
+¿NavLink funciona en Next.js? 
+no va a funcionar tal cual. Next.js no usa React Router, así que tienes que adaptarlo sí o sí.
+¿Qué import cambia? 
+De:
+import { NavLink } from "react-router-dom";
+A:
+import Link from "next/link";
 
+React Router → NavLink automático
+Next.js → Link + lógica manual para activo
                       
