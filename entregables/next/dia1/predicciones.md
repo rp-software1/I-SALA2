@@ -32,4 +32,9 @@ import Link from "next/link";
 
 React Router → NavLink automático
 Next.js → Link + lógica manual para activo
-                      
+
+BLOQUE C
+1. 
+¿Cuántas carpetas van a crear en este bloque? Lista los nombres de las carpetas antes de ejecutar el primer mkdir.
+Carpetas a crear: EN ESTE BLOQUE CREARE 3 CARPETAS : MENU, MESAS, CARRITO 
+Archivos page.tsx a crear: 3 archivos

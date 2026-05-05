@@ -27,3 +27,8 @@ Porque normalmente solo hace esto:
 No usa hooks 
 No maneja estado
 No depende del navegador
+
+BLOQUE C:
+
+La tabla React Router → App Router: ¿fue el momento donde el App Router "hizo clic"? ¿Qué parte fue la más reveladora?
+Si, fue muy reveladora la tabla porque nos muestra de manera clara y concisa las diferencias entre React Router y App Router, ademas de que nos ayuda a entender como funciona el App Router y como podemos usarlo en nuestros proyectos.
