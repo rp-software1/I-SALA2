@@ -38,3 +38,9 @@ BLOQUE C
 ¿Cuántas carpetas van a crear en este bloque? Lista los nombres de las carpetas antes de ejecutar el primer mkdir.
 Carpetas a crear: EN ESTE BLOQUE CREARE 3 CARPETAS : MENU, MESAS, CARRITO 
 Archivos page.tsx a crear: 3 archivos
+bloque D:
+¿Cómo llega el parámetro mesaId al componente page.tsx? ¿Como prop, como hook, o de otra forma?
+El componente recibe mesaId como: 
+params.mesaId (prop).
+¿Es string o puede ser number?
+string.

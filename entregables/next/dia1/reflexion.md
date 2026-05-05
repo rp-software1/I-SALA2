@@ -32,3 +32,15 @@ BLOQUE C:
 
 La tabla React Router → App Router: ¿fue el momento donde el App Router "hizo clic"? ¿Qué parte fue la más reveladora?
 Si, fue muy reveladora la tabla porque nos muestra de manera clara y concisa las diferencias entre React Router y App Router, ademas de que nos ayuda a entender como funciona el App Router y como podemos usarlo en nuestros proyectos.
+
+bloque D:
+¿params como prop fue lo que predijiste o esperabas un hook como en React? ¿Qué implica esa diferencia?
+Sí, params como prop es lo esperado en Next.js (App Router)
+No es algo raro ni improvisado.
+De hecho:
+En React puro (SPA) → esperarías hooks (useParams)
+En Next.js App Router → se diseñó para pasar params como prop del componente de página
+¿Por qué NO usan un hook aquí?
+Porque estas páginas son, por defecto:
+Server Components
+Y eso cambia todo.
