@@ -44,3 +44,8 @@ En Next.js App Router → se diseñó para pasar params como prop del componente
 Porque estas páginas son, por defecto:
 Server Components
 Y eso cambia todo.
+
+BLOQUE E:
+
+• ¿El archivo not-found.tsx fue el que esperabas, o esperabas un nombre diferente?
+SI FUE LO QUE ESPERABA PORQUE EN REACT ES LO MISMO, PERO EN VEZ DE SER UN COMPONENTE ES UN ARCHIVO DENTRO DE LA CARPETA.
