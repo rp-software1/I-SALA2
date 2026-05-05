@@ -1,4 +1,10 @@
 BLOQUE A:
+1.
+¿Qué estructura de carpetas genera create-next-app? Escríbela de memoria antes de ejecutar el comando.
+Carpetas que esperas ver: app, public, cpmfiguraciones, modulos.
+¿Existe un archivo de rutas tipo App.tsx? no existe 
+
+2.
 restaurante-nextjs/
   app/
     layout.tsx    ← ¿Para qué sirve? ¿Qué tiene adentro?: Es el layout global de la aplicación.
