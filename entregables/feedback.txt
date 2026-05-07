@@ -1,0 +1,22 @@
+¿Qué funcionó bien y debe mantenerse?
+daniela: funciono bien la división de los bloques paso a paso y lo que debria mantenerse es la 
+estructura de carpetas del proyecto.
+
+¿Qué instrucción fue confusa o mal explicada?
+daniela: para mi fue un poco confusa la parte de el bonus en la creacion de año y mes en la url
+pero entendi que al momento de crearlo se unen pero eso no quiere decir que es una sola reportes/[año]/[mes] a esto me refiero.
+
+¿El tiempo fue suficiente para los 6 bloques?
+daniela: Si para poder ir creando y entendiendo paso a paso los bloques.
+
+¿La evaluación con IA aportó algo útil? ¿Qué detectó?
+daniela: Fue util para entender mejor la estrucutura de carpetas del proyecto.
+
+¿La tabla React Router → App Router fue útil? ¿En qué momento hizo clic?
+daniela:Si fue util para entender la diferencias que tenian, hizo click en casi todos.
+
+¿El proyecto restaurante-nextjs está listo para el Día 2?  SÍ / NO / PARCIAL — justificación:
+daniela: Si esta listo para el día 2.
+
+Calificación general de la actividad (1-5):4
+

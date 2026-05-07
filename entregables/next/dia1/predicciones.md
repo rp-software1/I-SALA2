@@ -44,3 +44,5 @@ El componente recibe mesaId como:
 params.mesaId (prop).
 ¿Es string o puede ser number?
 string.
+
+
