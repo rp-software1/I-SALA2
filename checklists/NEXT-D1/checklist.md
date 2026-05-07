@@ -3,7 +3,7 @@ sala: I-SALA2
 curso: Next.js
 dia: 1restaurante-nextjs
 estado: COMPLETADO
-loom: ()
+loom: (https://drive.google.com/file/d/1osdOOk41ixnBaOXJ1AKN2X8r1piP2l_i/view?usp=sharing)
 video bonus: (https://drive.google.com/file/d/1bFDbMKnrx19NBxu5fDn0py2orS_pkf75/view?usp=sharing)
 ---
 
