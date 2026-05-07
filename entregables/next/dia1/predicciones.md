@@ -45,4 +45,10 @@ params.mesaId (prop).
 ¿Es string o puede ser number?
 string.
 
+BLOQUE D:
+¿Cómo llega el parámetro mesaId al componente page.tsx? ¿Como prop, como hook, o de otra forma?
+El componente recibe mesaId como: prop dentro de params.
+
+¿Es string o puede ser number? Siempre string.
+
 
