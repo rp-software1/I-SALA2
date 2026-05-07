@@ -4,6 +4,7 @@ curso: Next.js
 dia: 1restaurante-nextjs
 estado: en_progreso
 loom: (agregar link al terminar)
+video bonus: (https://drive.google.com/file/d/1bFDbMKnrx19NBxu5fDn0py2orS_pkf75/view?usp=sharing)
 ---
 
 ## Bloques
