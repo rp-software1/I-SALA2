@@ -6,7 +6,7 @@ loom: (agregar link al terminar)
 ---
 
 ## Bloques
-- [X] A — Videos + types/index.ts + variables de entorno
+- [Y] A — Videos + types/index.ts + variables de entorno
 - [ ] B — MesasPage Server Component + MesaCard Client Component
 - [ ] C — loading.tsx + error.tsx en /mesas
 - [ ] D — MenuPage Server Component + PlatoCard Client Component
