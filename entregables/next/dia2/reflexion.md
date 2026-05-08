@@ -6,3 +6,7 @@ Sí, la diferencia fue lo que había predicho. Aprendí que las variables con el
 BLOQUE B:
 ¿El fetch en un Server Component sin useEffect fue más o menos complicado de lo que esperabas?
 en realidad, no fue lo que esperaba, fue mucho mas sencillo, no necesite usar hooks, ni async await, fue muy intuitivo de usar.
+
+BLOQUE C:
+¿Fue intuitivo que loading.tsx y error.tsx son archivos especiales que Next.js detecta por nombre?
+Sí, fue muy intuitivo. Next.js detecta automáticamente los archivos loading.tsx y error.tsx por nombre, lo que facilita mucho el manejo de estados de carga y errores.

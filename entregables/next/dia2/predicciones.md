@@ -10,3 +10,8 @@ El usuario ve durante el fetch: ___________
 ¿Quién muestra el loading — MesasPage o loading.tsx? ___________
 El usuario ve durante el fetch: el layout con NavBar y el skeleton de loading.tsx.
 ¿Quién muestra el loading — MesasPage o loading.tsx? loading.tsx.
+
+BLOQUE C:
+¿error.tsx captura errores de JavaScript (como un error de sintaxis en el código) o solo errores del fetch (como un 500 del backend)?
+error.tsx captura: errores de runtime y errores lanzados durante el fetch o renderizado de la página, no errores de sintaxis de compilación.
+¿Qué pasa si getMesas() lanza un Error con mensaje "503"? Se mostrará automáticamente el componente error.tsx mostrando el mensaje "503" en pantalla.

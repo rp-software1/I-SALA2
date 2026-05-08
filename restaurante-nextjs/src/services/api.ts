@@ -21,6 +21,7 @@ let pedidosDB: Pedido[] = [];
 export async function getMesas(): Promise<Mesa[]> {
     return new Promise(resolve => {
         setTimeout(() => resolve(mesasMock), 300);
+        // throw new Error("503");
     });
 }
 
