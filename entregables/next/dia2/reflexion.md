@@ -20,3 +20,8 @@ La línea que cambiará será handleAgregar:
 agregarPlato(plato);
 
 en lugar de solo mostrar el feedback visual temporal.
+
+BLOQUE E:
+
+¿Cuántos errores TypeScript había antes de resolver? ¿Cuál fue el más difícil?
+Si habia el de tailwindcss salia que teniamos que cambiar de version ya que el que estabamos usando era un 3 y deberiamos usar un 4. 
