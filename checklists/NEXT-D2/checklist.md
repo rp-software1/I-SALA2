@@ -10,7 +10,7 @@ loom: (agregar link al terminar)
 - [Y] B — MesasPage Server Component + MesaCard Client Component
 - [Y] C — loading.tsx + error.tsx en /mesas
 - [Y] D — MenuPage Server Component + PlatoCard Client Component
-- [ ] E — Verificación TypeScript completa
+- [Y] E — Verificación TypeScript completa
 - [ ] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
