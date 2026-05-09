@@ -1,10 +1,23 @@
 ¿La tabla React useEffect → Server Component hizo clic?
+daniela: Hizo clic en casi todos.
+
 ¿Qué instrucción fue confusa o mal explicada?
+daniela: No explicaba la parte del tailwind que si era importante por que en ese paso debemos de cambiar al 
+a la version 4 de tailwind. 
+
 ¿El STOP 1 se pudo responder sin haber visto los videos?
+daniela: Si
+
 ¿La evaluación con IA aportó algo útil? ¿Qué detectó?
+daniela:Si aporto para entender mejor la estructura de carpetas del proyecto, detecto errores de tipos.
+
 ¿El tiempo fue suficiente para los 6 bloques?
+daniela:Si.
+
 ¿El proyecto restaurante-nextjs está listo para el Día 3?  SÍ / NO / PARCIAL:
-Calificación general de la actividad (1-5):
+daniela: si el proyecto esta listo aunque estamos trabajando con datos simulados pero esta bien sin errores.
+
+Calificación general de la actividad (1-5):5
 
 carlos : 
 ¿La tabla React useEffect → Server Component hizo clic?
@@ -21,4 +34,3 @@ Parcial. Alcanzó para completar la mayoría, pero algunos bloques necesitarían
 PARCIAL — La estructura base parece lista, pero probablemente faltan ajustes menores, validaciones o más práctica con componentes y rutas.
 Calificación general de la actividad (1-5):
 4/5
-
