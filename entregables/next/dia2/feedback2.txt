@@ -1,0 +1,36 @@
+¿La tabla React useEffect → Server Component hizo clic?
+daniela: Hizo clic en casi todos.
+
+¿Qué instrucción fue confusa o mal explicada?
+daniela: No explicaba la parte del tailwind que si era importante por que en ese paso debemos de cambiar al 
+a la version 4 de tailwind. 
+
+¿El STOP 1 se pudo responder sin haber visto los videos?
+daniela: Si
+
+¿La evaluación con IA aportó algo útil? ¿Qué detectó?
+daniela:Si aporto para entender mejor la estructura de carpetas del proyecto, detecto errores de tipos.
+
+¿El tiempo fue suficiente para los 6 bloques?
+daniela:Si.
+
+¿El proyecto restaurante-nextjs está listo para el Día 3?  SÍ / NO / PARCIAL:
+daniela: si el proyecto esta listo aunque estamos trabajando con datos simulados pero esta bien sin errores.
+
+Calificación general de la actividad (1-5):5
+
+carlos : 
+¿La tabla React useEffect → Server Component hizo clic?
+Sí, porque ayuda a entender cuándo usar lógica del cliente (useEffect) versus renderizado en servidor (Server Components). La comparación suele aclarar responsabilidades y performance.
+¿Qué instrucción fue confusa o mal explicada?
+Podría generar confusión la diferencia entre “componente cliente” y “componente servidor”, especialmente cuándo agregar "use client" y qué hooks están permitidos.
+¿El STOP 1 se pudo responder sin haber visto los videos?
+Parcialmente. Las preguntas básicas sí, pero los detalles prácticos y el razonamiento probablemente requerían ver los videos.
+¿La evaluación con IA aportó algo útil? ¿Qué detectó?
+Sí. Ayudó a detectar errores de estructura, conceptos mezclados entre cliente/servidor y posibles problemas de renderizado o uso incorrecto de hooks.
+¿El tiempo fue suficiente para los 6 bloques?
+Parcial. Alcanzó para completar la mayoría, pero algunos bloques necesitarían más práctica o revisión para consolidar conceptos.
+¿El proyecto restaurante-nextjs está listo para el Día 3?
+PARCIAL — La estructura base parece lista, pero probablemente faltan ajustes menores, validaciones o más práctica con componentes y rutas.
+Calificación general de la actividad (1-5):
+4/5

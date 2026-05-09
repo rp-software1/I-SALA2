@@ -8,8 +8,7 @@ export default function NavBar() {
 
     // Función helper — detecta si la ruta está activa
     const esActiva = (ruta: string): string =>
-        pathname.startsWith(ruta)
-            ? 'font-bold text-blue-700 underline'
+        pathname === ruta ? 'font-bold text-blue-700 underline'
             : 'text-gray-700 hover:text-blue-600';
 
     return (
