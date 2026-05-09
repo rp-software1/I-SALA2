@@ -9,7 +9,7 @@ loom: (agregar link al terminar)
 - [Y] A — Videos + types/index.ts + variables de entorno
 - [Y] B — MesasPage Server Component + MesaCard Client Component
 - [Y] C — loading.tsx + error.tsx en /mesas
-- [ ] D — MenuPage Server Component + PlatoCard Client Component
+- [Y] D — MenuPage Server Component + PlatoCard Client Component
 - [ ] E — Verificación TypeScript completa
 - [ ] F — Evaluación entre pares + Loom + PR
 

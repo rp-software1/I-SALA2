@@ -10,3 +10,13 @@ en realidad, no fue lo que esperaba, fue mucho mas sencillo, no necesite usar ho
 BLOQUE C:
 ¿Fue intuitivo que loading.tsx y error.tsx son archivos especiales que Next.js detecta por nombre?
 Sí, fue muy intuitivo. Next.js detecta automáticamente los archivos loading.tsx y error.tsx por nombre, lo que facilita mucho el manejo de estados de carga y errores.
+
+BLOQUE D: 
+¿Qué haría distinto en PlatoCard cuando llegue el Context en Día 3? ¿Qué línea va a cambiar?
+PlatoCard dejará de usar solo estado local y llamará al PedidoContext para agregar platos al carrito global.
+
+La línea que cambiará será handleAgregar:
+
+agregarPlato(plato);
+
+en lugar de solo mostrar el feedback visual temporal.
