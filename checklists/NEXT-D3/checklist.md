@@ -9,7 +9,7 @@ loom: (agregar link al terminar)
 - [Y] A — PedidoProvider + integrar en layout.tsx
 - [Y] B — Conectar PlatoCard al Context + contador en NavBar
 - [Y] C — CarritoPage Client Component con Context
-- [ ] D — Server Action: enviarComanda()
+- [Y] D — Server Action: enviarComanda()
 - [ ] E — Verificación TypeScript completa
 - [ ] F — Evaluación entre pares + Loom + PR
 
