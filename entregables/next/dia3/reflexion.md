@@ -14,3 +14,10 @@ Como PedidoProvider ya tiene "use client", Next.js crea automáticamente el lím
 BLOQUE B:
 ¿El TODO era más simple de conectar de lo que esperabas, o fue complicado?
 Si no fue tan dificil de conectar, la explicacin estaba bien.
+ bloque C:
+ • ¿La predicción sobre metadata fue correcta? ¿Qué implica esa limitación para el diseño de la app?
+Sí, la predicción fue correcta ✅
+metadata NO funciona en Client Components porque Next.js genera el SEO y el <title> en el servidor.
+Eso implica que en el diseño de la app:
+las páginas que necesiten metadata deberían ser Server Components
+y la lógica interactiva (useState, useRouter, Context, etc.) debe ir en componentes client separados

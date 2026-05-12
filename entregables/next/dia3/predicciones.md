@@ -18,3 +18,11 @@ const handleAgregar = (): void => {
   setTimeout(() => setAgregado(false), 1500);
 };
 ¿El estado local agregado sigue sirviendo? SI YA QUE CAMBIA EL COLOR, EL BOTON AGREGAR.
+
+BLOQUE C:
+¿CarritoPage puede exportar metadata de Next.js? ¿Por qué?
+¿metadata funciona en Client Components? ___________
+Si no funciona, ¿cómo se cambia el title de la pestaña en una página Client? ___________
+metadata NO funciona en Client Components ('use client').
+Sí funciona en Server Components porque Next.js genera el <title> y metas en el servidor.
+Si tu página es client, cambia el título con:
