@@ -26,3 +26,10 @@ Si no funciona, ¿cómo se cambia el title de la pestaña en una página Client?
 metadata NO funciona en Client Components ('use client').
 Sí funciona en Server Components porque Next.js genera el <title> y metas en el servidor.
 Si tu página es client, cambia el título con:
+
+BLOQUE D:
+
+El Server Action recibe los datos del pedido como parámetro. ¿Qué tipo TypeScript le pondrías a ese parámetro?
+Tipo del parámetro de enviarComanda:  EstadoPedidoContext
+¿El Server Action puede usar useState? no
+

@@ -1,18 +1,78 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePedido } from '../../src/context/PedidoProvider';
 import type { ItemPedido } from '../../src/types';
+import { enviarComanda } from './actions';
 
 export default function CarritoPage() {
     const { pedido, quitarPlato, limpiarPedido } = usePedido();
+
     const router = useRouter();
 
+    const [enviando, setEnviando] = useState<boolean>(false);
+
+    const [confirmacion, setConfirmacion] = useState<string | null>(null);
+
+    const [errorEnvio, setErrorEnvio] = useState<string | null>(null);
+
     const totalVisual = pedido.items.reduce(
+
         (acc: number, item: ItemPedido) =>
             acc + item.precioUnitario * item.cantidad,
         0
     );
+
+    const handleEnviar = async (): Promise<void> => {
+
+        setEnviando(true);
+
+        setErrorEnvio(null);
+
+        const resultado = await enviarComanda(pedido);
+
+        if (resultado.ok) {
+
+            setConfirmacion(resultado.pedidoId);
+
+            limpiarPedido();
+
+        } else {
+
+            setErrorEnvio(resultado.error);
+        }
+
+        setEnviando(false);
+    };
+    if (confirmacion) {
+
+        return (
+            <div className="text-center mt-16">
+
+                <p className="text-5xl mb-4">✅</p>
+
+                <h1 className="text-2xl font-bold mb-2">
+                    ¡Comanda enviada!
+                </h1>
+
+                <p className="text-gray-500 mb-2 text-sm font-mono">
+                    ID: {confirmacion}
+                </p>
+
+                <button
+                    onClick={() => {
+                        setConfirmacion(null);
+                        router.push('/mesas');
+                    }}
+                    className="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+                >
+                    Volver a las mesas
+                </button>
+
+            </div>
+        );
+    }
 
     if (pedido.items.length === 0) {
         return (
@@ -72,20 +132,35 @@ export default function CarritoPage() {
             </div>
 
             <div className="bg-white rounded-lg p-4 shadow-sm mb-6">
+
                 <div className="flex justify-between text-lg font-bold">
+
                     <span>Total</span>
 
                     <span>
                         S/ {totalVisual.toFixed(2)}
                     </span>
+
                 </div>
+
             </div>
 
+            {/* Error */}
+            {errorEnvio && (
+                <p className="text-red-500 text-sm mb-3">
+                    {errorEnvio}
+                </p>
+            )}
+
+            {/* Botón enviar */}
             <button
-                onClick={limpiarPedido}
-                className="w-full border border-gray-300 rounded py-2 text-gray-500 hover:bg-gray-50"
+                onClick={handleEnviar}
+                disabled={enviando}
+                className="w-full bg-blue-600 text-white rounded py-3 font-bold hover:bg-blue-700 disabled:opacity-50"
             >
-                Vaciar carrito
+                {enviando
+                    ? 'Enviando comanda...'
+                    : 'Enviar comanda'}
             </button>
         </div>
     );
