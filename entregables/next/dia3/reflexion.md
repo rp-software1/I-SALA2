@@ -10,3 +10,7 @@ En Next.js App Router:
 Server Components ➜ pueden importar Client Components
 Client Components ➜ NO pueden importar Server Components interactivos
 Como PedidoProvider ya tiene "use client", Next.js crea automáticamente el límite cliente/servidor. Por eso el layout no necesita marcarse como cliente.
+
+BLOQUE B:
+¿El TODO era más simple de conectar de lo que esperabas, o fue complicado?
+Si no fue tan dificil de conectar, la explicacin estaba bien.
