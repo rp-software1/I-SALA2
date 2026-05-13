@@ -2,8 +2,8 @@ sala: I-SALA1
 curso: Next.js
 dia: 3
 estado: terminado
-loom: ()
-bonus:
+loom: (https://drive.google.com/file/d/1aYjvUomvBTqdHKM6x45hWNwe-iR-2vJD/view?usp=sharing)
+bonus: https://drive.google.com/file/d/1SIefugsFouQcmx43G8EHncuHQsHfgVBq/view?usp=sharing
 
 ---
 
