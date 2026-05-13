@@ -7,7 +7,13 @@ import type { ItemPedido } from '../../src/types';
 import { enviarComanda } from './actions';
 
 export default function CarritoPage() {
-    const { pedido, quitarPlato, limpiarPedido } = usePedido();
+    const {
+        pedido,
+        quitarPlato,
+        limpiarPedido,
+        cambiarTipo,
+        asignarMesa,
+    } = usePedido();
 
     const router = useRouter();
 
@@ -18,14 +24,12 @@ export default function CarritoPage() {
     const [errorEnvio, setErrorEnvio] = useState<string | null>(null);
 
     const totalVisual = pedido.items.reduce(
-
         (acc: number, item: ItemPedido) =>
             acc + item.precioUnitario * item.cantidad,
         0
     );
 
     const handleEnviar = async (): Promise<void> => {
-
         setEnviando(true);
 
         setErrorEnvio(null);
@@ -33,23 +37,19 @@ export default function CarritoPage() {
         const resultado = await enviarComanda(pedido);
 
         if (resultado.ok) {
-
             setConfirmacion(resultado.pedidoId);
 
             limpiarPedido();
-
         } else {
-
             setErrorEnvio(resultado.error);
         }
 
         setEnviando(false);
     };
-    if (confirmacion) {
 
+    if (confirmacion) {
         return (
             <div className="text-center mt-16">
-
                 <p className="text-5xl mb-4">✅</p>
 
                 <h1 className="text-2xl font-bold mb-2">
@@ -69,7 +69,6 @@ export default function CarritoPage() {
                 >
                     Volver a las mesas
                 </button>
-
             </div>
         );
     }
@@ -99,6 +98,7 @@ export default function CarritoPage() {
                 Tu Carrito
             </h1>
 
+            {/* Lista de items */}
             <div className="space-y-3 mb-6">
                 {pedido.items.map((item: ItemPedido) => (
                     <div
@@ -131,18 +131,54 @@ export default function CarritoPage() {
                 ))}
             </div>
 
+            {/* Total */}
             <div className="bg-white rounded-lg p-4 shadow-sm mb-6">
-
                 <div className="flex justify-between text-lg font-bold">
-
                     <span>Total</span>
 
                     <span>
                         S/ {totalVisual.toFixed(2)}
                     </span>
+                </div>
+            </div>
 
+            {/* Tipo de pedido */}
+            <div className="bg-white rounded-lg p-4 shadow-sm mb-6 space-y-4">
+                <h2 className="font-bold">
+                    Tipo de pedido
+                </h2>
+
+                <div className="flex gap-3">
+                    <button
+                        onClick={() => cambiarTipo('para_llevar')}
+                        className={`px-4 py-2 rounded border ${pedido.tipo === 'para_llevar'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-white'
+                            }`}
+                    >
+                        Para llevar
+                    </button>
+
+                    <button
+                        onClick={() => cambiarTipo('mesa')}
+                        className={`px-4 py-2 rounded border ${pedido.tipo === 'mesa'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-white'
+                            }`}
+                    >
+                        Mesa
+                    </button>
                 </div>
 
+                {pedido.tipo === 'mesa' && (
+                    <input
+                        type="text"
+                        placeholder="Número de mesa"
+                        value={pedido.mesaId ?? ''}
+                        onChange={(e) => asignarMesa(e.target.value)}
+                        className="w-full border rounded px-3 py-2"
+                    />
+                )}
             </div>
 
             {/* Error */}
