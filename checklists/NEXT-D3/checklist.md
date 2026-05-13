@@ -1,8 +1,10 @@
 sala: I-SALA1
 curso: Next.js
 dia: 3
-estado: en_progreso
-loom: (agregar link al terminar)
+estado: terminado
+loom: (https://drive.google.com/file/d/1SIefugsFouQcmx43G8EHncuHQsHfgVBq/view?usp=sharing)
+bonus: https://drive.google.com/file/d1aYjvUomvBTqdHKM6x45hWNwe-iR-2vJD/view?usp=sharing
+
 ---
 
 ## Bloques
@@ -11,10 +13,10 @@ loom: (agregar link al terminar)
 - [Y] C — CarritoPage Client Component con Context
 - [Y] D — Server Action: enviarComanda()
 - [Y] E — Verificación TypeScript completa
-- [ ] F — Evaluación entre pares + Loom + PR
+- [Y] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
-- [Y] Agregar plato en /menu → aparece en /carrito
+- [] Agregar plato en /menu → aparece en /carrito
 - [] Enviar comanda desde /carrito → POST real al backend
-- [Y] npx tsc --noEmit → 0 errores
-- [ ] PR aprobado por sala par
+- [] npx tsc --noEmit → 0 errores
+- [] PR aprobado por sala par
