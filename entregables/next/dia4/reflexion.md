@@ -5,3 +5,19 @@ BLOQUE A:
 No usamos backend real ni endpoint GET /mesas/:id.
 Se utilizó la Opción B buscando la mesa dentro del array mock con getMesas().
 Esto implica peor rendimiento porque primero obtiene todas las mesas y luego filtra localmente.
+
+
+BLOQUE B:
+
+ ¿La predicción sobre generateMetadata async fue correcta? ¿Qué implica hacer dos fetches iguales (en generateMetadata y en el componente)?
+Sí, la predicción fue correcta.
+
+generateMetadata:
+
+puede ser async
+puede usar await
+puede hacer fetch
+puede consultar DB
+puede llamar getMesaById()
+
+Todo eso funciona porque corre en el servidor dentro del App Router de Next.js
