@@ -1,91 +1,107 @@
-import Link from "next/link";
-import { getMesaById } from "@/src/services/api";
+// app/mesa/[mesaId]/page.tsx
 
-interface MesaDetailProps {
-    params: Promise<{
+// Server Component — metadata dinámica + datos simulados
+
+import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import type { Metadata } from 'next';
+
+import { getMesaById } from '@/src/services/api';
+
+import MesaDetalle from './MesaDetalle';
+import MesaDetalleSkeleton from './MesaDetalleSkeleton';
+
+// Next.js App Router
+interface PageProps {
+    params: {
         mesaId: string;
-    }>;
+    };
 }
 
-export default async function MesaDetailPage({ params }: MesaDetailProps) {
+// generateMetadata — título dinámico
+export async function generateMetadata({
+    params,
+}: PageProps): Promise<Metadata> {
 
-    const { mesaId } = await params;
+    try {
 
-    const mesa = await getMesaById(mesaId);
+        const mesa = await getMesaById(params.mesaId);
+
+        return {
+            title: `Mesa ${mesa.numero} — Restaurante`,
+            description: `Estado: ${mesa.estado} | Capacidad: ${mesa.capacidad} personas`,
+        };
+
+    } catch {
+
+        return {
+            title: 'Mesa no encontrada — Restaurante',
+        };
+
+    }
+}
+
+export default async function MesaPage({
+    params,
+}: PageProps) {
+
+    let mesa;
+
+    try {
+
+        // Obtener mesa desde service/api
+        // (internamente usa mocks)
+        mesa = await getMesaById(params.mesaId);
+
+    } catch {
+
+        // Mostrar página 404
+        notFound();
+
+    }
 
     return (
-        <main className="p-6 max-w-xl mx-auto">
 
-            <h1 className="text-3xl font-bold mb-6 text-gray-800">
-                Detalle de Mesa
+        <div className="max-w-xl mx-auto p-6">
+
+            <h1 className="text-2xl font-bold mb-6">
+
+                Mesa {mesa.numero}
+
+                <span className="ml-3 text-base font-normal text-gray-500 capitalize">
+                    {mesa.estado.replace("_", " ")}
+                </span>
+
             </h1>
 
-            <div className="bg-white shadow-md rounded-2xl p-6 border border-gray-200">
+            {/* Información básica */}
+            <div className="bg-white rounded-lg p-4 shadow-sm mb-6">
 
-                <p className="mb-4 text-gray-600">
-                    ID recibido:
-                    <span className="ml-2 font-mono bg-gray-100 px-2 py-1 rounded">
-                        {mesaId}
+                <p className="text-gray-600">
+                    Capacidad:{' '}
+
+                    <span className="font-medium">
+                        {mesa.capacidad} personas
                     </span>
                 </p>
 
-                <div className="space-y-3">
+                <p className="text-gray-600">
+                    ID:{' '}
 
-                    <div className="flex justify-between border-b pb-2">
-                        <span className="font-semibold text-gray-700">
-                            Número
-                        </span>
-
-                        <span>
-                            {mesa.numero}
-                        </span>
-                    </div>
-
-                    <div className="flex justify-between border-b pb-2">
-                        <span className="font-semibold text-gray-700">
-                            Capacidad
-                        </span>
-
-                        <span>
-                            {mesa.capacidad} personas
-                        </span>
-                    </div>
-
-                    <div className="flex justify-between">
-                        <span className="font-semibold text-gray-700">
-                            Estado
-                        </span>
-
-                        <span className="
-                            px-3 py-1 rounded-full text-sm font-medium
-                            bg-green-100 text-green-700
-                        ">
-                            {mesa.estado}
-                        </span>
-                    </div>
-
-                </div>
+                    <span className="font-mono text-xs">
+                        {mesa.id}
+                    </span>
+                </p>
 
             </div>
 
-            <br />
+            {/* Suspense + Client Component */}
+            <Suspense fallback={<MesaDetalleSkeleton />}>
 
-            <Link
-                href="/mesas"
-                className="
-                    inline-block mb-6
-                    bg-gray-200 hover:bg-gray-300
-                    text-gray-800
-                    px-4 py-2 rounded-lg
-                    transition
-                "
-            >
-                ← Volver a Mesas
-            </Link>
+                <MesaDetalle mesa={mesa} />
 
+            </Suspense>
 
-
-
-        </main>
+        </div>
     );
 }
