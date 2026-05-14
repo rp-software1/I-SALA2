@@ -1,0 +1,15 @@
+¿La tabla "Server Component puede importar Client Component" fue suficientemente clara?
+daniela: si porque se mostro como corre la logica en ambos casos.
+
+¿Qué fue lo más difícil del día — el Context, el Server Action o TypeScript?
+daniela: Lo más difícil fue entender la separación entre Context y Server Actions.
+
+¿El Server Action fue más simple de lo esperado o más complicado?
+daniela: Server Action fue más simple de lo esperado porque se llama casi como una función normal.
+
+¿El tiempo fue suficiente para los 6 bloques?
+daniela: si lo fue.
+
+¿El proyecto restaurante-nextjs está listo para el Día 4?  SÍ / PARCIAL:
+Calificación general de la actividad (1-5): 5
+

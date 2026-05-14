@@ -2,17 +2,18 @@
 
 import { useState } from 'react';
 import type { Plato } from '../../src/types';
+import { usePedido } from '../../src/context/PedidoProvider';
 
 interface PlatoCardProps {
     plato: Plato;
 }
 
 export default function PlatoCard({ plato }: PlatoCardProps) {
-    // Estado local para feedback visual — el Context llega en Día 3
+    const { agregarPlato } = usePedido();
     const [agregado, setAgregado] = useState<boolean>(false);
 
     const handleAgregar = (): void => {
-        // TODO Día 3: llamar a agregarPlato(plato) del PedidoContext
+        agregarPlato(plato);
         setAgregado(true);
         setTimeout(() => setAgregado(false), 1500);
     };
@@ -27,8 +28,8 @@ export default function PlatoCard({ plato }: PlatoCardProps) {
                 <button
                     onClick={handleAgregar}
                     className={`px-4 py-2 rounded text-sm font-medium transition ${agregado
-                            ? 'bg-green-600 text-white'
-                            : 'bg-blue-600 text-white hover:bg-blue-700'
+                        ? 'bg-green-600 text-white'
+                        : 'bg-blue-600 text-white hover:bg-blue-700'
                         }`}
                 >
                     {agregado ? '✓ Agregado' : 'Agregar'}
