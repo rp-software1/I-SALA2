@@ -67,3 +67,14 @@ export async function cambiarEstadoPedido(
         setTimeout(() => resolve(pedido), 300);
     });
 }
+export async function getMesaById(id: string): Promise<Mesa> {
+    const todas = await getMesas();
+
+    const mesa = todas.find((m) => m.id === id);
+
+    if (!mesa) {
+        throw new Error(`Mesa con ID ${id} no encontrada`);
+    }
+
+    return mesa;
+}
