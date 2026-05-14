@@ -21,3 +21,7 @@ puede consultar DB
 puede llamar getMesaById()
 
 Todo eso funciona porque corre en el servidor dentro del App Router de Next.js
+
+BLOQUE C: 
+• ¿useTransition fue más claro o más confuso que un useState<boolean> de loading?
+FUE UN POCO CONFUSO PERO EN GENERAL CREO QUE ES MAS FACIL DE USAR. 

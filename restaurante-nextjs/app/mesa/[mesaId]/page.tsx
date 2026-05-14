@@ -1,7 +1,5 @@
 // app/mesa/[mesaId]/page.tsx
 
-// Server Component — metadata dinámica + datos simulados
-
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
@@ -11,21 +9,23 @@ import { getMesaById } from '@/src/services/api';
 import MesaDetalle from './MesaDetalle';
 import MesaDetalleSkeleton from './MesaDetalleSkeleton';
 
-// Next.js App Router
+// Next.js 16 — params async
 interface PageProps {
-    params: {
+    params: Promise<{
         mesaId: string;
-    };
+    }>;
 }
 
-// generateMetadata — título dinámico
+
 export async function generateMetadata({
     params,
 }: PageProps): Promise<Metadata> {
 
+    const { mesaId } = await params;
+
     try {
 
-        const mesa = await getMesaById(params.mesaId);
+        const mesa = await getMesaById(mesaId);
 
         return {
             title: `Mesa ${mesa.numero} — Restaurante`,
@@ -39,19 +39,22 @@ export async function generateMetadata({
         };
 
     }
+
 }
+
 
 export default async function MesaPage({
     params,
 }: PageProps) {
 
+    const { mesaId } = await params;
+
     let mesa;
 
     try {
 
-        // Obtener mesa desde service/api
-        // (internamente usa mocks)
-        mesa = await getMesaById(params.mesaId);
+        // Obtener mesa desde mocks
+        mesa = await getMesaById(mesaId);
 
     } catch {
 
@@ -69,7 +72,9 @@ export default async function MesaPage({
                 Mesa {mesa.numero}
 
                 <span className="ml-3 text-base font-normal text-gray-500 capitalize">
-                    {mesa.estado.replace("_", " ")}
+
+                    {mesa.estado.replace('_', ' ')}
+
                 </span>
 
             </h1>
@@ -78,19 +83,27 @@ export default async function MesaPage({
             <div className="bg-white rounded-lg p-4 shadow-sm mb-6">
 
                 <p className="text-gray-600">
+
                     Capacidad:{' '}
 
                     <span className="font-medium">
+
                         {mesa.capacidad} personas
+
                     </span>
+
                 </p>
 
                 <p className="text-gray-600">
+
                     ID:{' '}
 
                     <span className="font-mono text-xs">
+
                         {mesa.id}
+
                     </span>
+
                 </p>
 
             </div>
@@ -103,5 +116,7 @@ export default async function MesaPage({
             </Suspense>
 
         </div>
+
     );
+
 }
