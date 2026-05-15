@@ -11,7 +11,7 @@ loom: (agregar link al terminar)
 - [Y] B — page.tsx con fetch real + generateMetadata + notFound()
 - [Y] C — MesaDetalle Client Component + Suspense manual
 - [Y] D — Server Action cambiarEstadoMesa + revalidatePath
-- [ ] E — Verificación TypeScript + flujo completo
+- [Y] E — Verificación TypeScript + flujo completo
 - [ ] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
