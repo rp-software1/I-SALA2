@@ -24,4 +24,21 @@ Todo eso funciona porque corre en el servidor dentro del App Router de Next.js
 
 BLOQUE C: 
 • ¿useTransition fue más claro o más confuso que un useState<boolean> de loading?
-FUE UN POCO CONFUSO PERO EN GENERAL CREO QUE ES MAS FACIL DE USAR. 
+FUE UN POCO CONFUSO PERO EN GENERAL CREO QUE ES MAS FACIL DE USAR.
+BLOQUE D:
+ ¿revalidatePath fue lo que predijiste? ¿Actualiza en tiempo real o al siguiente request?
+revalidatePath() NO actualiza en tiempo real tipo WebSocket.
+
+Lo que hace es:
+
+invalidar el caché de una ruta
+marcarla como “stale”
+obligar a Next.js a volver a renderizarla en el siguiente request/render
+Entonces, sí: ocurrió exactamente lo esperado.
+El flujo real fue:
+cambiarEstadoMesa() modifica mesasMock
+revalidatePath('/mesas')
+Next invalida el caché de /mesas
+router.refresh() hace un nuevo request
+Next vuelve a renderizar usando datos nuevos
+Ves el estado actualizado
