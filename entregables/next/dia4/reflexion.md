@@ -42,3 +42,12 @@ Next invalida el caché de /mesas
 router.refresh() hace un nuevo request
 Next vuelve a renderizar usando datos nuevos
 Ves el estado actualizado
+
+
+BLOQUE E:
+¿Cuántos errores TypeScript había antes de resolver? 
+Había un total de 5 errores.
+Los errores se presentaban en los archivos:
+
+mesa/[mesaId]/MesaDetalle.tsx  → 2 errores
+mesa/[mesaId]/actions.ts        → 3 errores
