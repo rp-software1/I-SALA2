@@ -78,3 +78,12 @@ export async function getMesaById(id: string): Promise<Mesa> {
 
     return mesa;
 }
+
+export async function getPedidos(): Promise<Pedido[]> {
+    // Simulamos una pequeña latencia de red para que Next.js actúe de forma real
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(pedidosDB);
+        }, 300);
+    });
+}
