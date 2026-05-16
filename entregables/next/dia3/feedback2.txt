@@ -1,8 +1,0 @@
-¿Cuántos errores TypeScript había antes de resolver? Anota en reflexion.md sección E.
-• ¿El flujo manual encontró algún bug que TypeScript no detectó?
-## Sección E — Reflexión
-
-- Había varios errores TypeScript de tipos, imports y Client Components.
-
-- Sí. El flujo manual encontró bugs que TS no detectó, como el BOM invisible en `'use client'` y errores de UI/navegación.
-
