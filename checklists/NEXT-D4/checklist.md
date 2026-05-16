@@ -1,4 +1,5 @@
 ---
+NOMBRE: DANIELA/ CARLOS 
 sala: I-SALA2
 curso: Next.js
 dia: 4
