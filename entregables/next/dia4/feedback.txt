@@ -1,0 +1,13 @@
+CARLOS : 
+¿generateMetadata fue intuitivo o confuso al principio?
+Al principio un poco confuso, pero después se entendió que sirve para cambiar el título y metadata dinámicamente según la página.
+¿revalidatePath fue lo que esperaban — o esperaban actualización en tiempo real?
+Esperaba algo más en tiempo real al inicio, pero después entendí que revalidatePath refresca los datos y vuelve a renderizar la ruta.
+¿useTransition fue más claro o confuso que un useState<boolean>?
+Más confuso al inicio porque no estaba acostumbrado, pero después quedó claro que ayuda a manejar estados de carga sin bloquear la UI.
+¿El tiempo fue suficiente para los 6 bloques?
+Sí, aunque algunos bloques necesitaron más práctica para entenderlos bien.
+¿El proyecto restaurante-nextjs está listo para el Día 5?
+PARCIAL
+Calificación general de la actividad (1-5):
+4/5

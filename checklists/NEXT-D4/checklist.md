@@ -12,7 +12,7 @@ loom: (agregar link al terminar)
 - [Y] C — MesaDetalle Client Component + Suspense manual
 - [Y] D — Server Action cambiarEstadoMesa + revalidatePath
 - [Y] E — Verificación TypeScript + flujo completo
-- [ ] F — Evaluación entre pares + Loom + PR
+- [Y] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
 - [ ] Clic en mesa → /mesa/[id] muestra datos reales
