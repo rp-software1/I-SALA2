@@ -81,6 +81,12 @@ export default function MesaDetalle({
                 Cambiar estado de la mesa:
             </p>
 
+            <p className="text-sm text-gray-600 mb-4">
+                {mesa.pedidoActivoId
+                    ? `Pedido activo: #${mesa.pedidoActivoId}`
+                    : 'No hay pedido activo'}
+            </p>
+
             <div className="flex flex-wrap gap-2">
                 {ESTADOS.map(
                     ({ valor, etiqueta, color }) => (
