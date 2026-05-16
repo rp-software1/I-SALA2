@@ -1,4 +1,4 @@
-sala: I-SALA1
+sala: I-SALA2
 curso: Next.js
 dia: 3
 estado: terminado

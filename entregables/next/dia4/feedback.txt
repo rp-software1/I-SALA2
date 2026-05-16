@@ -11,3 +11,23 @@ Sí, aunque algunos bloques necesitaron más práctica para entenderlos bien.
 PARCIAL
 Calificación general de la actividad (1-5):
 4/5
+
+
+Daniela :
+¿generateMetadata fue intuitivo o confuso al principio?
+
+Al principio fue confuso, despues se fue entendiendo mejor, se nota que hace falta practicar mas. 
+¿revalidatePath fue lo que esperaban — o esperaban actualización en tiempo real?
+
+No sabia del revalidatePath, pero entendi que no es en tiempo real sino que recarga la pagina, al inicio esperaba que fuera en tiempo real, pero luego quedo claro que no lo es.
+¿useTransition fue más claro o confuso que un useState<boolean>?
+
+Fue mas claro que un useState, ya que ayuda a manejar estados de carga sin bloquear la UI.
+¿El tiempo fue suficiente para los 6 bloques?
+
+Suficiente pero con dificultad, ya que algunos bloques necesitaron mas practica para entenderlos bien.
+¿El proyecto restaurante-nextjs está listo para el Día 5?
+
+PARCIAL
+Calificación general de la actividad (1-5):
+4

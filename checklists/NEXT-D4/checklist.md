@@ -1,9 +1,10 @@
 ---
-sala: I-SALA1
+sala: I-SALA2
 curso: Next.js
 dia: 4
-estado: en_progreso
-loom: (agregar link al terminar)
+estado: completado
+loom: (https://drive.google.com/file/d/1kBon7fjLj5OWfNyIuJ3RO_1c4q21gpet/view?usp=sharing)
+bonus: https://drive.google.com/file/d/1whVVogHh7I8TYhITKf7cv4HN0Gli5pEV/view?usp=sharing
 ---
 
 ## Bloques
@@ -15,8 +16,8 @@ loom: (agregar link al terminar)
 - [Y] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
-- [ ] Clic en mesa → /mesa/[id] muestra datos reales
-- [ ] Pestaña del browser muestra "Mesa N — Restaurante"
-- [ ] Cambiar estado → la mesa en /mesas se actualiza
-- [ ] npx tsc --noEmit → 0 errores
-- [ ] PR aprobado por sala par
+- [Y] Clic en mesa → /mesa/[id] muestra datos reales
+- [Y] Pestaña del browser muestra "Mesa N — Restaurante"
+- [Y] Cambiar estado → la mesa en /mesas se actualiza
+- [Y] npx tsc --noEmit → 0 errores
+- [Y] PR aprobado por sala par
