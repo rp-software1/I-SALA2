@@ -9,7 +9,7 @@ loom: (agregar link al terminar)
 
 ## Bloques
 - [Y] A — getPedidos en api.ts + verificar endpoints con Postman
-- [ ] B — ComandasPage Server Component + metadata estática
+- [Y] B — ComandasPage Server Component + metadata estática
 - [ ] C — ComandaCard Client Component + flujo de estados
 - [ ] D — avanzarEstadoPedido Server Action + revalidatePath
 - [ ] E — NavBar actualizado + loading + error + verificación TypeScript

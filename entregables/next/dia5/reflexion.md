@@ -2,3 +2,11 @@ BLOQUE A:
 ¿El backend tiene filtro por estado o hay que filtrar en el frontend?
 En este caso como estamos trabajando simulando el backend lo haremos en el frontend con el metodo filter.
 
+BLQUE B:
+ ¿La predicción sobre generateMetadata síncrona fue correcta?
+Sí, fue correcta.
+
+metadata quedó síncrona porque:
+
+El título es estático.
+No hiciste fetch dentro de generateMetadata.
