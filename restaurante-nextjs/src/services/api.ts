@@ -14,14 +14,80 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 console.log("API URL:", BASE_URL);
 
 // ── DB simulada ─────────────────────
-let pedidosDB: Pedido[] = [];
+let pedidosDB: Pedido[] = [
+    {
+        id: uuid(),
+        mesaId: "1",
+        tipo: "mesa",
+        estado: "pendiente",
+
+        creadoEn: new Date().toISOString(),
+
+        total: 35,
+
+        items: [
+            {
+                platoId: "1",
+                nombre: "Lomo Saltado",
+                cantidad: 2,
+                precioUnitario: 15,
+            },
+
+            {
+                platoId: "2",
+                nombre: "Inka Cola",
+                cantidad: 1,
+                precioUnitario: 5,
+            },
+        ],
+    },
+
+    {
+        id: uuid(),
+        mesaId: null,
+        tipo: "para_llevar",
+        estado: "lista",
+
+        creadoEn: new Date().toISOString(),
+
+        total: 18,
+
+        items: [
+            {
+                platoId: "3",
+                nombre: "Chaufa",
+                cantidad: 1,
+                precioUnitario: 18,
+            },
+        ],
+    },
+
+    {
+        id: uuid(),
+        mesaId: "2",
+        tipo: "mesa",
+        estado: "entregada",
+
+        creadoEn: new Date().toISOString(),
+
+        total: 42,
+
+        items: [
+            {
+                platoId: "4",
+                nombre: "Ají de Gallina",
+                cantidad: 2,
+                precioUnitario: 21,
+            },
+        ],
+    },
+];
 
 // ── Funciones ───────────────────────
 
 export async function getMesas(): Promise<Mesa[]> {
     return new Promise(resolve => {
         setTimeout(() => resolve(mesasMock), 300);
-        // throw new Error("503");
     });
 }
 
@@ -40,6 +106,7 @@ export async function crearPedido(
         const nuevoPedido: Pedido = {
             id: uuid(),
             estado: "pendiente",
+            creadoEn: new Date().toISOString(),
             ...datos,
         };
 
@@ -62,12 +129,16 @@ export async function cambiarEstadoPedido(
 
         if (pedido) {
             pedido.estado = estado;
+
+            pedido.actualizadoEn = new Date().toISOString();
         }
 
         setTimeout(() => resolve(pedido), 300);
     });
 }
+
 export async function getMesaById(id: string): Promise<Mesa> {
+
     const todas = await getMesas();
 
     const mesa = todas.find((m) => m.id === id);
@@ -79,12 +150,14 @@ export async function getMesaById(id: string): Promise<Mesa> {
     return mesa;
 }
 
-
 export async function getPedidos(): Promise<Pedido[]> {
-    // Simulamos una pequeña latencia de red para que Next.js actúe de forma real
+
     return new Promise((resolve) => {
+
         setTimeout(() => {
+
             resolve(pedidosDB);
+
         }, 300);
     });
 }

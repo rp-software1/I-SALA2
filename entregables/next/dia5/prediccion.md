@@ -8,3 +8,8 @@ BLOQUE B:
 ¿Puede ser síncrona? Sí.
 
 ¿Por qué? Porque generateMetadata solo necesita async cuando haces fetch, consultas una API o esperas datos dinámicos. Si el título de /comandas es fijo, puede ser una función normal síncrona.
+
+BLOQUE C: 
+¿Qué muestra ComandaCard para un pedido tipo "para_llevar" donde mesaId es null?
+Para un pedido "para_llevar" muestra: Para llevar 
+Para un pedido "mesa" muestra: numero de mesa 

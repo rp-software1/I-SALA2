@@ -10,3 +10,7 @@ metadata quedó síncrona porque:
 
 El título es estático.
 No hiciste fetch dentro de generateMetadata.
+
+BLOQUE C: 
+¿La tabla de flujo de estados fue clara antes de escribir SIGUIENTE?
+Sí 
