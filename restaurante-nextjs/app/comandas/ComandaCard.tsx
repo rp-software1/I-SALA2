@@ -1,76 +1,111 @@
 'use client';
 
-import { useTransition } from 'react';
-import type { Pedido, EstadoPedido } from '../../src/types';
+import { useState, useTransition } from 'react';
 
-// comento temporalmente si no existe actions.ts
-// import { avanzarEstadoPedido } from './actions';
+import type {
+    Pedido,
+    EstadoPedido,
+} from '../../src/types';
 
-// Flujo del negocio
 const SIGUIENTE: Partial<Record<EstadoPedido, EstadoPedido>> = {
     pendiente: 'en_preparacion',
     en_preparacion: 'lista',
     lista: 'entregada',
 };
 
-const CONFIG: Record<EstadoPedido, { color: string; label: string }> = {
+const CONFIG: Record<
+    EstadoPedido,
+    { color: string; label: string }
+> = {
+
     pendiente: {
         color: 'bg-orange-100 border-orange-400 text-orange-800',
         label: 'Pendiente',
     },
+
     en_preparacion: {
         color: 'bg-blue-100 border-blue-400 text-blue-800',
         label: 'En preparación',
     },
+
     lista: {
         color: 'bg-purple-100 border-purple-400 text-purple-800',
         label: 'Lista',
     },
+
     entregada: {
         color: 'bg-green-100 border-green-400 text-green-800',
         label: 'Entregada',
     },
+
     cancelada: {
         color: 'bg-gray-100 border-gray-400 text-gray-600',
         label: 'Cancelada',
     },
+
     cerrada: {
         color: 'bg-gray-100 border-gray-400 text-gray-600',
         label: 'Cerrada',
     },
 };
 
-export default function ComandaCard({ pedido }: { pedido: Pedido }) {
+export default function ComandaCard({
+    pedido,
+}: {
+    pedido: Pedido;
+}) {
+
     const [isPending, startTransition] = useTransition();
 
-    const config = CONFIG[pedido.estado] ?? CONFIG.cancelada;
+    const [estadoActual, setEstadoActual] =
+        useState<EstadoPedido>(pedido.estado);
 
-    const siguiente = SIGUIENTE[pedido.estado];
+    const config =
+        CONFIG[estadoActual] ?? CONFIG.cancelada;
+
+    const siguiente =
+        SIGUIENTE[estadoActual];
 
     const hora = pedido.creadoEn
-        ? new Date(pedido.creadoEn).toLocaleTimeString('es-PE', {
-            hour: '2-digit',
-            minute: '2-digit',
-        })
+        ? new Date(pedido.creadoEn).toLocaleTimeString(
+            'es-PE',
+            {
+                hour: '2-digit',
+                minute: '2-digit',
+            }
+        )
         : '--:--';
 
     const handleAvanzar = (): void => {
+
         if (!siguiente) return;
 
         startTransition(async () => {
 
-            //  temporal mientras trabajas con mocks
-            console.log('Avanzar pedido:', pedido.id, '→', siguiente);
+            // simulación de request
+            await new Promise(resolve =>
+                setTimeout(resolve, 1000)
+            );
 
-            // luego aquí irá:
-            // const r = await avanzarEstadoPedido(pedido.id, siguiente);
+            // actualizar estado visual
+            setEstadoActual(siguiente);
+
+            console.log(
+                'Avanzar pedido:',
+                pedido.id,
+                '→',
+                siguiente
+            );
         });
     };
 
     return (
-        <div className={`border-2 rounded-lg p-4 ${config.color}`}>
+        <div
+            className={`border-2 rounded-lg p-4 ${config.color}`}
+        >
 
             <div className='flex justify-between items-start mb-2'>
+
                 <div>
                     <span className='font-bold text-sm'>
                         {pedido.tipo === 'mesa'
@@ -108,9 +143,12 @@ export default function ComandaCard({ pedido }: { pedido: Pedido }) {
             <div className='flex justify-between font-bold text-sm border-t border-current/20 pt-2 mb-3'>
                 <span>Total</span>
 
-                <span>S/ {pedido.total.toFixed(2)}</span>
+                <span>
+                    S/ {pedido.total.toFixed(2)}
+                </span>
             </div>
 
+            {/* desaparece cuando llega a entregada */}
             {siguiente && (
                 <button
                     onClick={handleAvanzar}
