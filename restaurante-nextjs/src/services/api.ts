@@ -15,8 +15,6 @@ console.log("API URL:", BASE_URL);
 
 // ── DB simulada ─────────────────────
 let pedidosDB: Pedido[] = [
-
-
 ];
 
 // ── Funciones ───────────────────────
