@@ -1,13 +1,19 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useTransition } from 'react';
 
 import type {
     Pedido,
     EstadoPedido,
 } from '../../src/types';
 
-const SIGUIENTE: Partial<Record<EstadoPedido, EstadoPedido>> = {
+import {
+    usePedido,
+} from '../../src/context/PedidoProvider';
+
+const SIGUIENTE: Partial<
+    Record<EstadoPedido, EstadoPedido>
+> = {
     pendiente: 'en_preparacion',
     en_preparacion: 'lista',
     lista: 'entregada',
@@ -19,32 +25,38 @@ const CONFIG: Record<
 > = {
 
     pendiente: {
-        color: 'bg-orange-100 border-orange-400 text-orange-800',
+        color:
+            'bg-orange-100 border-orange-400 text-orange-800',
         label: 'Pendiente',
     },
 
     en_preparacion: {
-        color: 'bg-blue-100 border-blue-400 text-blue-800',
+        color:
+            'bg-blue-100 border-blue-400 text-blue-800',
         label: 'En preparación',
     },
 
     lista: {
-        color: 'bg-purple-100 border-purple-400 text-purple-800',
+        color:
+            'bg-purple-100 border-purple-400 text-purple-800',
         label: 'Lista',
     },
 
     entregada: {
-        color: 'bg-green-100 border-green-400 text-green-800',
+        color:
+            'bg-green-100 border-green-400 text-green-800',
         label: 'Entregada',
     },
 
     cancelada: {
-        color: 'bg-gray-100 border-gray-400 text-gray-600',
+        color:
+            'bg-gray-100 border-gray-400 text-gray-600',
         label: 'Cancelada',
     },
 
     cerrada: {
-        color: 'bg-gray-100 border-gray-400 text-gray-600',
+        color:
+            'bg-gray-100 border-gray-400 text-gray-600',
         label: 'Cerrada',
     },
 };
@@ -55,19 +67,24 @@ export default function ComandaCard({
     pedido: Pedido;
 }) {
 
-    const [isPending, startTransition] = useTransition();
+    const [isPending, startTransition] =
+        useTransition();
 
-    const [estadoActual, setEstadoActual] =
-        useState<EstadoPedido>(pedido.estado);
+    const {
+        actualizarEstadoPedido,
+    } = usePedido();
 
     const config =
-        CONFIG[estadoActual] ?? CONFIG.cancelada;
+        CONFIG[pedido.estado] ??
+        CONFIG.cancelada;
 
     const siguiente =
-        SIGUIENTE[estadoActual];
+        SIGUIENTE[pedido.estado];
 
     const hora = pedido.creadoEn
-        ? new Date(pedido.creadoEn).toLocaleTimeString(
+        ? new Date(
+            pedido.creadoEn
+        ).toLocaleTimeString(
             'es-PE',
             {
                 hour: '2-digit',
@@ -82,16 +99,19 @@ export default function ComandaCard({
 
         startTransition(async () => {
 
-            // simulación de request
+            // simulación request
             await new Promise(resolve =>
                 setTimeout(resolve, 1000)
             );
 
-            // actualizar estado visual
-            setEstadoActual(siguiente);
+            // actualizar GLOBALMENTE
+            actualizarEstadoPedido(
+                pedido.id,
+                siguiente
+            );
 
             console.log(
-                'Avanzar pedido:',
+                'Pedido actualizado:',
                 pedido.id,
                 '→',
                 siguiente
@@ -108,6 +128,7 @@ export default function ComandaCard({
 
                 <div>
                     <span className='font-bold text-sm'>
+
                         {pedido.tipo === 'mesa'
                             ? `Mesa ${pedido.mesaId ?? '?'}`
                             : 'Para llevar'}
@@ -124,11 +145,14 @@ export default function ComandaCard({
             </div>
 
             <ul className='text-sm mb-3 space-y-1'>
-                {pedido.items.map((item) => (
+
+                {pedido.items.map(item => (
+
                     <li
                         key={item.platoId}
                         className='flex justify-between'
                     >
+
                         <span>
                             {item.cantidad}x {item.nombre}
                         </span>
@@ -141,6 +165,7 @@ export default function ComandaCard({
             </ul>
 
             <div className='flex justify-between font-bold text-sm border-t border-current/20 pt-2 mb-3'>
+
                 <span>Total</span>
 
                 <span>
@@ -148,13 +173,14 @@ export default function ComandaCard({
                 </span>
             </div>
 
-            {/* desaparece cuando llega a entregada */}
             {siguiente && (
+
                 <button
                     onClick={handleAvanzar}
                     disabled={isPending}
                     className='w-full py-2 rounded bg-white/70 hover:bg-white/90 text-sm font-medium disabled:opacity-50'
                 >
+
                     {isPending
                         ? 'Actualizando...'
                         : `Marcar como: ${CONFIG[siguiente].label}`}

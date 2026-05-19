@@ -15,72 +15,8 @@ console.log("API URL:", BASE_URL);
 
 // ── DB simulada ─────────────────────
 let pedidosDB: Pedido[] = [
-    {
-        id: uuid(),
-        mesaId: "1",
-        tipo: "mesa",
-        estado: "pendiente",
 
-        creadoEn: new Date().toISOString(),
 
-        total: 35,
-
-        items: [
-            {
-                platoId: "1",
-                nombre: "Lomo Saltado",
-                cantidad: 2,
-                precioUnitario: 15,
-            },
-
-            {
-                platoId: "2",
-                nombre: "Inka Cola",
-                cantidad: 1,
-                precioUnitario: 5,
-            },
-        ],
-    },
-
-    {
-        id: uuid(),
-        mesaId: null,
-        tipo: "para_llevar",
-        estado: "lista",
-
-        creadoEn: new Date().toISOString(),
-
-        total: 18,
-
-        items: [
-            {
-                platoId: "3",
-                nombre: "Chaufa",
-                cantidad: 1,
-                precioUnitario: 18,
-            },
-        ],
-    },
-
-    {
-        id: uuid(),
-        mesaId: "2",
-        tipo: "mesa",
-        estado: "entregada",
-
-        creadoEn: new Date().toISOString(),
-
-        total: 42,
-
-        items: [
-            {
-                platoId: "4",
-                nombre: "Ají de Gallina",
-                cantidad: 2,
-                precioUnitario: 21,
-            },
-        ],
-    },
 ];
 
 // ── Funciones ───────────────────────
