@@ -14,3 +14,11 @@ No hiciste fetch dentro de generateMetadata.
 BLOQUE C: 
 ¿La tabla de flujo de estados fue clara antes de escribir SIGUIENTE?
 Sí 
+
+BLOQUE D: 
+¿La lista se actualizó automáticamente o necesitaron router.refresh()?
+En tu implementación actual con mocks:
+
+❌ la lista NO se actualizó automáticamente entre “Activas” y “Cerradas”
+❌ tampoco usaron router.refresh()
+✅ solo cambió el estado visual dentro de ComandaCard

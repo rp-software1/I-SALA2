@@ -13,3 +13,14 @@ BLOQUE C:
 ¿Qué muestra ComandaCard para un pedido tipo "para_llevar" donde mesaId es null?
 Para un pedido "para_llevar" muestra: Para llevar 
 Para un pedido "mesa" muestra: numero de mesa 
+
+BLOQUE D: 
+Si avanzarEstadoPedido() llama a revalidatePath("/comandas") en el servidor, ¿ComandasPage hace el fetch automáticamente o el usuario tiene que recargar?
+¿La lista se actualiza automáticamente? ___________
+¿router.refresh() sería necesario en el Cliente? ___________
+
+¿La lista se actualiza automáticamente? → Sí, si ComandasPage es un Server Component y hace el fetch en el servidor.
+revalidatePath("/comandas") invalida el caché de esa ruta y Next.js vuelve a ejecutar el fetch cuando la página se renderiza otra vez.
+
+¿router.refresh() sería necesario en el Cliente? → Sí, normalmente sí, si quieres que el usuario vea el cambio inmediatamente sin recargar manualmente.
+revalidatePath() solo invalida el caché en el servidor; router.refresh() fuerza al cliente a pedir el nuevo render actualizado.

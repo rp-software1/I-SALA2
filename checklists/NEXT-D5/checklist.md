@@ -11,7 +11,7 @@ loom: (agregar link al terminar)
 - [Y] A — getPedidos en api.ts + verificar endpoints con Postman
 - [Y] B — ComandasPage Server Component + metadata estática
 - [Y] C — ComandaCard Client Component + flujo de estados
-- [ ] D — avanzarEstadoPedido Server Action + revalidatePath
+- [Y] D — avanzarEstadoPedido Server Action + revalidatePath
 - [ ] E — NavBar actualizado + loading + error + verificación TypeScript
 - [ ] F — Evaluación entre pares + Loom + PR
 
