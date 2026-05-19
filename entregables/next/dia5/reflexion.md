@@ -22,3 +22,6 @@ En tu implementación actual con mocks:
 ❌ la lista NO se actualizó automáticamente entre “Activas” y “Cerradas”
 ❌ tampoco usaron router.refresh()
 ✅ solo cambió el estado visual dentro de ComandaCard
+
+BLOQUE E:
+¿Cuántos errores TypeScript había? cuando ejecute npx tsc --noEmit no habia ninguno. 
