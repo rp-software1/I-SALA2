@@ -3,8 +3,10 @@
 sala: I-SALA2
 curso: Next.js
 dia: 5
-estado: en_progreso
-loom: (agregar link al terminar)
+estado: terminando
+loom: (https://drive.google.com/file/d/1kd2EMnxPUi5quJNYfeGhHAVgRBCE04FH/view?usp=sharing)
+bonus: https://drive.google.com/file/d/1UYocSghkh-1NGlmarzOy6n9ffY0Ikepw/view?usp=sharing
+
 ---
 
 ## Bloques
@@ -16,9 +18,9 @@ loom: (agregar link al terminar)
 - [Y] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
-- [ ] /comandas muestra pedidos reales del backend
-- [ ] Avanzar estado → lista actualizada automáticamente
-- [ ] Flujo pendiente→en_preparacion→lista→entregada funciona
-- [ ] npx tsc --noEmit → 0 errores
-- [ ] PR aprobado por sala par
+- [Y] /comandas muestra pedidos reales del backend
+- [Y] Avanzar estado → lista actualizada automáticamente
+- [Y] Flujo pendiente→en_preparacion→lista→entregada funciona
+- [Y] npx tsc --noEmit → 0 errores
+- [Y] PR aprobado por sala par
 
