@@ -14,14 +14,14 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 console.log("API URL:", BASE_URL);
 
 // ── DB simulada ─────────────────────
-let pedidosDB: Pedido[] = [];
+let pedidosDB: Pedido[] = [
+];
 
 // ── Funciones ───────────────────────
 
 export async function getMesas(): Promise<Mesa[]> {
     return new Promise(resolve => {
         setTimeout(() => resolve(mesasMock), 300);
-        // throw new Error("503");
     });
 }
 
@@ -40,6 +40,7 @@ export async function crearPedido(
         const nuevoPedido: Pedido = {
             id: uuid(),
             estado: "pendiente",
+            creadoEn: new Date().toISOString(),
             ...datos,
         };
 
@@ -62,12 +63,16 @@ export async function cambiarEstadoPedido(
 
         if (pedido) {
             pedido.estado = estado;
+
+            pedido.actualizadoEn = new Date().toISOString();
         }
 
         setTimeout(() => resolve(pedido), 300);
     });
 }
+
 export async function getMesaById(id: string): Promise<Mesa> {
+
     const todas = await getMesas();
 
     const mesa = todas.find((m) => m.id === id);
@@ -77,4 +82,16 @@ export async function getMesaById(id: string): Promise<Mesa> {
     }
 
     return mesa;
+}
+
+export async function getPedidos(): Promise<Pedido[]> {
+
+    return new Promise((resolve) => {
+
+        setTimeout(() => {
+
+            resolve(pedidosDB);
+
+        }, 300);
+    });
 }

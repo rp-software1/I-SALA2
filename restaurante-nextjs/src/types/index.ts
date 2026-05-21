@@ -56,9 +56,25 @@ export interface EstadoPedidoContext {
 
 export interface PedidoContextType {
     pedido: EstadoPedidoContext;
+
+    pedidos: Pedido[];
+
+    setPedidos: React.Dispatch<
+        React.SetStateAction<Pedido[]>
+    >;
+
     agregarPlato: (plato: Plato) => void;
+
     quitarPlato: (platoId: string) => void;
+
     cambiarTipo: (tipo: TipoPedido) => void;
+
     asignarMesa: (mesaId: string) => void;
+
     limpiarPedido: () => void;
+
+    actualizarEstadoPedido: (
+        pedidoId: string,
+        estado: EstadoPedido
+    ) => void;
 }

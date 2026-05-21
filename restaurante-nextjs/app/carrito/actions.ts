@@ -1,27 +1,41 @@
 'use server';
 
-import type { EstadoPedidoContext } from '../../src/types';
+import { crearPedido } from '../../src/services/api';
 
-// Server Action simulado con mock data
+import type {
+    EstadoPedidoContext,
+} from '../../src/types';
+
 export async function enviarComanda(
     pedido: EstadoPedidoContext
-): Promise<{ ok: true; pedidoId: string } | { ok: false; error: string }> {
+): Promise<
+    { ok: true; pedidoId: string }
+    | { ok: false; error: string }
+> {
 
     try {
 
         // Simula espera del servidor
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) =>
+            setTimeout(resolve, 2000)
+        );
 
-        // Simula que el servidor recibió el pedido
-        console.log('Pedido recibido:', pedido);
+        // Crear pedido REAL en pedidosDB
+        const nuevoPedido = await crearPedido({
+            mesaId: pedido.mesaId,
+            tipo: pedido.tipo,
+            total: pedido.total,
+            items: pedido.items,
+        });
 
-        // Generar ID falso
-        const pedidoId = crypto.randomUUID();
+        console.log(
+            'Pedido creado:',
+            nuevoPedido
+        );
 
-        // Respuesta simulada
         return {
             ok: true,
-            pedidoId,
+            pedidoId: nuevoPedido.id,
         };
 
     } catch (err: unknown) {
