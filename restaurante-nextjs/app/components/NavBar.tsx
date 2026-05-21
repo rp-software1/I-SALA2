@@ -1,26 +1,56 @@
-'use client'; // NavBar usa usePathname (hook) → necesita ser Client Component
+'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { usePedido } from '../../src/context/PedidoProvider';
 
 export default function NavBar() {
+
     const pathname = usePathname();
-    const { pedido } = usePedido();
+
+    const {
+        pedido,
+        pedidos,
+    } = usePedido();
+
+    // carrito
     const totalItems = pedido.items.reduce(
         (acc, item) => acc + item.cantidad,
         0
     );
-    // Función helper — detecta si la ruta está activa
+
+    // comandas pendientes
+    const comandasPendientes = pedidos.filter(
+        p => p.estado === 'pendiente'
+    ).length;
+
     const esActiva = (ruta: string): string =>
-        pathname === ruta ? 'font-bold text-blue-700 underline'
+        pathname === ruta
+            ? 'font-bold text-blue-700 underline'
             : 'text-gray-700 hover:text-blue-600';
 
     return (
         <nav className='bg-white shadow px-6 py-3 flex gap-6'>
-            <span className='font-bold text-lg mr-4'>🍽 Restaurante</span>
-            <Link href='/mesas' className={esActiva('/mesas')}>Mesas</Link>
-            <Link href='/menu' className={esActiva('/menu')}>Menú</Link>
+
+            <span className='font-bold text-lg mr-4'>
+                🍽 Restaurante
+            </span>
+
+            <Link
+                href='/mesas'
+                className={esActiva('/mesas')}
+            >
+                Mesas
+            </Link>
+
+            <Link
+                href='/menu'
+                className={esActiva('/menu')}
+            >
+                Menú
+            </Link>
+
+            {/* carrito */}
             <Link
                 href='/carrito'
                 className={`${esActiva('/carrito')} relative`}
@@ -33,10 +63,20 @@ export default function NavBar() {
                     </span>
                 )}
             </Link>
-            <Link href="/comandas" className={esActiva("/comandas")}>
-                Comandas
-            </Link>
 
+            {/* comandas */}
+            <Link
+                href='/comandas'
+                className={`${esActiva('/comandas')} relative`}
+            >
+                Comandas
+
+                {comandasPendientes > 0 && (
+                    <span className='ml-1 bg-orange-500 text-white text-xs rounded-full px-2 py-0.5'>
+                        {comandasPendientes}
+                    </span>
+                )}
+            </Link>
 
         </nav>
     );
