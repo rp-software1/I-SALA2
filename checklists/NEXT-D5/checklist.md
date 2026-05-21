@@ -13,7 +13,7 @@ loom: (agregar link al terminar)
 - [Y] C — ComandaCard Client Component + flujo de estados
 - [Y] D — avanzarEstadoPedido Server Action + revalidatePath
 - [Y] E — NavBar actualizado + loading + error + verificación TypeScript
-- [ ] F — Evaluación entre pares + Loom + PR
+- [Y] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
 - [ ] /comandas muestra pedidos reales del backend
