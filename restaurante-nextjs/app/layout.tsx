@@ -4,9 +4,30 @@ import NavBar from './components/NavBar';
 import PedidoProvider from '../src/context/PedidoProvider';
 
 
+// app/layout.tsx — reemplazar export const metadata:
 export const metadata: Metadata = {
-  title: 'Sistema de Restaurante',
-  description: 'Gestión de mesas, menú y comandas',
+  title: {
+    default: 'Sistema de Restaurante',
+    template: '%s — Sistema de Restaurante',
+    // template aplica a todas las páginas que definen metadata
+  },
+  description: 'Panel de gestión de mesas, menú y comandas del restaurante.',
+  robots: {
+    index: false,   // app interna — no indexar en Google
+    follow: false,
+  },
+  openGraph: {
+    title: 'Sistema de Restaurante',
+    description: 'Panel de gestión de mesas, menú y comandas del restaurante.',
+    type: 'website',
+    locale: 'es_PE',
+    // url: agregar la URL de producción en el Día 7 después del deploy
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Sistema de Restaurante',
+    description: 'Panel de gestión de mesas, menú y comandas del restaurante.',
+  },
 };
 
 export default function RootLayout({
