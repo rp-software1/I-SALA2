@@ -1,12 +1,34 @@
 ¿La tabla de flujo de estados fue clara desde el inicio?
+
 Sí, ayudó bastante a entender el ciclo: pendiente → en_preparacion → lista → entregada.
+daniela: si fue clara ya que nos ayudo cn el tema de comandas que sea mas dinamico al momento de 
+visualizar un pedido.
+
 ¿revalidatePath fue suficiente o necesitaron router.refresh()?
-Con mocks no fue suficiente; se necesitó manejo de estado global con Context. No usamos router.refresh().
+
+Con mocks no fue suficiente; se necesitó manejo de estado global con Context. 
+No usamos router.refresh().
+
+daniela: revalidatePath fue suficiente para refrescar las páginas y 
+mantener los datos sincronizados en el proyecto.
 ¿Partial<Record<...>> quedó claro o generó confusión TypeScript?
-Generó un poco de confusión al inicio, pero luego quedó claro que sirve para mapear estados opcionales.
+
+Generó un poco de confusión al inicio, pero luego quedó claro que sirve para mapear
+ estados opcionales.
+
+ daniela:si fue confuso pero al final entendi que Record define las claves y 
+ Partial permite que no todas tengan que existan obligatoriamente.
+
 ¿El tiempo fue suficiente para los 6 bloques?
 Parcial. Alcanzó, pero algunos bloques necesitaron bastante depuración.
+
+daniela:Si lo fue ya que logramos terminar todos los bloques.
+
 ¿El proyecto está listo para el Día 6?
+daniela: PARCIAL
 PARCIAL
 Calificación general de la actividad (1-5):
 4/5
+4/5
+
+
