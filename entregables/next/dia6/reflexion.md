@@ -11,3 +11,7 @@ En Client Components se usa document.title con useEffect para cambiar el título
 BLOQUE B:
 ¿robots: { index: false } fue una decisión que esperaban en una app de restaurante? ¿Por qué importa? 
 Sí, fue una decisión esperada. Porque la app de restaurante es para uso interno, no necesita ser indexada por motores de búsqueda. Importa para controlar la visibilidad de la app en buscadores y mantener la privacidad de la información interna del restaurante.
+
+BLOQUE C:
+ ¿Encontraron algo inesperado en la auditoría? ¿Qué fue lo más común?
+ Sí. En la auditoría aparecieron varios residuos típicos de desarrollo que no estaban afectando la ejecución, pero sí la limpieza del código para producción.
