@@ -12,7 +12,7 @@ loom: (agregar link al terminar)
 - [Y] B — Open Graph en layout.tsx + next.config.ts
 - [Y] C — Auditoría del proyecto (TODO, console.log, imports)
 - [Y] D — npm run build sin errores + .env.production.local
-- [ ] E — Verificación TypeScript final en ambos proyectos
+- [y] E — Verificación TypeScript final en ambos proyectos
 - [ ] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final

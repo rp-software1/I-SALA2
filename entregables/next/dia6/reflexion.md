@@ -18,3 +18,7 @@ BLOQUE C:
 
 BLOQUE D:
 ¿El build tuvo errores? ¿Cuáles y cómo los resolvieron? No tuvo errores. 
+
+BLOQUE E:
+¿Cuántos errores TypeScript quedaban antes de este bloque?
+CUANDO YO LO EJECUTE TENIA 0.
