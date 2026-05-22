@@ -28,10 +28,7 @@ export async function enviarComanda(
             items: pedido.items,
         });
 
-        console.log(
-            'Pedido creado:',
-            nuevoPedido
-        );
+
 
         return {
             ok: true,

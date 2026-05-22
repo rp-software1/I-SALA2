@@ -110,12 +110,7 @@ export default function ComandaCard({
                 siguiente
             );
 
-            console.log(
-                'Pedido actualizado:',
-                pedido.id,
-                '→',
-                siguiente
-            );
+
         });
     };
 
