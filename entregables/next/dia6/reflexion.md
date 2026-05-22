@@ -15,3 +15,6 @@ Sí, fue una decisión esperada. Porque la app de restaurante es para uso intern
 BLOQUE C:
  ¿Encontraron algo inesperado en la auditoría? ¿Qué fue lo más común?
  Sí. En la auditoría aparecieron varios residuos típicos de desarrollo que no estaban afectando la ejecución, pero sí la limpieza del código para producción.
+
+BLOQUE D:
+¿El build tuvo errores? ¿Cuáles y cómo los resolvieron? No tuvo errores. 

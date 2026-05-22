@@ -22,3 +22,8 @@ is declared but its value is never read
 Puede actuar como warning o error según la configuración.
 
 3.// TODO Día 3 no debería quedar en producción. Si ya se resolvió, se elimina; si sigue pendiente, se cambia a una nota más clara (// NOTE:).
+
+BLOQUE D:
+Si el backend no está corriendo cuando ejecutas npm run build, ¿el build va a fallar para las páginas con generateMetadata async que hacen fetch?
+¿El build falla si el backend está caído? Si puede fallar. 
+¿Por qué? porque el generateMetadata se ejecuta en tiempo de build y si el backend no está disponible, el build fallará.
