@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Restaurante — RPSoft Bootcamp
 
-## Getting Started
+## Proyectos
 
-First, run the development server:
+### restaurante-nextjs
+Stack: Next.js · TypeScript · Tailwind CSS · App Router
+
+Proyecto académico desarrollado para la gestión de mesas, menú y comandas.
+
+⚠️ Actualmente se trabaja con datos mock (sin backend real).
+
+---
+
+## Instalación
 
 ```bash
+cd restaurante-nextjs
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npx tsc --noEmit 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Ejecución
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Abrir en el navegador:
 
-## Learn More
+```bash
+http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Variables de entorno
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No se utilizan variables de entorno ni backend real actualmente.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Rutas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- / → Home
+- /mesas → Lista de mesas y estados
+- /menu → Menú de platos
+- /carrito → Carrito de pedidos
+- /comandas → Gestión de comandas
+- /mesa/[id] → Detalle de una mesa
+
+---
+
+## Tecnologías utilizadas
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- React
+- App Router
+
+---
+
+## Estructura principal
+
+```bash
+app/
+ ├── carrito/
+ ├── comandas/
+ ├── components/
+ ├── menu/
+ ├── mesa/
+ ├── mesas/
+ ├── globals.css
+ ├── layout.tsx
+ └── page.tsx
+```
+
+---
+
+## Equipo
+
+I-SALA2 — RPSoft Bootcamp

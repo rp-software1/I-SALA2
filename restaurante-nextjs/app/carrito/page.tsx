@@ -1,6 +1,11 @@
+// app/carrito/page.tsx
+
 'use client';
 
-import { useState } from 'react';
+import {
+    useEffect,
+    useState,
+} from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -35,6 +40,16 @@ export default function CarritoPage() {
 
     const [errorEnvio, setErrorEnvio] =
         useState<string | null>(null);
+
+    // TITLE DINÁMICO
+    useEffect(() => {
+
+        document.title =
+            pedido.items.length > 0
+                ? `Carrito (${pedido.items.length}) — Sistema de Restaurante`
+                : 'Carrito — Sistema de Restaurante';
+
+    }, [pedido.items.length]);
 
     const totalVisual = pedido.items.reduce(
         (acc: number, item: ItemPedido) =>
@@ -232,8 +247,7 @@ export default function CarritoPage() {
                                 'para_llevar'
                             )
                         }
-                        className={`px-4 py-2 rounded border ${pedido.tipo ===
-                                'para_llevar'
+                        className={`px-4 py-2 rounded border ${pedido.tipo === 'para_llevar'
                                 ? 'bg-blue-600 text-white'
                                 : 'bg-white'
                             }`}

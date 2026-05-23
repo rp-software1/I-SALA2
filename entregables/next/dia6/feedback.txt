@@ -1,0 +1,29 @@
+daniela: 
+¿El npm run build tuvo errores? ¿Cuáles y cómo los resolvieron?
+no tuvo errores. 
+¿La auditoría del Bloque C encontró algo inesperado?
+no ya que era limpiar los comentarios que estaban bastante tiempo ahi. 
+
+¿Qué es lo más complejo que tendría que resolver alguien que clone el proyecto desde cero?
+buenpoo en este caso seria conectar a un backend real.
+¿El tiempo fue suficiente para los 6 bloques?
+si lo fue. 
+
+¿El proyecto está listo para el deploy del Día 7?  SÍ / NO / PARCIAL:
+PARCIAL
+Calificación general de la actividad (1-5):
+5/5
+
+CARLOS:
+¿El npm run build tuvo errores? ¿Cuáles y cómo los resolvieron?
+No, compiló correctamente sin errores.
+¿La auditoría del Bloque C encontró algo inesperado?
+No, todo funcionó correctamente.
+¿Qué es lo más complejo que tendría que resolver alguien que clone el proyecto desde cero?
+Configurar dependencias y entender App Router y el contexto global.
+¿El tiempo fue suficiente para los 6 bloques?
+Sí, aunque algunos bloques tomaron más tiempo.
+¿El proyecto está listo para el deploy del Día 7?
+Sí 
+Calificación general de la actividad (1-5):
+5/5
