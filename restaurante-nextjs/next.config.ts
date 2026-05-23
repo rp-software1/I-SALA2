@@ -25,6 +25,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/carta',
+        destination: '/menu',
+        permanent: true,
+      },
+    ];
+  },
 };
+
 
 export default nextConfig;
