@@ -3,8 +3,9 @@
 sala: I-SALA1
 curso: Next.js
 dia: 6
-estado: en_progreso
-loom: (agregar link al terminar)
+estado: terminado
+loom: ((https://drive.google.com/file/d/1OozhP35J672qDOvdi4qR7dt3aiAG3ANU/view?usp=sharing))
+bonus: (https://drive.google.com/file/d/1nyPcE_RvAW85E6MIMBkjl9bOYXUisbHC/view?usp=sharing)
 ---
 
 ## Bloques
@@ -13,7 +14,7 @@ loom: (agregar link al terminar)
 - [Y] C — Auditoría del proyecto (TODO, console.log, imports)
 - [Y] D — npm run build sin errores + .env.production.local
 - [y] E — Verificación TypeScript final en ambos proyectos
-- [ ] F — Evaluación entre pares + Loom + PR
+- [Y] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
 - [ ] Cada página tiene título único en la pestaña del browser
