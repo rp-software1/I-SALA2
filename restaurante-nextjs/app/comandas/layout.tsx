@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Comandas — Sistema de Restaurante',
+    title: 'Comandas',
 };
 
 export default function ComandasLayout({
