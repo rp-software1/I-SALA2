@@ -17,9 +17,9 @@ bonus: (https://drive.google.com/file/d/1nyPcE_RvAW85E6MIMBkjl9bOYXUisbHC/view?u
 - [Y] F — Evaluación entre pares + Loom + PR
 
 ## Verificación final
-- [ ] Cada página tiene título único en la pestaña del browser
-- [ ] npm run build completa sin errores
-- [ ] npx tsc --noEmit → 0 errores en restaurante-nextjs/
-- [ ] .env.production.local creado con valores correctos
-- [ ] PR aprobado por sala par
+- [Y] Cada página tiene título único en la pestaña del browser
+- [Y] npm run build completa sin errores
+- [Y] npx tsc --noEmit → 0 errores en restaurante-nextjs/
+- [Y] .env.production.local creado con valores correctos
+- [Y] PR aprobado por sala par
 
