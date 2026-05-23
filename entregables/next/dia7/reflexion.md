@@ -7,3 +7,8 @@ BLOQUE B:
 • ¿El primer deploy falló como se predijo, o tuvo otro error?
 repositorio en GitHub.
 Vercel no tenía permisos para acceder al repositorio rp-software1/I-SALA2.
+
+BLOQUE C:
+ ¿El redeploy fue automático o tuvieron que triggerearlo manualmente?
+
+ No hubo necesidad de cambiar algo en el redeploy. 
