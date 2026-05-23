@@ -17,6 +17,9 @@ Proyecto académico desarrollado para la gestión de mesas, menú y comandas.
 cd restaurante-nextjs
 npm install
 npm run dev
+npm run build
+npm run start
+npx tsc --noEmit 
 ```
 
 ---
