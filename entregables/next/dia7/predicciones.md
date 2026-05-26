@@ -15,3 +15,9 @@ Por esa razón:
  no se necesitó conectar un backend externo
  el deploy depende únicamente del frontend y de que npm run build compile correctamente.
  
+BLOQUE D:
+¿Las rutas dinámicas como /mesa/[id] van a funcionar en Vercel igual que en localhost? ¿O hay alguna diferencia en cómo Vercel maneja los parámetros?
+Sí, las rutas dinámicas de Next.js como /mesa/[id] funcionan igual en Vercel que en localhost, porque Vercel está diseñado especialmente para proyectos Next.js.
+
+¿/mesa/[id] funciona igual en Vercel? Sí
+¿Hay alguna diferencia con localhost? No en las rutas dinámicas; solo pueden cambiar cosas como variables de entorno, APIs o configuración de producción.

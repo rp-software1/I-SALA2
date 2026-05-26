@@ -12,3 +12,8 @@ BLOQUE C:
  ¿El redeploy fue automático o tuvieron que triggerearlo manualmente?
 
  No hubo necesidad de cambiar algo en el redeploy. 
+
+ BLOQUE D:  
+ ¿Qué ruta tuvo más problemas en producción? ¿Cómo lo resolvieron?
+La ruta que tuvo más problemas en producción fue la relacionada con datos dinámicos, porque no teníamos un backend real y algunos datos no cargaban correctamente en producción.
+Lo resolvimos usando datos simulados/locales (mock data) y verificando que las rutas dinámicas como /mesa/[id] recibieran correctamente el parámetro id tanto en localhost como en Vercel.
