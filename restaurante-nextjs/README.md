@@ -81,3 +81,18 @@ app/
 ## Equipo
 
 I-SALA2 — RPSoft Bootcamp
+
+# En el README.md en la raíz de I-SALA2/:
+
+# Sistema de Restaurante — RPSoft Bootcamp
+
+## 🚀 Deploy en producción
+
+**URL:** https://i-sala-2.vercel.app/
+
+**Estado:** ✅ Live — [26/05/2026]
+
+## Proyectos
+
+### restaurante-nextjs (producción)
+# ... resto del README ...
