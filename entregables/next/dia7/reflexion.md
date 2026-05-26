@@ -17,3 +17,7 @@ BLOQUE C:
  ¿Qué ruta tuvo más problemas en producción? ¿Cómo lo resolvieron?
 La ruta que tuvo más problemas en producción fue la relacionada con datos dinámicos, porque no teníamos un backend real y algunos datos no cargaban correctamente en producción.
 Lo resolvimos usando datos simulados/locales (mock data) y verificando que las rutas dinámicas como /mesa/[id] recibieran correctamente el parámetro id tanto en localhost como en Vercel.
+
+BLOQUE E:
+¿El push del README activó automáticamente un nuevo deploy en Vercel? ¿Tardó más o menos que los anteriores?
+Si lo hizo, lo hizo mas rapido. 
