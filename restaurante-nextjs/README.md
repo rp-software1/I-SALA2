@@ -94,5 +94,6 @@ I-SALA2 — RPSoft Bootcamp
 
 ## Proyectos
 
-### restaurante-nextjs (producción)
+### restaurante-nextjs ([producción](https://i-sala-2.vercel.app/menu))
 # ... resto del README ...
+ 
