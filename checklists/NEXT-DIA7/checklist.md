@@ -13,7 +13,7 @@ loom: (agregar link al terminar)
 - [Y] C — Configurar variables de entorno en Vercel + redeploy
 - [Y] D — Verificación completa en producción
 - [Y] E — Actualizar openGraph y README con URL real
-- [ ] F — Evaluación final del sprint Next.js + Loom
+- [Y] F — Evaluación final del sprint Next.js + Loom
 
 ## Verificación final
 - [ ] URL de Vercel es accesible desde el celular del Navigator
