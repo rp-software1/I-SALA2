@@ -17,7 +17,7 @@ bonus: https://drive.google.com/file/d/1HX1-CsypU-jtEqDTmm6l88BxN4RJ8Qid/view?us
 - [Y] F — Evaluación final del sprint Next.js + Loom
 
 ## Verificación final
-- [ ] URL de Vercel es accesible desde el celular del Navigator
-- [ ] /mesas muestra datos reales del backend
-- [ ] Vercel muestra estado "Ready"
-- [ ] README.md tiene el link del deploy
+- [Y] URL de Vercel es accesible desde el celular del Navigator
+- [Y] /mesas muestra datos reales del backend
+- [Y] Vercel muestra estado "Ready"
+- [Y] README.md tiene el link del deploy
