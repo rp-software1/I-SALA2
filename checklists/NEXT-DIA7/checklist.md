@@ -12,7 +12,7 @@ loom: (agregar link al terminar)
 - [Y] B — Conectar a Vercel y primer deploy
 - [Y] C — Configurar variables de entorno en Vercel + redeploy
 - [Y] D — Verificación completa en producción
-- [ ] E — Actualizar openGraph y README con URL real
+- [Y] E — Actualizar openGraph y README con URL real
 - [ ] F — Evaluación final del sprint Next.js + Loom
 
 ## Verificación final
